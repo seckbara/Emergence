@@ -1,12 +1,12 @@
 {
-  "name": "admin-lte",
+  "name": "bara",
   "homepage": "https://adminlte.io",
   "authors": [
     "Abdullah Almsaeed <abdullah@almsaeedstudio.com>"
   ],
-  "description": "Admin dashboard and control panel template",
+  "description": "refonte emergence",
   "main": [
-    "index2.html",
+    "index.html",
     "dist/css/AdminLTE.css",
     "dist/js/app.js",
     "build/less/AdminLTE.less"
@@ -28,7 +28,10 @@
     "node_modules",
     "bower_components",
     "composer.json",
-    "documentation"
+    "documentation",
+    "**/.*",
+    "test",
+    "tests"
   ],
   "dependencies": {
     "bootstrap-slider": "*",
@@ -36,7 +39,7 @@
     "ckeditor": "^4.7.0",
     "bootstrap-colorpicker": "^2.5.1",
     "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1",
+    "jquery": "https://github.com/podio/jquery.rating",
     "datatables.net": "^1.10.15",
     "datatables.net-bs": "^2.1.1",
     "bootstrap-datepicker": "^1.7.0",
