@@ -9,410 +9,204 @@ include_once "../../assets/class/includes/header.php";
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Ajouter un adherent</h1>
+        <h1><b>Formulaire d'ajout d'adherent</b></h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li><a href="#">Adherent</a></li>
+            <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li><a href="ajouter.php">Adherent</a></li>
             <li class="active">Ajouter un adherent</li>
         </ol>
     </section>
 
-    <!-- Main content -->
     <section class="content">
-
-        <!-- SELECT2 EXAMPLE -->
         <div class="box box-default">
-            <div class="box-header with-border">
-                <h3 class="box-title">Select2</h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-                </div>
-            </div>
-            <!-- /.box-header -->
             <div class="box-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Minimal</label>
-                            <select class="form-control select2" style="width: 100%;">
-                                <option selected="selected">Alabama</option>
-                                <option>Alaska</option>
-                                <option>California</option>
-                                <option>Delaware</option>
-                                <option>Tennessee</option>
-                                <option>Texas</option>
-                                <option>Washington</option>
-                            </select>
-                        </div>
-                        <!-- /.form-group -->
-                        <div class="form-group">
-                            <label>Disabled</label>
-                            <select class="form-control select2" disabled="disabled" style="width: 100%;">
-                                <option selected="selected">Alabama</option>
-                                <option>Alaska</option>
-                                <option>California</option>
-                                <option>Delaware</option>
-                                <option>Tennessee</option>
-                                <option>Texas</option>
-                                <option>Washington</option>
-                            </select>
-                        </div>
-                        <!-- /.form-group -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Multiple</label>
-                            <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
-                                    style="width: 100%;">
-                                <option>Alabama</option>
-                                <option>Alaska</option>
-                                <option>California</option>
-                                <option>Delaware</option>
-                                <option>Tennessee</option>
-                                <option>Texas</option>
-                                <option>Washington</option>
-                            </select>
-                        </div>
-                        <!-- /.form-group -->
-                        <div class="form-group">
-                            <label>Disabled Result</label>
-                            <select class="form-control select2" style="width: 100%;">
-                                <option selected="selected">Alabama</option>
-                                <option>Alaska</option>
-                                <option disabled="disabled">California (disabled)</option>
-                                <option>Delaware</option>
-                                <option>Tennessee</option>
-                                <option>Texas</option>
-                                <option>Washington</option>
-                            </select>
-                        </div>
-                        <!-- /.form-group -->
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-                the plugin.
-            </div>
-        </div>
-        <!-- /.box -->
-
-        <div class="row">
-            <div class="col-md-6">
-
-                <div class="box box-danger">
-                    <div class="box-header">
-                        <h3 class="box-title">Input masks</h3>
-                    </div>
-                    <div class="box-body">
-                        <!-- Date dd/mm/yyyy -->
-                        <div class="form-group">
-                            <label>Date masks:</label>
-
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                        <!-- /.form group -->
-
-                        <!-- Date mm/dd/yyyy -->
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask>
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                        <!-- /.form group -->
-
-                        <!-- phone mask -->
-                        <div class="form-group">
-                            <label>US phone mask:</label>
-
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <input type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                        <!-- /.form group -->
-
-                        <!-- phone mask -->
-                        <div class="form-group">
-                            <label>Intl US phone mask:</label>
-
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <input type="text" class="form-control"
-                                       data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask>
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                        <!-- /.form group -->
-
-                        <!-- IP mask -->
-                        <div class="form-group">
-                            <label>IP mask:</label>
-
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-laptop"></i>
-                                </div>
-                                <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask>
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                        <!-- /.form group -->
-
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-
-                <div class="box box-info">
-                    <div class="box-header">
-                        <h3 class="box-title">Color & Time Picker</h3>
-                    </div>
-                    <div class="box-body">
-                        <!-- Color Picker -->
-                        <div class="form-group">
-                            <label>Color picker:</label>
-                            <input type="text" class="form-control my-colorpicker1">
-                        </div>
-                        <!-- /.form group -->
-
-                        <!-- Color Picker -->
-                        <div class="form-group">
-                            <label>Color picker with addon:</label>
-
-                            <div class="input-group my-colorpicker2">
-                                <input type="text" class="form-control">
-
-                                <div class="input-group-addon">
-                                    <i></i>
-                                </div>
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                        <!-- /.form group -->
-
-                        <!-- time Picker -->
-                        <div class="bootstrap-timepicker">
+                <form action="scripts/ajout_adherent.php" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>Time picker:</label>
-
-                                <div class="input-group">
-                                    <input type="text" class="form-control timepicker">
-
+                                <label>Nom</label>
+                                <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir le nom de l'adherent" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>Date de naissance:</label>
+                                <div class="input-group date">
                                     <div class="input-group-addon">
-                                        <i class="fa fa-clock-o"></i>
+                                        <i class="fa fa-calendar"></i>
                                     </div>
+                                    <input type="text" class="form-control pull-right" id="datepicker" placeholder="saisir la date" name="date_naissance" required>
                                 </div>
-                                <!-- /.input group -->
                             </div>
-                            <!-- /.form group -->
                         </div>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-
-            </div>
-            <!-- /.col (left) -->
-            <div class="col-md-6">
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <h3 class="box-title">Date picker</h3>
-                    </div>
-                    <div class="box-body">
-                        <!-- Date -->
-                        <div class="form-group">
-                            <label>Date:</label>
-
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Prenom</label>
+                                    <input type="text" class="form-control" name="prenom_adherent" placeholder="Saisir le prenom de l'adherent" required/>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker">
                             </div>
-                            <!-- /.input group -->
+                            <div class="form-group">
+                                <label>Ville</label>
+                                <select class="form-control select2" style="width: 100%;" required name="ville">
+                                    <option selected="selected">Le Havre</option>
+                                    <option>Rouen</option>
+                                    <option disabled="disabled">Evreaux</option>
+                                    <option>Dauville</option>
+                                    <option>Caucrioville</option>
+                                    <option>Triter</option>
+                                    <option>Harfleur</option>
+                                </select>
+                            </div>
                         </div>
-                        <!-- /.form group -->
-
-                        <!-- Date range -->
-                        <div class="form-group">
-                            <label>Date range:</label>
-
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Sexe: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <div class="input-group">
+                                    <label>
+                                        Homme &nbsp;
+                                        <input type="radio" name="sexe" class="flat-red" checked>
+                                    </label>
+                                    <label>
+                                        &nbsp; Femme &nbsp;
+                                        <input type="radio" name="sexe" class="flat-red">
+                                    </label>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="reservation">
                             </div>
-                            <!-- /.input group -->
                         </div>
-                        <!-- /.form group -->
-
-                        <!-- Date and time range -->
-                        <div class="form-group">
-                            <label>Date and time range:</label>
-
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Numéro de Téléphone</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <input type="text" class="form-control" data-inputmask='"mask": "99-99-99-99-99"' data-mask required name="tel">
                                 </div>
-                                <input type="text" class="form-control pull-right" id="reservationtime">
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                        <!-- /.form group -->
-
-                        <!-- Date and time range -->
-                        <div class="form-group">
-                            <label>Date range button:</label>
-
-                            <div class="input-group">
-                                <button type="button" class="btn btn-default pull-right" id="daterange-btn">
-                    <span>
-                      <i class="fa fa-calendar"></i> Date range picker
-                    </span>
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
                             </div>
                         </div>
-                        <!-- /.form group -->
-
                     </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
 
-                <!-- iCheck -->
-                <div class="box box-success">
-                    <div class="box-header">
-                        <h3 class="box-title">iCheck - Checkbox &amp; Radio Inputs</h3>
-                    </div>
-                    <div class="box-body">
-                        <!-- Minimal style -->
-
-                        <!-- checkbox -->
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox" class="minimal" checked>
-                            </label>
-                            <label>
-                                <input type="checkbox" class="minimal">
-                            </label>
-                            <label>
-                                <input type="checkbox" class="minimal" disabled>
-                                Minimal skin checkbox
-                            </label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Adresse:</label>
+                                <input type="text" class="form-control" name="adresse" placeholder="Saisir l'adresse" required/>
+                            </div>
                         </div>
-
-                        <!-- radio -->
-                        <div class="form-group">
-                            <label>
-                                <input type="radio" name="r1" class="minimal" checked>
-                            </label>
-                            <label>
-                                <input type="radio" name="r1" class="minimal">
-                            </label>
-                            <label>
-                                <input type="radio" name="r1" class="minimal" disabled>
-                                Minimal skin radio
-                            </label>
-                        </div>
-
-                        <!-- Minimal red style -->
-
-                        <!-- checkbox -->
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox" class="minimal-red" checked>
-                            </label>
-                            <label>
-                                <input type="checkbox" class="minimal-red">
-                            </label>
-                            <label>
-                                <input type="checkbox" class="minimal-red" disabled>
-                                Minimal red skin checkbox
-                            </label>
-                        </div>
-
-                        <!-- radio -->
-                        <div class="form-group">
-                            <label>
-                                <input type="radio" name="r2" class="minimal-red" checked>
-                            </label>
-                            <label>
-                                <input type="radio" name="r2" class="minimal-red">
-                            </label>
-                            <label>
-                                <input type="radio" name="r2" class="minimal-red" disabled>
-                                Minimal red skin radio
-                            </label>
-                        </div>
-
-                        <!-- Minimal red style -->
-
-                        <!-- checkbox -->
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox" class="flat-red" checked>
-                            </label>
-                            <label>
-                                <input type="checkbox" class="flat-red">
-                            </label>
-                            <label>
-                                <input type="checkbox" class="flat-red" disabled>
-                                Flat green skin checkbox
-                            </label>
-                        </div>
-
-                        <!-- radio -->
-                        <div class="form-group">
-                            <label>
-                                <input type="radio" name="r3" class="flat-red" checked>
-                            </label>
-                            <label>
-                                <input type="radio" name="r3" class="flat-red">
-                            </label>
-                            <label>
-                                <input type="radio" name="r3" class="flat-red" disabled>
-                                Flat green skin radio
-                            </label>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Adresse Email:</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="email" placeholder="Saisir l'adresse email" required/>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        Many more skins available. <a href="http://fronteed.com/iCheck/">Documentation</a>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Certificat: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <div class="input-group">
+                                    <label>
+                                        Oui &nbsp;
+                                        <input type="radio" name="certificat" class="flat-red" >
+                                    </label>
+                                    <label>
+                                        &nbsp; Non &nbsp;
+                                        <input type="radio" name="certificat" class="flat-red" checked>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Situation Professionnel</label>
+                                    <select class="form-control select2" style="width: 100%;" name="situation" required>
+                                        <option selected="selected">Le Havre</option>
+                                        <option>Rouen</option>
+                                        <option disabled="disabled">Evreaux</option>
+                                        <option>Dauville</option>
+                                        <option>Caucrioville</option>
+                                        <option>Triter</option>
+                                        <option>Harfleur</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- /.box -->
-            </div>
-            <!-- /.col (right) -->
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Quartier</label>
+                                <select class="form-control select2" style="width: 100%;" name="quartier" required>
+                                    <option selected="selected">Le Havre</option>
+                                    <option>Rouen</option>
+                                    <option disabled="disabled">Evreaux</option>
+                                    <option>Dauville</option>
+                                    <option>Caucrioville</option>
+                                    <option>Triter</option>
+                                    <option>Harfleur</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Numéro de sécurité social</label>
+                                <input type="text" class="form-control pull-right" placeholder="Numéro de sécurité social" name="num_secu" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Type de document</label>
+                                <select class="form-control select2" style="width: 100%;" name="document" required>
+                                    <option selected="selected">Carte d'etudiant</option>
+                                    <option>APS</option>
+                                    <option disabled="disabled">Autres</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Téléphone fixe</label>
+                                <input type="text" class="form-control pull-right" placeholder="Numéro de téléphone fixe" name="tel_fixe" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Commentaire:</label>
+                                <textarea class="form-control" rows="3" placeholder="Ajouter un commentaire" name="commentaire" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success btn-sm btn-block" value="Ajouter" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
         </div>
-        <!-- /.row -->
-
     </section>
-    <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
-
 
 <?php include_once "../../assets/class/includes/footer.php"?>
+
+
