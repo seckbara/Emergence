@@ -420,4 +420,4 @@ include_once "../../assets/class/includes/header.php"
     <!-- /.content-wrapper -->
 
 
-<?php include_once "../../assets/class/includes/footer.php"?>
+<?php include_once "../../assets/class/includes/footer.php" ?>

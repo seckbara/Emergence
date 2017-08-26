@@ -17,4 +17,9 @@ class DBManager {
         );
         return $conn = DriverManager::getConnection($connParametr, $config);
     }
+
+    public function getlastId()
+    {
+
+    }
 }

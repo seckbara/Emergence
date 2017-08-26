@@ -4,7 +4,7 @@
  $nom = $_POST['nom_adherent'];
  $prenom = $_POST['prenom_adherent'];
  $date_naissance = $_POST['date_naissance'];
- $ville = $_POST['nom_adherent'];
+ $ville = $_POST['ville'];
  $sexe = $_POST['sexe'];
  //$tel = trim($_POST['tel'], "-");
  $tel = "0698627516";
@@ -22,7 +22,8 @@
 
  $adherent->AjoutAdherents($nom,$prenom,$date_naissance,$ville,$sexe,$tel,$adresse,$mail,$certificat,$situation,$quartier,$numer_secu,$type_doc,$tel_fixe,$commentaire);
 
-header('Location: ../ajouter.php');
-exit();
+ $lasId = $adherent->LastIdAdherent();
+ header('Location: ../../abonnements/ajouter_abonn.php?id='.$lasId->id.'"');
+ exit();
  //dump($conn);
  //exit();

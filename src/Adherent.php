@@ -287,13 +287,31 @@ class Adherent extends DBManager {
         $this->commentaire = $commentaire;
     }
 
-    public function AjoutAdherents($nom, $date_naissance, $prenom, $ville, $sexe, $tel,$adresse, $mail, $certificat,$situation,
+    /**
+     * @param $nom
+     * @param $date_naissance
+     * @param $prenom
+     * @param $ville
+     * @param $sexe
+     * @param $tel
+     * @param $adresse
+     * @param $mail
+     * @param $certificat
+     * @param $situation
+     * @param $quartier
+     * @param $numer_secu
+     * @param $type_doc
+     * @param $tel_fixe
+     * @param $commentaire
+     * @return int
+     */
+    public function AjoutAdherents($nom, $prenom,$date_naissance, $ville, $sexe, $tel,$adresse, $mail, $certificat,$situation,
                                    $quartier,$numer_secu,$type_doc, $tel_fixe, $commentaire){
         try {
             return DBManager::connect()->insert($this->getTable(), array(
                 'nom_adherent' => $nom,
-                'date_naissance' => $date_naissance,
                 'prenom_adherent' => $prenom,
+                'date_naissance' => $date_naissance,
                 'ville' => $ville,
                 'sexe' => $sexe,
                 'tel' => $tel,
@@ -310,6 +328,25 @@ class Adherent extends DBManager {
         } catch (DBALException $e) {
             sprintf("Insert adherent has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
             }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function LastIdAdherent(){
+        try {
+            return DBManager::connect()->executeQuery('select max(id) as id from '.$this->getTable().'')->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer le dernier id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    public function AdherentById($id){
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer le dernier id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
     }
 
 
