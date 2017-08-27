@@ -341,6 +341,10 @@ class Adherent extends DBManager {
         }
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function AdherentById($id){
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
@@ -348,6 +352,16 @@ class Adherent extends DBManager {
             sprintf("Impossible de recuperer le dernier id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
+
+    public function Alladherent(){
+        try {
+            return DBManager::connect()->fetchAll('select * from '.$this->getTable().'');
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer le dernier id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+
 
 
 }
