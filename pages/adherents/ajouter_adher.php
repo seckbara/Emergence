@@ -3,6 +3,9 @@ require_once '../../vendor/autoload.php';
 use Carbon\Carbon;
 include_once "../../assets/class/includes/header.php";
 
+$ville = new Villes;
+$villes = $ville->AllVilles();
+//dump($villes);
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -12,7 +15,7 @@ include_once "../../assets/class/includes/header.php";
         <h1><b>Formulaire d'ajout d'adherent</b></h1>
         <ol class="breadcrumb">
             <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li><a href="ajouter.php">Adherent</a></li>
+            <li><a href="ajouter_adher.php">Adherent</a></li>
             <li class="active">Ajouter un adherent</li>
         </ol>
     </section>
@@ -47,13 +50,9 @@ include_once "../../assets/class/includes/header.php";
                             <div class="form-group">
                                 <label>Ville</label>
                                 <select class="form-control select2" style="width: 100%;" required name="ville">
-                                    <option selected="selected">Le Havre</option>
-                                    <option>Rouen</option>
-                                    <option disabled="disabled">Evreaux</option>
-                                    <option>Dauville</option>
-                                    <option>Caucrioville</option>
-                                    <option>Triter</option>
-                                    <option>Harfleur</option>
+                                    <?php foreach ($villes as $ville): ?>
+                                    <option value="<?= $ville->id_ville ?>"><?= $ville->ville ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -65,11 +64,11 @@ include_once "../../assets/class/includes/header.php";
                                 <div class="input-group">
                                     <label>
                                         Homme &nbsp;
-                                        <input type="radio" name="sexe" class="flat-red" checked>
+                                        <input type="radio" name="sexe" class="flat-red" value="H" checked>
                                     </label>
                                     <label>
                                         &nbsp; Femme &nbsp;
-                                        <input type="radio" name="sexe" class="flat-red">
+                                        <input type="radio" name="sexe" class="flat-red" value="F">
                                     </label>
                                 </div>
                             </div>
@@ -114,11 +113,11 @@ include_once "../../assets/class/includes/header.php";
                                 <div class="input-group">
                                     <label>
                                         Oui &nbsp;
-                                        <input type="radio" name="certificat" class="flat-red" >
+                                        <input type="radio" name="certificat" value="O" class="flat-red" >
                                     </label>
                                     <label>
                                         &nbsp; Non &nbsp;
-                                        <input type="radio" name="certificat" class="flat-red" checked>
+                                        <input type="radio" name="certificat" value="N" class="flat-red" checked>
                                     </label>
                                 </div>
                             </div>
@@ -207,6 +206,6 @@ include_once "../../assets/class/includes/header.php";
     </section>
 </div>
 
-<?php include_once "../../assets/class/includes/footer.php"?>
+<?php include_once "../../assets/class/includes/footer.php" ?>
 
 
