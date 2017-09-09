@@ -7,7 +7,9 @@ $adherent = new Adherent();
 //dump($_GET['id']);
 //exit();
 $this_adherents = $adherent->AdherentById($_GET['id']);
-//dump($this_adherents);
+$activite = (new Activite())->AllActivite();
+$type_abonnement = (new Activite())->AllTypeabonnement();
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -21,6 +23,7 @@ $this_adherents = $adherent->AdherentById($_GET['id']);
             <li class="active">Ajouter un abonnement</li>
         </ol>
     </section>
+
 
     <section class="content">
         <div class="box box-default">
@@ -56,25 +59,20 @@ $this_adherents = $adherent->AdherentById($_GET['id']);
                                 <div class="form-group">
                                     <label>Activité choisis</label>
                                     <select class="form-control select2" style="width: 100%;" required name="activite">
-                                        <option selected="selected">Le Havre</option>
-                                        <option>Rouen</option>
-                                        <option disabled="disabled">Evreaux</option>
-                                        <option>Dauville</option>
-                                        <option>Caucrioville</option>
-                                        <option>Triter</option>
-                                        <option>Harfleur</option>
-                                    </select>                                </div>
+                                        <option selected="selected">Choissiez le type d'activité</option>
+                                        <?php foreach ($activite as $activ) { ?>
+                                        <option value="<?= $activ->id ?>"><?= $activ->nom_activite ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Type d'abonnement</label>
                                 <select class="form-control select2" style="width: 100%;" required name="type_abonn">
-                                    <option selected="selected">Le Havre</option>
-                                    <option>Rouen</option>
-                                    <option disabled="disabled">Evreaux</option>
-                                    <option>Dauville</option>
-                                    <option>Caucrioville</option>
-                                    <option>Triter</option>
-                                    <option>Harfleur</option>
+                                    <option selected="selected">Choissiez le type d'abonnement</option>
+                                    <?php foreach ($type_abonnement as $type) { ?>
+                                        <option value="<?= $type->id ?>"><?= $type->type_abonnement ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -120,28 +118,53 @@ $this_adherents = $adherent->AdherentById($_GET['id']);
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label<>Versements: </label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-envelope"></i>
-                                    </div>
-                                    <input type="text" class="form-control" name="versement" placeholder="Montant" />
-                                    <input type="text" class="form-control" name="versement" placeholder="date de versement"/>
-                                    <select class="form-control select2" style="width: 100%;"  name="type_abonn">
-                                        <option selected>Type d'abonnement</option>
-                                        <option>Caucrioville</option>
-                                        <option>Triter</option>
-                                    </select>
-                                    <select class="form-control select2" style="width: 100%;"  name="type_abonn">
-                                        <option selected>Type de paiement</option>
-                                        <option>Triter</option>
-                                        <option>Harfleur</option>
-                                    </select>
+                            <div class="row marginBottom-20">
+                                <div class="col-md-11 col-xs-11">
+                                    <label>Versement</label>
+                                </div>
+                                <div class="col-xs-1">
+                                    <button type="button" class="btn btn-primary btn-sm addButton"><i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div><hr/>
+                            <div id="contactForm">
+                                <div id="signupalert" style="display:none" class="alert alert-danger">
+                                    <p>Error:</p>
+                                    <span></span>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lastname" class="form-control-label col-md-4 marginLeft-10">Montant </label>
+                                    <div class="col-md-7 col-xs-11"><input type="text" name="contact[0][lastname]" class="form-control" value="" placeholder="Nom"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="firstname" class="form-control-label col-md-4 marginLeft-10">Date de versement</label>
+                                    <div class="col-md-7 col-xs-11"><input type="text" name="contact[0][firstname]" class="form-control" value="" placeholder="Prénom"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="quality" class="form-control-label col-md-4 marginLeft-10">Type de paiement</label>
+                                    <div class="col-md-7 col-xs-11"><input type="text" name="contact[0][quality]" class="form-control" value="" placeholder="Qualité"></div>
+                                </div>
+                            </div>
+                            <!-- The template for adding new field -->
+
+                            <div class="form-group hidden marginLeft-10" id="contactTemplate"><hr/>
+                                <div class="form-group row">
+                                    <label for="name" class="form-control-label col-md-4">Montant</label>
+                                    <div class="col-md-6 col-xs-11"><input type="text" class="form-control" name="lastname" placeholder="Nom"></div>
+                                    <div class="col-xs-1"><button type="button" class="btn btn-danger btn-sm btn removeButton"><i class="fa fa-minus"></i></button></div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="firstname" class="col-md-4 form-control-label">Date de versement</label>
+                                    <div class="col-md-7 col-xs-11"><input type="text" class="form-control" name="firstname" placeholder="First Name"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="quality" class="col-md-4 form-control-label">Type de paiement</label>
+                                    <div class="col-md-7 col-xs-11"><input type="text" class="form-control" name="quality" placeholder="Qualité"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     <br><br>
                     <div class="row">
@@ -157,5 +180,34 @@ $this_adherents = $adherent->AdherentById($_GET['id']);
 </div>
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
+
+<script>
+    var contactIndex = 0;
+    $('.addButton').click(function () {
+        contactIndex++;
+        var $template = $('#contactTemplate'),
+            $clone = $template
+                .clone()
+                .removeClass('hidden')
+                .removeAttr('id')
+                .attr('data-contact-index', contactIndex)
+                .insertBefore($template);
+
+        // Update the name attributes
+        $clone
+            .find('[name="name"]').attr('name', 'contact[' + contactIndex + '][name]').end()
+            .find('[name="firstname"]').attr('name', 'contact[' + contactIndex + '][firstname]').end()
+            .find('[name="quality"]').attr('name', 'contact[' + contactIndex + '][quality]').end()
+            .find('[name="phone"]').attr('name', 'contact[' + contactIndex + '][phone]').end()
+            .find('[name="mail"]').attr('name', 'contact[' + contactIndex + '][mail]').end();
+
+        $('.removeButton').click(function () {
+            var $row = $(this).parents('.form-group'),
+                index = $row.attr('data-contact-index');
+            // Remove element containing the fields
+            $row.remove();
+        });
+    });
+</script>
 
 
