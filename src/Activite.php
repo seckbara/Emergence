@@ -8,6 +8,23 @@ class Activite extends DBManager{
     protected $dbname = "emergence";
     protected $table = "activites";
     protected $table_tye_abonn = "type_abonnement";
+    protected $table_type_paiement = "type_de_paiements";
+
+    /**
+     * @return string
+     */
+    public function getTableTypePaiement()
+    {
+        return $this->table_type_paiement;
+    }
+
+    /**
+     * @param string $table_type_paiement
+     */
+    public function setTableTypePaiement($table_type_paiement)
+    {
+        $this->table_type_paiement = $table_type_paiement;
+    }
 
     /**
      * @return string
@@ -120,5 +137,12 @@ class Activite extends DBManager{
             sprintf("Impossible de recuperer les données da la table activité id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
-}
 
+    public function AllTypePaiement(){
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTableTypePaiement())->fetchAll(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer les données da la table activité id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+}
