@@ -11,7 +11,8 @@ $activite = (new Activite())->AllActivite();
 // recuperation de tout les types abonnements
 $type_abonnement = (new Activite())->AllTypeabonnement();
 // recuperation de tout les types de paiement
-$type_paiem = (new Activite())->AllTypePaiement();
+$type_paie = (new Activite())->AllTypePaiement();
+$id_adherent = $_GET['id'];
 
 ?>
 
@@ -31,7 +32,7 @@ $type_paiem = (new Activite())->AllTypePaiement();
     <section class="content">
         <div class="box box-default">
             <div class="box-body">
-                <form action="scripts/ajout_abonnement.php" method="post">
+                <form action="scripts/ajout_abonnement.php" method="post" novalidate>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -53,7 +54,8 @@ $type_paiem = (new Activite())->AllTypePaiement();
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right" id="datepicker" placeholder="saisir la date du certfificat" name="date_certificiat" required>
+                                    <input type="hidden" class="form-control pull-right" value="<?= $id_adherent ?>" name="id_adherent" />
+                                    <input type="text" class="form-control pull-right datepicker"  placeholder="saisir la date du certfificat" name="date_certificiat" required>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +90,7 @@ $type_paiem = (new Activite())->AllTypePaiement();
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right" id="datepicker" name="date_abonn" required>
+                                    <input type="text" class="form-control pull-right datepicker"  name="date_abonn" required>
                                 </div>
                             </div>
                         </div>
@@ -113,11 +115,26 @@ $type_paiem = (new Activite())->AllTypePaiement();
                         </div>
                     </div>
 
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Type de debut paiement</label>
+                                <select class="form-control select2" style="width: 100%;" required name="type_paie">
+                                    <option selected="selected">Choissiez le type d'abonnement</option>
+                                    <?php foreach ($type_paie as $types_paiement) { ?>
+                                        <option value="<?= $types_paiement->id ?>"><?= $types_paiement->type ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Montant total l'abonnement:</label>
-                                <input type="text" class="form-control" name="montant" placeholder="Montant d'abonnement" required/>
+                                <input type="number" min="0" class="form-control" name="montanttotal" placeholder="Montant d'abonnement" required/>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -136,18 +153,18 @@ $type_paiem = (new Activite())->AllTypePaiement();
                                     <span></span>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="lastname" class="form-control-label col-md-4 marginLeft-10">Montant </label>
-                                    <div class="col-md-7 col-xs-11"><input type="text" name="versement[0][montant]" class="form-control" value="" placeholder="Nom"></div>
+                                    <label class="form-control-label col-md-4 marginLeft-10">Montant </label>
+                                    <div class="col-md-7 col-xs-11"><input type="number" min="0" name="versement[0][montant]" class="form-control" value="" placeholder="Nom"></div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="firstname" class="form-control-label col-md-4 marginLeft-10">Date de versement</label>
-                                    <div class="col-md-7 col-xs-11"><input type="text" name="versement[0][date_verse]" class="form-control pull-right" id="datepicker" placeholder="saisir la date du certfificat" name="date_certificiat" required>
+                                    <label class="form-control-label col-md-4 marginLeft-10">Date de versement</label>
+                                    <div class="col-md-7 col-xs-11"><input type="text" name="versement[0][date_verse]" class="form-control pull-right datepicker"  placeholder="saisir la date du certfificat" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="quality" class="form-control-label col-md-4 marginLeft-10">Type de paiement</label>
+                                    <label class="form-control-label col-md-4 marginLeft-10">Commentaire</label>
                                     <div class="col-md-7 col-xs-11">
-                                        <input type="text" class="form-control pull-right" name="versement[0][type_paie]" id="datepicker" placeholder="saisir la date du certfificat" name="date_certificiat" required>
+                                        <textarea type="text" class="form-control pull-right" name="versement[0][commentaire]" rows="3" placeholder="Ajouter un commentaire" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -155,24 +172,23 @@ $type_paiem = (new Activite())->AllTypePaiement();
 
                             <div class="form-group hidden marginLeft-10" id="contactTemplate"><hr/>
                                 <div class="form-group row">
-                                    <label for="name" class="form-control-label col-md-4">Montant</label>
-                                    <div class="col-md-6 col-xs-11"><input type="text" class="form-control" name="montant" placeholder="Nom"></div>
+                                    <label class="form-control-label col-md-4">Montant</label>
+                                    <div class="col-md-6 col-xs-11"><input type="number" min="0" class="form-control" name="montant" placeholder="Nom"></div>
                                     <div class="col-xs-1"><button type="button" class="btn btn-danger btn-sm btn removeButton"><i class="fa fa-minus"></i></button></div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="firstname" class="col-md-4 form-control-label">Date de versement</label>
-                                    <div class="col-md-7 col-xs-11"><input type="text" class="form-control pull-right" id="datepicker" name="date_verse" required>
+                                    <label class="col-md-4 form-control-label">Date de versement</label>
+                                    <div class="col-md-7 col-xs-11"><input type="text" class="form-control pull-right datepicker"  name="date_verse" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="quality" class="col-md-4 form-control-label">Type de paiement</label>
-                                    <div class="col-md-7 col-xs-11"><input type="text" class="form-control pull-right" id="datepicker" name="type_paie" required>
+                                    <label class="col-md-4 form-control-label">Commentaire</label>
+                                    <div class="col-md-7 col-xs-11"><textarea type="text" class="form-control pull-right"  name="commentaire" rows="3" placeholder="Ajouter un commentaire" required></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
 
                     <br><br>
                     <div class="row">
@@ -205,7 +221,7 @@ $type_paiem = (new Activite())->AllTypePaiement();
         $clone
             .find('[name="montant"]').attr('name', 'versement[' + contactIndex + '][montant]').end()
             .find('[name="date_verse"]').attr('name', 'versement[' + contactIndex + '][date_verse]').end()
-            .find('[name="type_paie"]').attr('name', 'versement[' + contactIndex + '][type_paie]').end();
+            .find('[name="commentaire"]').attr('name', 'versement[' + contactIndex + '][commentaire]').end();
 
         $('.removeButton').click(function () {
             var $row = $(this).parents('.form-group'),
@@ -214,6 +230,11 @@ $type_paiem = (new Activite())->AllTypePaiement();
             $row.remove();
         });
     });
+
+    //Date picker
+    $('.datepicker').datepicker({
+        autoclose: true
+    })
 </script>
 
 
