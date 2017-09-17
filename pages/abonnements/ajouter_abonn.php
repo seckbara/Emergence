@@ -20,7 +20,7 @@ $id_adherent = $_GET['id'];
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1><b>Abonnement de <?= ($this_adherents->sexe == "H")?"Mr.":"Mme." ?> <?= $this_adherents->nom_adherent ." ". $this_adherents->prenom_adherent ?></b></h1>
+        <h1><b>Abonnement de <?= ($this_adherents->sexe == "F")?"Mme.":"Mr." ?> <?= $this_adherents->nom_adherent ." ". $this_adherents->prenom_adherent ?></b></h1>
         <ol class="breadcrumb">
             <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Accueil</a></li>
             <li><a href="ajouter_abonn.php">Abonnement</a></li>
@@ -100,15 +100,15 @@ $id_adherent = $_GET['id'];
                                 <div class="input-group">
                                     <label>
                                         3 mois &nbsp;
-                                        <input type="radio" name="duree_abonne" class="flat-red" value="trois">
+                                        <input type="radio" name="duree_abonne" class="flat-red" value="3">
                                     </label>
                                     <label>
                                         &nbsp; 6 mois &nbsp;
-                                        <input type="radio" name="duree_abonne" class="flat-red" value="six">
+                                        <input type="radio" name="duree_abonne" class="flat-red" value="6">
                                     </label>
                                     <label>
                                         &nbsp; 12 mois &nbsp;
-                                        <input type="radio" name="duree_abonne" class="flat-red" value="douze">
+                                        <input type="radio" name="duree_abonne" class="flat-red" value="12">
                                     </label>
                                 </div>
                             </div>
@@ -154,11 +154,11 @@ $id_adherent = $_GET['id'];
                                 </div>
                                 <div class="form-group row">
                                     <label class="form-control-label col-md-4 marginLeft-10">Montant </label>
-                                    <div class="col-md-7 col-xs-11"><input type="number" min="0" name="versement[0][montant]" class="form-control" value="" placeholder="Nom"></div>
+                                    <div class="col-md-7 col-xs-11"><input type="number" min="0" name="versement[0][montant]" class="form-control" value="" placeholder="Versement"></div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="form-control-label col-md-4 marginLeft-10">Date de versement</label>
-                                    <div class="col-md-7 col-xs-11"><input type="text" name="versement[0][date_verse]" class="form-control pull-right datepicker"  placeholder="saisir la date du certfificat" required>
+                                    <div class="col-md-7 col-xs-11"><input type="text" name="versement[0][date_verse]" class="form-control pull-right datepicker"  placeholder="saisir la date de versement" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -233,8 +233,11 @@ $id_adherent = $_GET['id'];
 
     //Date picker
     $('.datepicker').datepicker({
-        autoclose: true
-    })
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        numberOfMonths: 1
+    });
+
 </script>
 
 

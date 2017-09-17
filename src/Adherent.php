@@ -5,6 +5,7 @@ class Adherent extends DBManager {
 
     protected $dbname = "adherents";
     protected $table = "adherent";
+    protected $table_Situation = "situations";
 
     public $nom;
     public $prenom;
@@ -14,6 +15,38 @@ class Adherent extends DBManager {
     public $tel;
     public $adresse;
     public $mail;
+
+    /**
+     * @return string
+     */
+    public function getTableSituation()
+    {
+        return $this->table_Situation;
+    }
+
+    /**
+     * @param string $table_Situation
+     */
+    public function setTableSituation($table_Situation)
+    {
+        $this->table_Situation = $table_Situation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * @param mixed $tel
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+    }
     public $certificat;
     public $situation;
     public $quartier;
@@ -361,6 +394,25 @@ class Adherent extends DBManager {
         }
     }
 
+    public function AllSituation(){
+        try {
+            return DBManager::connect()->fetchAll('select * from '.$this->getTableSituation().'');
+        } catch (DBALException $e) {
+            sprintf("Impossible des situation id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function SituationById($id){
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTableSituation().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer la situation id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
 
 
 

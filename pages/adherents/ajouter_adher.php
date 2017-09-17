@@ -5,7 +5,8 @@ include_once "../../assets/class/includes/header.php";
 
 $ville = new Villes;
 $villes = $ville->AllVilles();
-//dump($villes);
+$situations = (new Adherent())->AllSituation();
+//dump($situations);
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -127,13 +128,9 @@ $villes = $ville->AllVilles();
                                 <div class="form-group">
                                     <label>Situation Professionnel</label>
                                     <select class="form-control select2" style="width: 100%;" name="situation" required>
-                                        <option selected="selected">Le Havre</option>
-                                        <option>Rouen</option>
-                                        <option disabled="disabled">Evreaux</option>
-                                        <option>Dauville</option>
-                                        <option>Caucrioville</option>
-                                        <option>Triter</option>
-                                        <option>Harfleur</option>
+                                        <?php foreach ($situations as $situation): ?>
+                                            <option value="<?= $situation['id'] ?>"><?= $situation['situation'] ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>

@@ -118,5 +118,16 @@ class Versement extends DBManager{
         }
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function VersementById($id){
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where abonnement_id = ?', array($id))->fetchAll(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer le versement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
 
 }

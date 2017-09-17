@@ -171,4 +171,27 @@ class Abonnement extends DBManager{
         }
     }
 
+    /**
+     * @return mixed
+     */
+    public function AllabonnementByAdherent(){
+        try {
+            return DBManager::connect()->executeQuery('select * from abonnements, adherent WHERE abonnements.id_adherent = adherent.id')->fetchAll(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer la liste des abonnements: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function AbonnementById($id){
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
 }

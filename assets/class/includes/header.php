@@ -361,7 +361,7 @@
                     <ul class="treeview-menu">
                         <li><a href="../../pages/adherents/historique.php"><i class="fa fa-history" aria-hidden="true"></i> Historique</a></li>
                         <li><a href="../../pages/adherents/ajouter_adher.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter</a></li>
-                        <li><a href="../../pages/adherents/rechercher.php"><i class="fa fa-search" aria-hidden="true"></i> Rechercher</a></li>
+                        <li><a href="../../pages/adherents/rechercher_adh.php"><i class="fa fa-search" aria-hidden="true"></i> Rechercher</a></li>
                     </ul>
                 </li>
             </ul>
@@ -378,7 +378,7 @@
                     <ul class="treeview-menu">
                         <li><a href="../../pages/abonnements/ajouter_abonn.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter</a></li>
                         <li><a href="../../pages/abonnements/historique.php"><i class="fa fa-history" aria-hidden="true"></i> Fin abonnement</a></li>
-                        <li><a href="../../pages/abonnements/rechercher.php"><i class="fa fa-search" aria-hidden="true"></i> Listing</a></li>
+                        <li><a href="../../pages/abonnements/rechercher_abon.php"><i class="fa fa-search" aria-hidden="true"></i> Rechercher</a></li>
                     </ul>
                 </li>
             </ul>

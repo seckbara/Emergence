@@ -27,5 +27,5 @@
       $queversement = $versements->AjoutVersement($val['date_verse'], $val['commentaire'], $val['montant'], $last_abonn->id);
   }
 
-    header('Location: ../../adherents/rechercher.php');
+    header('Location: ../../abonnements/rechercher_abon.php');
     exit();
