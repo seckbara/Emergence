@@ -5,7 +5,6 @@ include_once "../../assets/class/includes/header.php";
 
 $adherent = new Adherent();
 $adherents = $adherent->Alladherent();
-//dump($adherents);
 ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -39,13 +38,30 @@ $adherents = $adherent->Alladherent();
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title">Détail de l'adherent</h4>
+                                        <h4 class="modal-title primary">Détail de l'adherent</h4>
                                     </div>
                                     <div class="modal-body">
                                         <p>Contenu du modal</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="modifier">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title primary">modification de l'adherent</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Contenu du modal pour la modification</p>
+                                    </div>
+                                    <div class="modal-footer">
                                     </div>
                                 </div>
                             </div>
@@ -77,9 +93,9 @@ $adherents = $adherent->Alladherent();
                                     <td><?= $adherent['tel'] ?></td>
                                     <td><?= $adherent['email'] ?></td>
                                     <td style='text-align:center;'>
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                                        <button type="button" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        <button type="button" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail" onclick="detail_adherent(<?= $adherent['id'] ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modifier"  onclick="update_adherent(<?= $adherent['id'] ?>);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                     </td>
                                 </tr>
                                 <?php endforeach;?>
@@ -112,6 +128,8 @@ $adherents = $adherent->Alladherent();
 
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
+<script src="../../assets/script/traitement.js"></script>
+<script src="../../web/asset/jquery-confirm/jquery.confirm.js"></script>
 
 <script>
     $(function () {
@@ -122,7 +140,42 @@ $adherents = $adherent->Alladherent();
             'ordering'    : true,
             'info'        : true,
             'autoWidth'   : true,
-            "lengthMenu": [[7, 14, 28, -1], [7, 14, 28, "Afficher tout"]]
+            "lengthMenu": [[7, 14, 28, -1], [7, 14, 28, "Afficher tout"]],
+            language: {
+                processing:     "Traitement en cours...",
+                search:         "Rechercher&nbsp;:",
+                lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
+                info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                infoPostFix:    "",
+                loadingRecords: "Chargement en cours...",
+                zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                emptyTable:     "Aucune donnée disponible dans le tableau",
+                paginate: {
+                    first:      "Premier",
+                    previous:   "Pr&eacute;c&eacute;dent",
+                    next:       "Suivant",
+                    last:       "Dernier"
+                },
+                aria: {
+                    sortAscending:  ": activer pour trier la colonne par ordre croissant",
+                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                }
+            }
         })
     })
+
+    $(".confirm").confirm({
+        title:"Voulez-vous confirrmer",
+        text:"ëtes vous sur de vouloir supprimer cette abonnement",
+        confirm: function(button) {
+            //alert("You just confirmed.");
+        },
+        cancel: function(button) {
+            //alert("You aborted the operation.");
+        },
+        confirmButton: "Supprimer",
+        cancelButton: "Annuler"
+    });
 </script>

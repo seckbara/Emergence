@@ -1,7 +1,8 @@
 <?php
 require_once '../../../../vendor/autoload.php';
 
-
+//dump($_POST);
+//exit();
 $abonn = $_POST['id_abonn'];
 $adherent = $_POST['id_adher'];
 $verse = $_POST['id_vers'];

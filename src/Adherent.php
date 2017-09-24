@@ -414,6 +414,25 @@ class Adherent extends DBManager {
         }
     }
 
-
+    public function updateAdherent($nom, $prenom, $date_naissance, $tel, $adresse, $mail, $type_doc, $commentaire,$id){
+        try {
+             DBManager::connect()->update($this->getTable(), [
+                'nom_adherent' => $nom,
+                'prenom_adherent' => $prenom,
+                'date_naissance' => $date_naissance,
+                'tel' => $tel,
+                'adresse' => $adresse,
+                'email' => $mail,
+                'document' => $type_doc,
+                'commentaire' => $commentaire
+            ],
+                [
+                    'id' => $id
+                ]
+            );
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer la situation id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
 
 }

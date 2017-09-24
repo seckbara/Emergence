@@ -157,6 +157,7 @@ class Abonnement extends DBManager{
 
         } catch (DBALException $e) {
             sprintf("Insert abonnement has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+            echo "Insert abonnement has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString();
         }
     }
 

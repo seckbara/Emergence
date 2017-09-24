@@ -61,13 +61,13 @@ $situations = (new Adherent())->AllSituation();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Sexe: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <label>Sexe &nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 <div class="input-group">
                                     <label>
                                         Homme &nbsp;
                                         <input type="radio" name="sexe" class="flat-red" value="H" checked>
                                     </label>
-                                    <label>
+                                    <label>debut
                                         &nbsp; Femme &nbsp;
                                         <input type="radio" name="sexe" class="flat-red" value="F">
                                     </label>
@@ -81,7 +81,7 @@ $situations = (new Adherent())->AllSituation();
                                     <div class="input-group-addon">
                                         <i class="fa fa-phone"></i>
                                     </div>
-                                    <input type="text" class="form-control" data-inputmask='"mask": "99-99-99-99-99"' data-mask required name="tel">
+                                    <input type="text" class="form-control"  required name="tel">
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@ $situations = (new Adherent())->AllSituation();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Adresse:</label>
+                                <label>Adresse</label>
                                 <input type="text" class="form-control" name="adresse" placeholder="Saisir l'adresse" required/>
                             </div>
                         </div>
@@ -168,7 +168,7 @@ $situations = (new Adherent())->AllSituation();
                                 <select class="form-control select2" style="width: 100%;" name="document" required>
                                     <option selected="selected">Carte d'etudiant</option>
                                     <option>APS</option>
-                                    <option disabled="disabled">Autres</option>
+                                    <option>Autres</option>
                                 </select>
                             </div>
 

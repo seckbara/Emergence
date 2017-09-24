@@ -121,7 +121,7 @@ $id_adherent = $_GET['id'];
                             <div class="form-group">
                                 <label>Type de debut paiement</label>
                                 <select class="form-control select2" style="width: 100%;" required name="type_paie">
-                                    <option selected="selected">Choissiez le type d'abonnement</option>
+                                    <option selected="selected">Choissiez le type de paiement</option>
                                     <?php foreach ($type_paie as $types_paiement) { ?>
                                         <option value="<?= $types_paiement->id ?>"><?= $types_paiement->type ?></option>
                                     <?php } ?>

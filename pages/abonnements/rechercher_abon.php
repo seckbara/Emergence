@@ -6,6 +6,8 @@ include_once "../../assets/class/includes/header.php";
 $adherent = new Adherent();
 $adherents = $adherent->Alladherent();
 $allabonnement = (new Abonnement())->AllabonnementByAdherent();
+//dump($allabonnement);
+//exit();
 
 ?>
 
@@ -82,12 +84,13 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                                     <td><?= ($abonnement->sexe = "H")?"Homme":"Femme" ?></td>
                                     <td><?= $abonnement->quartier ?></td>
                                     <td style='text-align:center;'>
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail" onclick="modifier_tarif(<?=$abonnement->id ?>,<?=$abonnement->id_adherent ?>,<?=$abonnement->id ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail" onclick="detail_abonn(<?=$abonnement->id ?>,<?=$abonnement->id_adherent ?>,<?=$abonnement->id ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        <button type="button" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                     </td>
                                 </tr>
                             <?php endforeach;?>
+
                             </tbody>
                             <tfoot>
                             <tr>
@@ -120,6 +123,8 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
 <script src="../../assets/script/traitement.js"></script>
+<script src="../../web/asset/jquery-confirm/jquery.confirm.js"></script>
+
 
 <script>
     $(function () {
@@ -130,8 +135,44 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
             'ordering'    : true,
             'info'        : true,
             'autoWidth'   : true,
-            "lengthMenu": [[7, 14, 28, -1], [7, 14, 28, "Afficher tout"]]
+            "sSearch":         "Rechercher&nbsp;:",
+            "lengthMenu": [[7, 14, 28, -1], [7, 14, 28, "Afficher tout"]],
+            language: {
+                processing:     "Traitement en cours...",
+                search:         "Rechercher&nbsp;:",
+                lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
+                info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                infoPostFix:    "",
+                loadingRecords: "Chargement en cours...",
+                zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                emptyTable:     "Aucune donnée disponible dans le tableau",
+                paginate: {
+                    first:      "Premier",
+                    previous:   "Pr&eacute;c&eacute;dent",
+                    next:       "Suivant",
+                    last:       "Dernier"
+                },
+                aria: {
+                    sortAscending:  ": activer pour trier la colonne par ordre croissant",
+                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                }
+            }
         })
+    });
+
+    $(".confirm").confirm({
+        title:"Voulez-vous confirrmer",
+        text:"ëtes vous sur de vouloir supprimer cette abonnement",
+        confirm: function(button) {
+            //alert("You just confirmed.");
+        },
+        cancel: function(button) {
+            //alert("You aborted the operation.");
+        },
+        cancelButton: "Annuler",
+        confirmButton: "Supprimer"
     });
 
 </script>
