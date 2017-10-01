@@ -4,11 +4,63 @@ class Abonnement extends DBManager{
 
     protected $dbname = "emergence";
     protected $table = "abonnements";
+    protected $tablepaiement = "type_de_paiements";
+    protected $tableactivite = "activites";
+    protected $tabletypeabonnement = "type_abonnement";
+
+    /**
+     * @return string
+     */
+    public function getTabletypeabonnement()
+    {
+        return $this->tabletypeabonnement;
+    }
+
+    /**
+     * @param string $tabletypeabonnement
+     */
+    public function setTabletypeabonnement($tabletypeabonnement)
+    {
+        $this->tabletypeabonnement = $tabletypeabonnement;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTableactivite()
+    {
+        return $this->tableactivite;
+    }
+
+    /**
+     * @param string $tableactivite
+     */
+    public function setTableactivite($tableactivite)
+    {
+        $this->tableactivite = $tableactivite;
+    }
+
     protected $id;
     protected  $date_certificat;
     protected $type_abonnement;
     protected $date_abonnement;
     protected $duree_abonnement;
+
+    /**
+     * @return string
+     */
+    public function getTablepaiement()
+    {
+        return $this->tablepaiement;
+    }
+
+    /**
+     * @param string $tablepaiement
+     */
+    public function setTablepaiement($tablepaiement)
+    {
+        $this->tablepaiement = $tablepaiement;
+    }
     protected $montant;
 
     /**
@@ -193,6 +245,42 @@ class Abonnement extends DBManager{
             return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function TypePaiment($id){
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTablepaiement().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer le type de paiement %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function TypeActivite($id){
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTableactivite().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer le type d'activite %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function TypeAbonn($id){
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTabletypeabonnement().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer le type d'abonnement %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
 }
