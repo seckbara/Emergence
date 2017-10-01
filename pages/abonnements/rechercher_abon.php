@@ -63,6 +63,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                                 <th>Prenom</th>
                                 <th>Date de certificat</th>
                                 <th>Presence certificat</th>
+                                <th>Date d'abonnement</th>
                                 <th>Montant</th>
                                 <th>Durée d'abonnement</th>
                                 <th>Email</th>
@@ -78,6 +79,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                                     <td><?= $abonnement->prenom_adherent ?></td>
                                     <td><?= $abonnement->date_certificat ?></td>
                                     <td><?= ($abonnement->date_certificat = "N")?"Non":"Oui" ?></td>
+                                    <td><?= $abonnement->date_abonnement ?></td>
                                     <td><?= $abonnement->montant ?> &euro;</td>
                                     <td><?= $abonnement->duree_abonnement ?> mois</td>
                                     <td><?= $abonnement->email ?></td>
