@@ -99,7 +99,7 @@ $typeabonn = (new Abonnement())->TypeAbonn($abonnement->type_abonnement);
                 </div>
             </div>
 
-            <h3>Versement de <?= $adherent->nom_adherent.' '.$adherent->prenom_adherent  ?></h3>
+            <h3>Liste des versement de <?= $adherent->nom_adherent.' '.$adherent->prenom_adherent  ?></h3>
             <div class="box box-default">
                 <!-- /.box-header -->
                 <div class="box-body">
