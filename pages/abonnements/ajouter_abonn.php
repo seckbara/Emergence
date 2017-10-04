@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors",0);error_reporting(0);
 require_once '../../vendor/autoload.php';
 use Carbon\Carbon;
 include_once "../../assets/class/includes/header.php";
@@ -239,5 +240,3 @@ $id_adherent = $_GET['id'];
     });
 
 </script>
-
-
