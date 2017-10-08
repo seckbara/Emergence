@@ -283,4 +283,23 @@ class Abonnement extends DBManager{
             sprintf("Impossible de recuperer le type d'abonnement %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
+
+    /**
+     * @param $id
+     */
+    public function deleteAbonnement($id){
+        try {
+            return  DBManager::connect()->delete($this->getTable(), array('id' => $id));
+        } catch (DBALException $e) {
+            sprintf("Impossible de supprimer l'abonnement avec id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    public function AbonnementByIdAdhe($id){
+        try {
+            return DBManager::connect()->executeQuery('select id from '.$this->getTable().' where id_adherent = ?', array($id))->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
 }

@@ -67,7 +67,7 @@ $situations = (new Adherent())->AllSituation();
                                         Homme &nbsp;
                                         <input type="radio" name="sexe" class="flat-red" value="H" checked>
                                     </label>
-                                    <label>debut
+                                    <label>
                                         &nbsp; Femme &nbsp;
                                         <input type="radio" name="sexe" class="flat-red" value="F">
                                     </label>

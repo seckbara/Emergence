@@ -23,12 +23,12 @@ $adherents = $adherent->Alladherent();
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
-
+                    <div class="alert alert-success" style="display: none" id="success"></div>
+                    <div class="alert alert-danger" style="display: none" id="error"></div>
                     <div class="box">
                         <div class="box-header">
                             <div class="callout bg-info text-white hidden">
-                                <p>The construction of this layout differs from the normal one. In other words, the HTML markup of the navbar
-                                    and the content will slightly differ than that of the normal layout.</p>
+
                             </div>
                         </div>
 
@@ -166,16 +166,38 @@ $adherents = $adherent->Alladherent();
         })
     })
 
-    $(".confirm").confirm({
-        title:"Voulez-vous confirrmer",
-        text:"ëtes vous sur de vouloir supprimer cette abonnement",
-        confirm: function(button) {
-            //alert("You just confirmed.");
-        },
-        cancel: function(button) {
-            //alert("You aborted the operation.");
-        },
-        confirmButton: "Supprimer",
-        cancelButton: "Annuler"
+    $('#example1').on("click", ".confirm", function(e){
+        e.preventDefault();
+        $link = $(this);
+        console.log($link);
+        var rowData = $('#example1').DataTable().row($link.closest('tr')).data();
+        var id = rowData[0];
+        $.confirm({
+            text: "Etes-vous sûr de vouloir suprrimer cet adherent. Sa supression supprimera toute ses abonnements",
+            confirmButton: "Supprimer",
+            cancelButton: "Annuler",
+            confirm: function(data) {
+                console.log(id)
+                $.post("scripts/ajout_adherent.php", { id_adh: id})
+                    .done(function( data ) {
+                        $("#success").html("La supression s'est effectuer avec succée").show();
+                        setTimeout(function() { window.location.reload() },5000);
+                }).fail(function (response) {
+                    $('#error').html(data['response']).show();
+                    setTimeout(function() { window.location.reload() },5000);
+                });
+            },
+            cancel: function () {
+                console.log("annuler");
+            }
+        });
     });
+//      $link = $(this);
+//        var rowData = $tableFile.DataTable().row($link.closest('tr')).data();
+//
+//        $.post("{{ path('api_search', {id: bsdIdentifier}) }}",{Tknum: roundDetails.Tknum, Doctype: rowData.Dtype }, function(json) {
+//            if (json.success && json.data &&!_.isEmpty(json.data.DocContent)) {
+//                download("data:application/pdf;base64,"+json.data.DocContent, "BSD-"+json.data.BorKey+".pdf", "application/pdf");
+//            }
+//        }, 'json');
 </script>
