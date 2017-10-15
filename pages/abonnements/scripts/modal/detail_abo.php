@@ -1,8 +1,7 @@
 <?php
 require_once '../../../../vendor/autoload.php';
+use Carbon\Carbon;
 
-//dump($_POST);
-//exit();
 $abonn = $_POST['id_abonn'];
 $adherent = $_POST['id_adher'];
 $verse = $_POST['id_vers'];
@@ -12,9 +11,14 @@ $adherent = (new Adherent())->AdherentById($adherent);
 $abonnement = (new Abonnement())->AbonnementById($abonn);
 $situation = (new Adherent())->SituationById($adherent->situation);
 
+$formatdate = new functions();
+
+$date = date_parse($abonnement->date_abonnement);
+$date_fin = $formatdate->DureeAbonnement($date['year'],$date['month'],$date['day'], $abonnement->duree_abonnement);
+
 ?>
 
-Abonnement de  <?= $adherent->nom_adherent.' '.$adherent->prenom_adherent . "##" ?>
+<b style="color: #0a6ebd">Abonnement du  <?= $formatdate->Date_Format_Fr($abonnement->date_abonnement).' AU '.$formatdate->Date_Format_Fr($date_fin). "##" ?></b>
 
 
 <div class="container">

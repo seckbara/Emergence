@@ -204,5 +204,6 @@ $situations = (new Adherent())->AllSituation();
 </div>
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEQhkCkbXw5t9bKe6aKOueIYx0A_7h6xs&libraries=places"></script>    <script src="bo-enr.js"></script>-->
 
 

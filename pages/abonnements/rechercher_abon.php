@@ -88,7 +88,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                                     <td style='text-align:center;'>
                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail" onclick="detail_abonn(<?=$abonnement->id ?>,<?=$abonnement->id_adherent ?>,<?=$abonnement->id ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                        <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+<!--                                        <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>-->
                                         <a href="detail_abonnement.php?abonnement=<?=  $abonnement->id;?>&amp;adherent=<?= $abonnement->id_adherent ?>" class="btn btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>

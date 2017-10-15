@@ -1,6 +1,6 @@
 <?php
  require_once '../../../vendor/autoload.php';
-
+ $_POST = filter_input_array(INPUT_POST);
  $nom = $_POST['nom_adherent'];
  $prenom = $_POST['prenom_adherent'];
  $date_naissance = date('d-m-Y', strtotime($_POST['date_naissance']));
@@ -19,16 +19,32 @@
 
  $adherent =  new Adherent();
 
- $adh = $adherent->AjoutAdherents($nom,$prenom,$date_naissance,$ville,$sexe,$tel,$adresse,$mail,$certificat,$situation,$quartier,$numer_secu,$type_doc,$tel_fixe,$commentaire);
- //dump($conn);
- //exit();
+ if($_POST['id_adh'] != null){
+     $abonnement_adh = (new Abonnement())->AbonnementByIdAdhe($_POST['id_adh']);
+     $versement = (new Versement())->deleteVersement($abonnement_adh->id);
+     $abonnement = (new Abonnement())->deleteAbonnement($_POST['id_adh']);
+     $adherent = (new Adherent())->deleteAdherent($_POST['id_adh']);
 
- if($adh){
-     $lasId = $adherent->LastIdAdherent();
-     header('Location: ../../abonnements/ajouter_abonn.php?id='.$lasId->id.'"');
-     exit();
+     if($abonnement_adh && $versement && $abonnement && $adherent){
+         $return['result'] = 'success';
+         echo json_encode($return);
+         exit();
+     }
+     else{
+         $return['result'] = 'echec';
+         echo json_encode($return);
+         exit();
+     }
  }
  else{
-     header('Location: ../../adherents/ajouter_adher.php');
-     exit();
+     $adh = $adherent->AjoutAdherents($nom,$prenom,$date_naissance,$ville,$sexe,$tel,$adresse,$mail,$certificat,$situation,$quartier,$numer_secu,$type_doc,$tel_fixe,$commentaire);
+     if($adh){
+         $lasId = $adherent->LastIdAdherent();
+         header('Location: ../../abonnements/ajouter_abonn.php?id='.$lasId->id.'"');
+         exit();
+     }
+     else{
+         header('Location: ../../adherents/ajouter_adher.php');
+         exit();
+     }
  }

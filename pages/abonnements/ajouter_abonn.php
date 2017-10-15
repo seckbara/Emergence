@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors",0);error_reporting(0);
 require_once '../../vendor/autoload.php';
 use Carbon\Carbon;
 include_once "../../assets/class/includes/header.php";
@@ -14,6 +15,9 @@ $type_abonnement = (new Activite())->AllTypeabonnement();
 $type_paie = (new Activite())->AllTypePaiement();
 $id_adherent = $_GET['id'];
 
+
+$now = Carbon::now();
+$today = Carbon::now()->toDateString();
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -64,9 +68,8 @@ $id_adherent = $_GET['id'];
                                 <div class="form-group">
                                     <label>Activité choisis</label>
                                     <select class="form-control select2" style="width: 100%;" required name="activite">
-                                        <option selected="selected">Choissiez le type d'activité</option>
                                         <?php foreach ($activite as $activ) { ?>
-                                        <option value="<?= $activ->id ?>"><?= $activ->nom_activite ?></option>
+                                        <option selected="selected" value="<?= $activ->id ?>"><?= $activ->nom_activite ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -74,9 +77,8 @@ $id_adherent = $_GET['id'];
                             <div class="form-group">
                                 <label>Type d'abonnement</label>
                                 <select class="form-control select2" style="width: 100%;" required name="type_abonn">
-                                    <option selected="selected">Choissiez le type d'abonnement</option>
                                     <?php foreach ($type_abonnement as $type) { ?>
-                                        <option value="<?= $type->id ?>"><?= $type->type_abonnement ?></option>
+                                        <option selected="selected" value="<?= $type->id ?>"><?= $type->type_abonnement ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -90,7 +92,7 @@ $id_adherent = $_GET['id'];
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right datepicker"  name="date_abonn" required>
+                                    <input type="text" class="form-control pull-right datepicker" value="<?= $today ?>"  name="date_abonn" required>
                                 </div>
                             </div>
                         </div>
@@ -121,11 +123,26 @@ $id_adherent = $_GET['id'];
                             <div class="form-group">
                                 <label>Type de debut paiement</label>
                                 <select class="form-control select2" style="width: 100%;" required name="type_paie">
-                                    <option selected="selected">Choissiez le type de paiement</option>
                                     <?php foreach ($type_paie as $types_paiement) { ?>
-                                        <option value="<?= $types_paiement->id ?>"><?= $types_paiement->type ?></option>
+                                        <option selected="selected" value="<?= $types_paiement->id ?>"><?= $types_paiement->type ?></option>
                                     <?php } ?>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Choisir le certficat</label>
+                                <div class="form-group" >
+                                    <label class="control-label col-md-3" ><b>Choisir un fichier</b></label>
+                                    <div class="controls col-md-9" >
+                                        <div class="fileupload fileupload-new" data - provides = "fileupload" >
+                                            <input type="file" name ="fichier_cert" class="btn btn-default" id="file" required/>
+                                            <div id="errorBlock" class="help-block"></div>
+                                        </div >
+
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -190,11 +207,26 @@ $id_adherent = $_GET['id'];
                         </div>
                     </div>
 
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6">  -->
+<!--                            <div class="form-group">-->
+<!--                                <label>Date de certificat:</label>-->
+<!--                                <div class="input-group date">-->
+<!--                                    <div class="input-group-addon">-->
+<!--                                        <i class="fa fa-calendar"></i>-->
+<!--                                    </div>-->
+<!--                                    <input type="hidden" class="form-control pull-right" value="--><?//= $id_adherent ?><!--" name="id_adherent" />-->
+<!--                                    <input type="text" class="form-control pull-right datepicker"  placeholder="saisir la date du certfificat" name="date_certificiat" required>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
                     <br><br>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="submit" class="btn btn-success btn-sm btn-block" value="Ajouter" />
+                                <input type="submit" class="btn btn-success btn-sm btn-block" value="Ajouter" <?= (isset($_GET['id']))? "" : "disabled" ?>/>
                             </div>
                         </div>
                     </div>
@@ -238,6 +270,16 @@ $id_adherent = $_GET['id'];
         numberOfMonths: 1
     });
 
+    $("#file").fileinput({
+        showUpload: false,
+        showPreview: false,
+        maxFileSize: 5000,
+        allowedFileExtensions: ["pdf"],
+        elErrorContainer: "#errorBlock",
+        removeLabel: "Supprimer",
+        browseLabel: "Charger la fiche",
+        language: "fr"
+    });
+
+
 </script>
-
-

@@ -130,4 +130,12 @@ class Versement extends DBManager{
         }
     }
 
+    public function deleteVersement($id){
+        try {
+            return  DBManager::connect()->delete($this->getTable(), array('abonnement_id' => $id));
+        } catch (DBALException $e) {
+            sprintf("Impossible de supprimer l'abonnement avec id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
 }

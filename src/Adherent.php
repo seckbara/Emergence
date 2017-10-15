@@ -435,4 +435,15 @@ class Adherent extends DBManager {
         }
     }
 
+    /**
+     * @param $id
+     */
+    public function deleteAdherent($id){
+        try {
+            return  DBManager::connect()->delete($this->getTable(), array('id' => $id));
+        } catch (DBALException $e) {
+            sprintf("Impossible de supprimer l'adherents avec id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
 }
