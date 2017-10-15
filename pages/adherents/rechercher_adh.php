@@ -177,18 +177,20 @@ $adherents = $adherent->Alladherent();
             confirmButton: "Supprimer",
             cancelButton: "Annuler",
             confirm: function(data) {
-                console.log(id)
-                $.post("scripts/ajout_adherent.php", { id_adh: id})
-                    .done(function( data ) {
+                console.log(id);
+
+                $.post("scripts/ajout_adherent.php", { id_adh: id}, function (data) {
+                    //if(data['result'] === 'success') {
                         $("#success").html("La supression s'est effectuer avec succée").show();
                         setTimeout(function() { window.location.reload() },5000);
+                    //}
+                }, 'json').done( function (data) {
+                    $("#success").html("La supression s'est effectuer avec succée").show();
+                    setTimeout(function() { window.location.reload() },5000);
                 }).fail(function (response) {
-                    $('#error').html(data['response']).show();
+                    $("#success").html("La supression n'a pas abouti").show();
                     setTimeout(function() { window.location.reload() },5000);
                 });
-            },
-            cancel: function () {
-                console.log("annuler");
             }
         });
     });

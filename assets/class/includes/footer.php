@@ -246,6 +246,7 @@
 <!-- SlimScroll -->
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- Page script -->
+<script type="text/javascript" src= "../../web/asset/kartik-v/bootstrap-fileinput/js/fileinput.js"></script>
 <script>
     $(function () {
         //Initialize Select2 Elements

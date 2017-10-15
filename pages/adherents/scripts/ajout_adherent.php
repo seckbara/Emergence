@@ -26,13 +26,13 @@
      $adherent = (new Adherent())->deleteAdherent($_POST['id_adh']);
 
      if($abonnement_adh && $versement && $abonnement && $adherent){
-         $return['result'] = 'echec';
-         $return['response'] = "Suppression échouée";
+         $return['result'] = 'success';
+         echo json_encode($return);
          exit();
      }
      else{
          $return['result'] = 'echec';
-         $return['response'] = "Suppression échouée";
+         echo json_encode($return);
          exit();
      }
  }

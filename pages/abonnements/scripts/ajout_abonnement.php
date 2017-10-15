@@ -3,7 +3,7 @@
 
   $date_certificat= date('d-m-Y', strtotime($_POST['date_certificiat']));
   $type_abonnement = $_POST['type_abonn'];
-  $date_abonnement = date('d-m-Y', strtotime($_POST['date_abonn']));
+  $date_abonnement = $_POST['date_abonn'];
   $duree_abonnement = $_POST['duree_abonne'];
   $montant = $_POST['montanttotal'];
   $id_adherent = $_POST['id_adherent'];
