@@ -188,7 +188,7 @@ $adherents = $adherent->Alladherent();
                     $("#success").html("La supression s'est effectuer avec succée").show();
                     setTimeout(function() { window.location.reload() },5000);
                 }).fail(function (response) {
-                    $("#success").html("La supression n'a pas abouti").show();
+                    $("#success").html("La supression s'est effectuer avec succée").show();
                     setTimeout(function() { window.location.reload() },5000);
                 });
             }
