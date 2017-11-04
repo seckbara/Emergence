@@ -44,11 +44,11 @@ $today = Carbon::now()->toDateString();
                                 <div class="input-group">
                                     <label>
                                         &nbsp; Oui &nbsp;
-                                        <input type="radio" name="certificat" class="flat-red" value="Oui" <?= ($this_adherents->certificat == "O")?"checked":"" ?>>
+                                        <input type="radio" name="certificat" class="flat-red" onclick="show1();" value="Oui" <?= ($this_adherents->certificat == "O")?"checked":"" ?>>
                                     </label>
                                     <label>
                                         &nbsp; Non &nbsp;
-                                        <input type="radio" name="certificat" value="Non" class="flat-red" <?= ($this_adherents->certificat == "N")?"checked":"" ?>>
+                                        <input type="radio" name="certificat" value="Non" onclick="show2();" class="flat-red" <?= ($this_adherents->certificat == "N")?"checked":"" ?>>
                                     </label>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ $today = Carbon::now()->toDateString();
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 hide" id="div1">
                             <div class="form-group">
                                 <label>Choisir le certficat</label>
                                 <div class="form-group" >
@@ -138,13 +138,12 @@ $today = Carbon::now()->toDateString();
                                         <div class="fileupload fileupload-new" data - provides = "fileupload" >
                                             <input type="file" name ="fichier_cert" class="btn btn-default" id="file" required/>
                                             <div id="errorBlock" class="help-block"></div>
-                                        </div >
-
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
                         </div>
+                    </div>
                     </div>
 
                     <div class="row">
@@ -207,20 +206,6 @@ $today = Carbon::now()->toDateString();
                         </div>
                     </div>
 
-<!--                    <div class="row">-->
-<!--                        <div class="col-md-6">  -->
-<!--                            <div class="form-group">-->
-<!--                                <label>Date de certificat:</label>-->
-<!--                                <div class="input-group date">-->
-<!--                                    <div class="input-group-addon">-->
-<!--                                        <i class="fa fa-calendar"></i>-->
-<!--                                    </div>-->
-<!--                                    <input type="hidden" class="form-control pull-right" value="--><?//= $id_adherent ?><!--" name="id_adherent" />-->
-<!--                                    <input type="text" class="form-control pull-right datepicker"  placeholder="saisir la date du certfificat" name="date_certificiat" required>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
 
                     <br><br>
                     <div class="row">
@@ -281,5 +266,13 @@ $today = Carbon::now()->toDateString();
         language: "fr"
     });
 
+    function show1(){
+        alert('ici');
+        console.log('ici');
+        document.getElementById('div1').style.display ='none';
+    }
+    function show2(){
+        document.getElementById('div1').style.display = 'block';
+    }
 
 </script>
