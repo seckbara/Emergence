@@ -10,7 +10,7 @@ class DBManager {
         $connParametr = array(
             'dbname' => 'emergence',
             'user' => 'root',
-            'password' => '',
+            'password' => 'mamadou',
             'host' => 'localhost',
             'driver' => 'pdo_mysql',
             'charset' => 'utf8mb4'
@@ -23,3 +23,4 @@ class DBManager {
 
     }
 }
+

@@ -225,7 +225,7 @@ $today = Carbon::now()->toDateString();
 <script>
     var contactIndex = 0;
     $('.addButton').click(function () {
-        contactIndex++;
+        contactIndex = contactIndex + 1;
         var $template = $('#contactTemplate'),
             $clone = $template
                 .clone()

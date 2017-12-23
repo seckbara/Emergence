@@ -322,7 +322,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-home" aria-hidden="true"></i> <span>Adherents</span>
+            <i class="fa fa-male" aria-hidden="true"></i> <span>Adherents</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -339,14 +339,14 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="treeview active">
           <a href="#">
-            <i class="fa fa-home" aria-hidden="true"></i> <span>Abonnement</span>
+            <i class="fa fa-credit-card-alt" aria-hidden="true"></i> <span>Abonnement</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/abonnements/ajouter_abonn.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter</a></li>
-            <li><a href="pages/abonnements/historique.php"><i class="fa fa-history" aria-hidden="true"></i> Fin abonnement</a></li>
+<!--            <li><a href="pages/abonnements/ajouter_abonn.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter</a></li>-->
+            <li><a href="pages/abonnements/historique.php"><i class="fa fa-address-card-o" aria-hidden="true"></i> Fin abonnement</a></li>
             <li><a href="pages/abonnements/rechercher_abon.php"><i class="fa fa-search" aria-hidden="true"></i> Rechercher</a></li>
           </ul>
         </li>
