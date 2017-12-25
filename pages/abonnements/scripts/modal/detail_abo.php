@@ -11,7 +11,7 @@ $adherent = (new Adherent())->AdherentById($adherent);
 $abonnement = (new Abonnement())->AbonnementById($abonn);
 $situation = (new Adherent())->SituationById($adherent->situation);
 
-$formatdate = new functions();
+$formatdate = new Functions();
 
 $date = date_parse($abonnement->date_abonnement);
 $date_fin = $formatdate->DureeAbonnement($date['year'],$date['month'],$date['day'], $abonnement->duree_abonnement);

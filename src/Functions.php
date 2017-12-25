@@ -1,6 +1,6 @@
 <?php
 use Carbon\Carbon;
-class functions{
+class Functions{
 
     public function DureeAbonnement($annee,$mois, $jr, $duree){
         return Carbon::create($annee, $mois, $jr)->addMonths($duree)->toDateString();

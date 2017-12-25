@@ -186,7 +186,7 @@ $today = Carbon::now()->toDateString();
                             </div>
                             <!-- The template for adding new field -->
 
-                            <div class="form-group hidden marginLeft-10" id="contactTemplate"><hr/>
+                            <div class="form-group hidden marginLeft-10" id="contactTemplate">
                                 <div class="form-group row">
                                     <label class="form-control-label col-md-4">Montant</label>
                                     <div class="col-md-6 col-xs-11"><input type="number" min="0" class="form-control" name="montant" placeholder="Nom"></div>
@@ -225,7 +225,8 @@ $today = Carbon::now()->toDateString();
 <script>
     var contactIndex = 0;
     $('.addButton').click(function () {
-        contactIndex = contactIndex + 1;
+        //debugger;
+        contactIndex++;
         var $template = $('#contactTemplate'),
             $clone = $template
                 .clone()
@@ -239,6 +240,7 @@ $today = Carbon::now()->toDateString();
             .find('[name="montant"]').attr('name', 'versement[' + contactIndex + '][montant]').end()
             .find('[name="date_verse"]').attr('name', 'versement[' + contactIndex + '][date_verse]').end()
             .find('[name="commentaire"]').attr('name', 'versement[' + contactIndex + '][commentaire]').end();
+
 
         $('.removeButton').click(function () {
             var $row = $(this).parents('.form-group'),

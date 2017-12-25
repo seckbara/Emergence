@@ -74,7 +74,12 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                             </thead>
                             <tbody>
                             <?php  foreach($allabonnement as $abonnement): ?>
-                                <tr>
+                                <?php
+                                $formatdate = new Functions();
+                                $date = date_parse($abonnement->date_abonnement);
+                                $date_fin = $formatdate->DureeAbonnement($date['year'],$date['month'],$date['day'], $abonnement->duree_abonnement);
+                                ?>
+                                <tr <?php if(strtotime((new DateTime())->format('d-m-Y')) > strtotime(((new Functions())->Date_Format_Fr($date_fin)))) {echo "style=\"background-color: red\"" ;} else {echo "";}?>>
                                     <td><?= $abonnement->nom_adherent ?></td>
                                     <td><?= $abonnement->prenom_adherent ?></td>
                                     <td><?= $abonnement->date_certificat ?></td>
@@ -88,8 +93,11 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                                     <td style='text-align:center;'>
                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail" onclick="detail_abonn(<?=$abonnement->id ?>,<?=$abonnement->id_adherent ?>,<?=$abonnement->id ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-<!--                                        <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>-->
+<!--                                        <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>https://github.com/rstaib/jquery-steps-->
                                         <a href="detail_abonnement.php?abonnement=<?=  $abonnement->id;?>&amp;adherent=<?= $abonnement->id_adherent ?>" class="btn btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                        <?php if (strtotime((new DateTime())->format('d-m-Y')) > strtotime(((new Functions())->Date_Format_Fr($date_fin)))): ?>
+                                        <a href="detail_abonnement.php?abonnement=<?=  $abonnement->id;?>&amp;adherent=<?= $abonnement->id_adherent ?>" class="btn btn-default"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach;?>
