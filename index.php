@@ -34,6 +34,13 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+
+    <!-- ajout de jquery step -->
+    <link rel="stylesheet" href="web/asset/jquery.steps/demo/css/normalize.css">
+    <link rel="stylesheet" href="web/asset/jquery.steps/demo/css/main.css">
+    <link rel="stylesheet" href="web/asset/jquery.steps/demo/css/jquery.steps.css">
+    <!-- Fin du css pour le jquery step -->
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -602,5 +609,8 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="web/asset/jquery.steps/build/jquery.steps.js"></script>
+
+
 </body>
 </html>

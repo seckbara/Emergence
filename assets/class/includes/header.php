@@ -36,6 +36,13 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 
+    <!-- ajout de jquery step -->
+    <link rel="stylesheet" href="../../web/asset/jquery.steps/demo/css/normalize.css">
+    <link rel="stylesheet" href="../../web/asset/jquery.steps/demo/css/main.css">
+    <link rel="stylesheet" href="../../web/asset/jquery.steps/demo/css/jquery.steps.css">
+    <!-- Fin du css pour le jquery step -->
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

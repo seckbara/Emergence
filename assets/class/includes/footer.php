@@ -212,6 +212,11 @@
 </div>
 <!-- ./wrapper -->
 
+<!-- Ajout de jquery steps -->
+<script src="../../web/asset/jquery.steps/build/jquery.steps.js"></script>
+<!-- Fin -->
+
+
 <!-- jQuery 3 -->
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

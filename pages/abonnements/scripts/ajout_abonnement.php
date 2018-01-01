@@ -16,13 +16,18 @@
 
 
      if($abonn){
-         $versements = new Versement();
          $listvers = $_POST['versement'];
          //recuperation du dernier id
          $last_abonn = $aboonnements->LastIdAbonnement();
 
          foreach ($listvers as $val){
-             $queversement = $versements->AjoutVersement(date('d-m-Y', strtotime($val['date_verse'])), $val['commentaire'], $val['montant'], $last_abonn->id);
+             $versements = new Versement();
+             $versements->date_versement = date('d-m-Y', strtotime($val['date_verse']));
+             $versements->commentaire = $val['commentaire'];
+             $versements->montant = $val['montant'];
+             $versements->setLastAbonnId($last_abonn->id);
+             //$queversement = $versements->AjoutVersement(date('d-m-Y', strtotime($val['date_verse'])), $val['commentaire'], $val['montant'], $last_abonn->id);
+             $queversement = $versements->AjoutVersementTEST();
          }
 
          header('Location: ../../abonnements/rechercher_abon.php');

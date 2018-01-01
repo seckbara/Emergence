@@ -15,6 +15,13 @@ class Adherent extends DBManager {
     public $tel;
     public $adresse;
     public $mail;
+    public $certificat;
+    public $situation;
+    public $quartier;
+    public $numer_secu;
+    public $type_doc;
+    public $tel_fixe;
+    public $commentaire;
 
     /**
      * @return string
@@ -47,13 +54,6 @@ class Adherent extends DBManager {
     {
         $this->tel = $tel;
     }
-    public $certificat;
-    public $situation;
-    public $quartier;
-    public $numer_secu;
-    public $type_doc;
-    public $tel_fixe;
-    public $commentaire;
 
     /**
      * Adherent constructor.

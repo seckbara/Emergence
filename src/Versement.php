@@ -5,9 +5,43 @@ class Versement extends DBManager{
     protected $dbname = "emergence";
     protected $table = "versements";
     protected $id;
-    protected $date_versement;
-    protected $type_paiement;
-    protected $montant;
+    public $date_versement;
+    public $type_paiement;
+    public $montant;
+    protected $last_abonn_id;
+
+    /**
+     * @return mixed
+     */
+    public function getCommentaire()
+    {
+        return $this->commentaire;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastAbonnId()
+    {
+        return $this->last_abonn_id;
+    }
+
+    /**
+     * @param mixed $last_abonn_id
+     */
+    public function setLastAbonnId($last_abonn_id)
+    {
+        $this->last_abonn_id = $last_abonn_id;
+    }
+
+    /**
+     * @param mixed $commentaire
+     */
+    public function setCommentaire($commentaire)
+    {
+        $this->commentaire = $commentaire;
+    }
+    public $commentaire;
 
     /**
      * @return string
@@ -117,6 +151,21 @@ class Versement extends DBManager{
             sprintf("Insert Versements has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
+
+
+    public function AjoutVersementTEST(){
+        try {
+            return DBManager::connect()->insert($this->getTable(), array(
+                'date_versement' => $this->getDateVersement(),
+                'commentaire' => $this->getCommentaire(),
+                'montant' => $this->getMontant(),
+                'abonnement_id' => $this->getLastAbonnId()
+            ));
+        } catch (DBALException $e) {
+            sprintf("Insert Versements has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
 
     /**
      * @param $id
