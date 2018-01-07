@@ -213,7 +213,9 @@
 <!-- ./wrapper -->
 
 <!-- Ajout de jquery steps -->
+<script type="text/javascript" src="../../bower_components/smartwizard/dist/js/jquery.smartWizard.min.js"></script>
 <script src="../../web/asset/jquery.steps/build/jquery.steps.js"></script>
+
 <!-- Fin -->
 
 

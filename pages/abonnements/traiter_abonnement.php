@@ -8,6 +8,10 @@
 
 include_once "../../assets/class/includes/header.php"
 ?>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<!-- ajout de jquery step -->
+<link rel="stylesheet" href="../../bower_components/smartwizard/dist/css/smart_wizard.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../../bower_components/smartwizard/dist/css/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -23,82 +27,47 @@ include_once "../../assets/class/includes/header.php"
 
         <!-- Main content -->
         <section class="content">
+            <div id="smartwizard">
+                <ul>
+                    <li><a href="#step-1"><h2>Etape 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2><br /></a></li>
+                    <li><a href="#step-2"><h2>Etape 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2><br /></a></li>
+                    <li><a href="#step-3"><h2>Etape 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2><br /></a></li>
+                    <li><a href="#step-4"><h2>Etape 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2><br /></a></li>
+                </ul>
 
-            <form id="example-form" action="#">
                 <div>
-                    <h3>Account</h3>
-                    <section>
-                        <label for="userName">User name *</label>
-                        <input id="userName" name="userName" type="text" class="required">
-                        <label for="password">Password *</label>
-                        <input id="password" name="password" type="text" class="required">
-                        <label for="confirm">Confirm Password *</label>
-                        <input id="confirm" name="confirm" type="text" class="required">
-                        <p>(*) Mandatory</p>
-                    </section>
-                    <h3>Profile</h3>
-                    <section>
-                        <label for="name">First name *</label>
-                        <input id="name" name="name" type="text" class="required">
-                        <label for="surname">Last name *</label>
-                        <input id="surname" name="surname" type="text" class="required">
-                        <label for="email">Email *</label>
-                        <input id="email" name="email" type="text" class="required email">
-                        <label for="address">Address</label>
-                        <input id="address" name="address" type="text">
-                        <p>(*) Mandatory</p>
-                    </section>
-                    <h3>Hints</h3>
-                    <section>
-                        <ul>
-                            <li>Foo</li>
-                            <li>Bar</li>
-                            <li>Foobar</li>
-                        </ul>
-                    </section>
-                    <h3>Finish</h3>
-                    <section>
-                        <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
-                    </section>
+                    <div id="step-1" class="">
+                        <input type="text" class="form-control"><br>
+                        <input type="text" class="form-control"><br>
+                        <input type="text" class="form-control"><br>
+                        <input type="text" class="form-control"><br>
+                    </div>
+                    <div id="step-2" class="">
+                        Step Content
+                    </div>
+                    <div id="step-3" class="">
+                        <input type="text" class="form-control"><br>
+                        <input type="text" class="form-control"><br>
+                        <input type="text" class="form-control"><br>
+                        <input type="text" class="form-control"><br>
+                    </div>
+                    <div id="step-4" class="">
+                        Step Content
+                    </div>
                 </div>
-            </form>
-
+            </div>        <!-- /.content -->
         </section>
-        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../bower_components/smartwizard/dist/js/jquery.smartWizard.min.js"></script>
+
 
 <script>
-    var form = $("#example-form");
-    form.validate({
-        errorPlacement: function errorPlacement(error, element) { element.before(error); },
-        rules: {
-            confirm: {
-                equalTo: "#password"
-            }
-        }
-    });
-    form.children("div").steps({
-        headerTag: "h3",
-        bodyTag: "section",
-        transitionEffect: "slideLeft",
-        onStepChanging: function (event, currentIndex, newIndex)
-        {
-            form.validate().settings.ignore = ":disabled,:hidden";
-            return form.valid();
-        },
-        onFinishing: function (event, currentIndex)
-        {
-            form.validate().settings.ignore = ":disabled";
-            return form.valid();
-        },
-        onFinished: function (event, currentIndex)
-        {
-            alert("Submitted!");
-        }
+    $(document).ready(function(){
+        $('#smartwizard').smartWizard();
     });
 </script>

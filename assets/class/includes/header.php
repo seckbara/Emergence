@@ -37,9 +37,9 @@
     <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 
     <!-- ajout de jquery step -->
-    <link rel="stylesheet" href="../../web/asset/jquery.steps/demo/css/normalize.css">
-    <link rel="stylesheet" href="../../web/asset/jquery.steps/demo/css/main.css">
-    <link rel="stylesheet" href="../../web/asset/jquery.steps/demo/css/jquery.steps.css">
+    <link rel="stylesheet" href="../../bower_components/smartwizard/dist/css/smart_wizard.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../bower_components/smartwizard/dist/css/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../bower_components/jquery.steps/demo/css/jquery.steps.css">
     <!-- Fin du css pour le jquery step -->
 
 
