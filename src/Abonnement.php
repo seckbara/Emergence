@@ -229,7 +229,7 @@ class Abonnement extends DBManager{
      */
     public function AllabonnementByAdherent(){
         try {
-            return DBManager::connect()->executeQuery('select * from abonnements, adherent WHERE abonnements.id_adherent = adherent.id')->fetchAll(PDO::FETCH_OBJ);
+            return DBManager::connect()->executeQuery('select * from abonnements, adherent WHERE abonnements.id_adherent = adherent.id ORDER BY adherent.id ASC ')->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer la liste des abonnements: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }

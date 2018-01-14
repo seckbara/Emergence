@@ -294,7 +294,7 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-success btn-sm btn-flat">Profile</a>
+                                    <a href="../../pages/Profile/profile.php" class="btn btn-success btn-sm btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="../../pages/Authentification/connection.php" class="btn btn-danger btn-sm btn-flat">Se déconnecter</a>

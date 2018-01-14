@@ -213,12 +213,11 @@
 <!-- ./wrapper -->
 
 <!-- Ajout de jquery steps -->
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="../../bower_components/smartwizard/dist/js/jquery.smartWizard.min.js"></script>
 <script src="../../web/asset/jquery.steps/build/jquery.steps.js"></script>
 
 <!-- Fin -->
-
-
 <!-- jQuery 3 -->
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
