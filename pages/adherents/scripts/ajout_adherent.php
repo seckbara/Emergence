@@ -1,31 +1,31 @@
 <?php
  require_once '../../../vendor/autoload.php';
  $_POST = filter_input_array(INPUT_POST);
- $nom = $_POST['nom_adherent'];
- $prenom = $_POST['prenom_adherent'];
- $date_naissance = date('d-m-Y', strtotime($_POST['date_naissance']));
- $ville = $_POST['ville'];
- $sexe = $_POST['sexe'];
- $tel = $_POST['tel'];
- $adresse = $_POST['adresse'];
- $mail = $_POST['email'];
- $certificat = $_POST['certificat'];
- $situation = $_POST['situation'];
- $quartier = $_POST['quartier'];
- $numer_secu = $_POST['num_secu'];
- $type_doc = $_POST['document'];
- $tel_fixe = $_POST['tel_fixe'];
- $commentaire = $_POST['commentaire'];
-
  $adherent =  new Adherent();
+ $adherent->id = $_POST['id_adh'];
+ $adherent->nom_adherent = $_POST['nom_adherent'];
+ $adherent->prenom_adherent = $_POST['prenom_adherent'];
+ $adherent->date_naissance = date('d-m-Y', strtotime($_POST['date_naissance']));
+ $adherent->ville = $_POST['ville'];
+ $adherent->sexe = $_POST['sexe'];
+ $adherent->tel = $_POST['tel'];
+ $adherent->adresse = $_POST['adresse'];
+ $adherent->email = $_POST['email'];
+ $adherent->certificat = $_POST['certificat'];
+ $adherent->situation = $_POST['situation'];;
+ $adherent->quartier = $_POST['quartier'];
+ $adherent->num_secu = $_POST['num_secu'];
+ $adherent->document = $_POST['document'];
+ $adherent->tel_fixe = $_POST['tel_fixe'];
+ $adherent->commentaire = $_POST['commentaire'];
 
- if($_POST['id_adh'] != null){
-     $abonnement_adh = (new Abonnement())->AbonnementByIdAdhe($_POST['id_adh']);
+ if($adherent->id != null){
+     $abonnement_adh = (new Abonnement())->AbonnementByIdAdhe($adherent->id);
      $versement = (new Versement())->deleteVersement($abonnement_adh->id);
-     $abonnement = (new Abonnement())->deleteAbonnement($_POST['id_adh']);
-     $adherent = (new Adherent())->deleteAdherent($_POST['id_adh']);
+     $abonnement = (new Abonnement())->deleteAbonnement($abonnement_adh->id);
+     $adherent = (new Adherent())->deleteAdherent($adherent->id);
 
-     if($abonnement_adh && $versement && $abonnement && $adherent){
+     if($adherent){
          $return['result'] = 'success';
          echo json_encode($return);
          exit();
@@ -37,7 +37,7 @@
      }
  }
  else{
-     $adh = $adherent->AjoutAdherents($nom,$prenom,$date_naissance,$ville,$sexe,$tel,$adresse,$mail,$certificat,$situation,$quartier,$numer_secu,$type_doc,$tel_fixe,$commentaire);
+     $adh = $adherent->AjoutAdherents();
      if($adh){
          $lasId = $adherent->LastIdAdherent();
          header('Location: ../../abonnements/ajouter_abonn.php?id='.$lasId->id.'"');

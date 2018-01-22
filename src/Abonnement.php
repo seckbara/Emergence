@@ -8,6 +8,12 @@ class Abonnement extends DBManager{
     protected $tableactivite = "activites";
     protected $tabletypeabonnement = "type_abonnement";
 
+    protected $id;
+    protected  $date_certificat;
+    protected $type_abonnement;
+    protected $date_abonnement;
+    protected $duree_abonnement;
+
     /**
      * @return string
      */
@@ -39,12 +45,6 @@ class Abonnement extends DBManager{
     {
         $this->tableactivite = $tableactivite;
     }
-
-    protected $id;
-    protected  $date_certificat;
-    protected $type_abonnement;
-    protected $date_abonnement;
-    protected $duree_abonnement;
 
     /**
      * @return string
@@ -229,7 +229,7 @@ class Abonnement extends DBManager{
      */
     public function AllabonnementByAdherent(){
         try {
-            return DBManager::connect()->executeQuery('select * from abonnements, adherent WHERE abonnements.id_adherent = adherent.id ORDER BY adherent.id ASC ')->fetchAll(PDO::FETCH_OBJ);
+            return DBManager::connect()->executeQuery('select * from abonnements ')->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer la liste des abonnements: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }

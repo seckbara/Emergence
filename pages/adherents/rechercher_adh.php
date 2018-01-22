@@ -180,26 +180,16 @@ $adherents = $adherent->Alladherent();
                 console.log(id);
 
                 $.post("scripts/ajout_adherent.php", { id_adh: id}, function (data) {
-                    //if(data['result'] === 'success') {
+                    if(data['result'] === 'success') {
                         $("#success").html("La supression s'est effectuer avec succée").show();
                         setTimeout(function() { window.location.reload() },5000);
-                    //}
-                }, 'json').done( function (data) {
-                    $("#success").html("La supression s'est effectuer avec succée").show();
-                    setTimeout(function() { window.location.reload() },5000);
-                }).fail(function (response) {
-                    $("#success").html("La supression s'est effectuer avec succée").show();
-                    setTimeout(function() { window.location.reload() },5000);
-                });
+                    }
+                    else{
+                        $("#error").html("Erreur lors de la supression").show();
+                        setTimeout(function() { window.location.reload() },5000);
+                    }
+                }, 'json');
             }
         });
     });
-//      $link = $(this);
-//        var rowData = $tableFile.DataTable().row($link.closest('tr')).data();
-//
-//        $.post("{{ path('api_search', {id: bsdIdentifier}) }}",{Tknum: roundDetails.Tknum, Doctype: rowData.Dtype }, function(json) {
-//            if (json.success && json.data &&!_.isEmpty(json.data.DocContent)) {
-//                download("data:application/pdf;base64,"+json.data.DocContent, "BSD-"+json.data.BorKey+".pdf", "application/pdf");
-//            }
-//        }, 'json');
 </script>

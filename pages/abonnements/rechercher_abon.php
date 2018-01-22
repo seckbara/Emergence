@@ -6,7 +6,6 @@ include_once "../../assets/class/includes/header.php";
 $adherent = new Adherent();
 $adherents = $adherent->Alladherent();
 $allabonnement = (new Abonnement())->AllabonnementByAdherent();
-//dump($allabonnement);
 //exit();
 
 ?>
@@ -59,6 +58,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
+                                <th>Identifiant</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Date de certificat</th>
@@ -74,22 +74,24 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                             </thead>
                             <tbody>
                             <?php  foreach($allabonnement as $abonnement): ?>
+                                <?php  $adh = (new Adherent())->AdherentById($abonnement->id_adherent) ?>
                                 <?php
                                 $formatdate = new Functions();
                                 $date = date_parse($abonnement->date_abonnement);
                                 $date_fin = $formatdate->DureeAbonnement($date['year'],$date['month'],$date['day'], $abonnement->duree_abonnement);
                                 ?>
                                 <tr <?php if(strtotime((new DateTime())->format('d-m-Y')) > strtotime(((new Functions())->Date_Format_Fr($date_fin)))) {echo "style=\"background-color: red\"" ;} else {echo "";}?>>
-                                    <td><?= $abonnement->nom_adherent ?></td>
-                                    <td><?= $abonnement->prenom_adherent ?></td>
+                                    <td><?= $abonnement->id ?></td>
+                                    <td><?= $adh->nom_adherent ?></td>
+                                    <td><?= $adh->prenom_adherent ?></td>
                                     <td><?= $abonnement->date_certificat ?></td>
-                                    <td><?= ($abonnement->date_certificat = "N")?"Non":"Oui" ?></td>
+                                    <td><?= ($abonnement->date_certificat = "N")?"<p class=\"bg-danger text-danger\">Non</p>":"Oui" ?></td>
                                     <td><?= $abonnement->date_abonnement ?></td>
                                     <td><?= $abonnement->montant ?> &euro;</td>
                                     <td><?= $abonnement->duree_abonnement ?> mois</td>
-                                    <td><?= $abonnement->email ?></td>
-                                    <td><?= ($abonnement->sexe = "H")?"Homme":"Femme" ?></td>
-                                    <td><?= $abonnement->quartier ?></td>
+                                    <td><?= $adh->email ?></td>
+                                    <td><?= ($adh->sexe = "H")?"Homme":"Femme" ?></td>
+                                    <td><?= $adh->quartier ?></td>
                                     <td style='text-align:center;'>
                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail" onclick="detail_abonn(<?=$abonnement->id ?>,<?=$abonnement->id_adherent ?>,<?=$abonnement->id ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>

@@ -7,21 +7,112 @@ class Adherent extends DBManager {
     protected $table = "adherent";
     protected $table_Situation = "situations";
 
-    public $nom;
-    public $prenom;
+    public $nom_adherent;
+    public $prenom_adherent;
     public $date_naissance;
     public $ville;
     public $sexe;
     public $tel;
     public $adresse;
-    public $mail;
+    public $email;
     public $certificat;
     public $situation;
     public $quartier;
-    public $numer_secu;
-    public $type_doc;
+    public $num_secu;
+    public $document;
     public $tel_fixe;
     public $commentaire;
+
+
+    /**
+     * Adherent constructor.
+     */
+    public function __construct()
+    {
+
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomAdherent()
+    {
+        return $this->nom_adherent;
+    }
+
+    /**
+     * @param mixed $nom_adherent
+     */
+    public function setNomAdherent($nom_adherent)
+    {
+        $this->nom_adherent = $nom_adherent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrenomAdherent()
+    {
+        return $this->prenom_adherent;
+    }
+
+    /**
+     * @param mixed $prenom_adherent
+     */
+    public function setPrenomAdherent($prenom_adherent)
+    {
+        $this->prenom_adherent = $prenom_adherent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumSecu()
+    {
+        return $this->num_secu;
+    }
+
+    /**
+     * @param mixed $num_secu
+     */
+    public function setNumSecu($num_secu)
+    {
+        $this->num_secu = $num_secu;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDocument()
+    {
+        return $this->document;
+    }
+
+    /**
+     * @param mixed $document
+     */
+    public function setDocument($document)
+    {
+        $this->document = $document;
+    }
+
 
     /**
      * @return string
@@ -56,15 +147,6 @@ class Adherent extends DBManager {
     }
 
     /**
-     * Adherent constructor.
-     */
-    public function __construct()
-    {
-
-    }
-
-
-    /**
      * @return string
      */
     public function getDbname()
@@ -94,38 +176,6 @@ class Adherent extends DBManager {
     public function setTable($table)
     {
         $this->table = $table;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * @param mixed $nom
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * @param mixed $prenom
-     */
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
     }
 
     /**
@@ -195,22 +245,6 @@ class Adherent extends DBManager {
     /**
      * @return mixed
      */
-    public function getMail()
-    {
-        return $this->mail;
-    }
-
-    /**
-     * @param mixed $mail
-     */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCertificat()
     {
         return $this->certificat;
@@ -254,38 +288,6 @@ class Adherent extends DBManager {
     public function setQuartier($quartier)
     {
         $this->quartier = $quartier;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNumerSecu()
-    {
-        return $this->numer_secu;
-    }
-
-    /**
-     * @param mixed $numer_secu
-     */
-    public function setNumerSecu($numer_secu)
-    {
-        $this->numer_secu = $numer_secu;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTypeDoc()
-    {
-        return $this->type_doc;
-    }
-
-    /**
-     * @param mixed $type_doc
-     */
-    public function setTypeDoc($type_doc)
-    {
-        $this->type_doc = $type_doc;
     }
 
     /**
@@ -338,25 +340,24 @@ class Adherent extends DBManager {
      * @param $commentaire
      * @return int
      */
-    public function AjoutAdherents($nom, $prenom,$date_naissance, $ville, $sexe, $tel,$adresse, $mail, $certificat,$situation,
-                                   $quartier,$numer_secu,$type_doc, $tel_fixe, $commentaire){
+    public function AjoutAdherents(){
         try {
             return DBManager::connect()->insert($this->getTable(), array(
-                'nom_adherent' => $nom,
-                'prenom_adherent' => $prenom,
-                'date_naissance' => $date_naissance,
-                'ville' => $ville,
-                'sexe' => $sexe,
-                'tel' => $tel,
-                'adresse' => $adresse,
-                'email' => $mail,
-                'certificat' => $certificat,
-                'situation' => $situation,
-                'quartier' => $quartier,
-                'num_secu' => $numer_secu,
-                'document' => $type_doc,
-                'tel_fixe' => $tel_fixe,
-                'commentaire' => $commentaire
+                'nom_adherent' => $this->getNomAdherent(),
+                'prenom_adherent' => $this->getPrenomAdherent(),
+                'date_naissance' => $this->getDateNaissance(),
+                'ville' => $this->getVille(),
+                'sexe' => $this->getSexe(),
+                'tel' => $this->getTel(),
+                'adresse' => $this->getAdresse(),
+                'email' => $this->getEmail(),
+                'certificat' => $this->getCertificat(),
+                'situation' => $this->getSituation(),
+                'quartier' => $this->getQuartier(),
+                'num_secu' => $this->getNumSecu(),
+                'document' => $this->getDocument(),
+                'tel_fixe' => $this->getTelFixe(),
+                'commentaire' => $this->getCommentaire()
             ));
         } catch (DBALException $e) {
             sprintf("Insert adherent has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());

@@ -3,11 +3,12 @@
 include_once "../../assets/class/includes/header.php";
 require_once '../../vendor/autoload.php';
 
-
-$abonn = $_GET['abonnement'];
+$abonnement  = new Abonnement();
+$abonnement->setId($_GET['abonnement']);
+//$abonn = $_GET['abonnement'];
 $adherent = $_GET['adherent'];
-$versement = (new Versement())->VersementById($abonn);
-$abonnement = (new Abonnement())->AbonnementById($abonn);
+$versement = (new Versement())->VersementById($abonnement->getId());
+$abonnement = (new Abonnement())->AbonnementById($abonnement->getId());
 $adherent = (new Adherent())->AdherentById($adherent);
 $situation = (new Adherent())->SituationById($adherent->situation);
 $type_pai = (new Abonnement())->TypePaiment($abonnement->type_paiement);
