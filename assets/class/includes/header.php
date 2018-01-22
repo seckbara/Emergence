@@ -367,6 +367,22 @@
             </ul>
             <!-- fin partie abonnement -->
 
+            <!-- partie statistique -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-bar-chart" aria-hidden="true"></i> <span>Statistique</span>
+                        <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i> Stats adherent</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!--   -->
+
         </section>
         <!-- /.sidebar -->
     </aside>
