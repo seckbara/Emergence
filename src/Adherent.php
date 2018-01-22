@@ -369,7 +369,7 @@ class Adherent extends DBManager {
      */
     public function LastIdAdherent(){
         try {
-            return DBManager::connect()->executeQuery('select max(id) as id from '.$this->getTable().'')->fetch(PDO::FETCH_OBJ);
+            return DBManager::connect()->executeQuery('select max(id) as id from '.$this->getTable())->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer le dernier id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
@@ -389,7 +389,7 @@ class Adherent extends DBManager {
 
     public function Alladherent(){
         try {
-            return DBManager::connect()->fetchAll('select * from '.$this->getTable().'');
+            return DBManager::connect()->fetchAll('select * from '.$this->getTable());
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer le dernier id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }

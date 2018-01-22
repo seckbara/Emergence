@@ -20,6 +20,16 @@ function detail_adherent(adher)
     ajaxModaltoShow(data, url, 'detail');
 }
 
+function update_abonn(id_abonn){
+    console.log(id_abonn);
+    var url 	= "scripts/modal/update_abonnement.php";
+    var data = {
+        id_abonn: id_abonn
+    };
+    console.log(data);
+    ajaxModaltoShow(data, url, 'modifier_abonn');
+}
+
 function update_adherent(adher)
 {
     console.log(adher);
@@ -38,7 +48,7 @@ function ajaxModaltoShow(data, url, idModal) {
         async: false,
         success: function(returnData, textStatus, jqXHR) {
             var modalContent = returnData.split('##');
-            console.log(returnData);
+            //console.log(returnData);
             $('#'+idModal+' .modal-title').html(modalContent[0]);
             $('#'+idModal+' .modal-body').html(modalContent[1]);
             return true;

@@ -9,6 +9,23 @@ class Versement extends DBManager{
     public $type_paiement;
     public $montant;
     protected $last_abonn_id;
+    protected $abonnement_id;
+
+    /**
+     * @return mixed
+     */
+    public function getAbonnementId()
+    {
+        return $this->abonnement_id;
+    }
+
+    /**
+     * @param mixed $abonnement_id
+     */
+    public function setAbonnementId($abonnement_id)
+    {
+        $this->abonnement_id = $abonnement_id;
+    }
 
     /**
      * @return mixed
@@ -159,7 +176,7 @@ class Versement extends DBManager{
                 'date_versement' => $this->getDateVersement(),
                 'commentaire' => $this->getCommentaire(),
                 'montant' => $this->getMontant(),
-                'abonnement_id' => $this->getLastAbonnId()
+                'abonnement_id' => $this->getAbonnementId()
             ));
         } catch (DBALException $e) {
             sprintf("Insert Versements has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());

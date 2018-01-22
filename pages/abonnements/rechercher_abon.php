@@ -6,6 +6,7 @@ include_once "../../assets/class/includes/header.php";
 $adherent = new Adherent();
 $adherents = $adherent->Alladherent();
 $allabonnement = (new Abonnement())->AllabonnementByAdherent();
+//dump($allabonnement);
 //exit();
 
 ?>
@@ -53,6 +54,23 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                         </div>
                     </div>
 
+                    <div class="modal fade" id="modifier_abonn">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title primary">modification de l'adherent</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Contenu du modal pour la modification</p>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
@@ -74,7 +92,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                             </thead>
                             <tbody>
                             <?php  foreach($allabonnement as $abonnement): ?>
-                                <?php  $adh = (new Adherent())->AdherentById($abonnement->id_adherent) ?>
+                                <?php $adh = (new Adherent())->AdherentById($abonnement->id_adherent) ?>
                                 <?php
                                 $formatdate = new Functions();
                                 $date = date_parse($abonnement->date_abonnement);
@@ -85,7 +103,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                                     <td><?= $adh->nom_adherent ?></td>
                                     <td><?= $adh->prenom_adherent ?></td>
                                     <td><?= $abonnement->date_certificat ?></td>
-                                    <td><?= ($abonnement->date_certificat = "N")?"<p class=\"bg-danger text-danger\">Non</p>":"Oui" ?></td>
+                                    <td><?= ($abonnement->date_certificat = "N")?"<p class=\"text-danger\">Non</p>":"Oui" ?></td>
                                     <td><?= $abonnement->date_abonnement ?></td>
                                     <td><?= $abonnement->montant ?> &euro;</td>
                                     <td><?= $abonnement->duree_abonnement ?> mois</td>
@@ -94,7 +112,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                                     <td><?= $adh->quartier ?></td>
                                     <td style='text-align:center;'>
                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail" onclick="detail_abonn(<?=$abonnement->id ?>,<?=$abonnement->id_adherent ?>,<?=$abonnement->id ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                                        <button type="button" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modifier_abonn"  onclick="update_abonn(<?= $abonnement->id ?>);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 <!--                                        <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>https://github.com/rstaib/jquery-steps-->
                                         <a href="detail_abonnement.php?abonnement=<?=  $abonnement->id;?>&amp;adherent=<?= $abonnement->id_adherent ?>" class="btn btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                         <?php if (strtotime((new DateTime())->format('d-m-Y')) > strtotime(((new Functions())->Date_Format_Fr($date_fin)))): ?>
@@ -149,7 +167,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
             'info'        : true,
             'autoWidth'   : true,
             "sSearch":         "Rechercher&nbsp;:",
-            "lengthMenu": [[12, 14, 28, -1], [12, 14, 28, "Afficher tout"]],
+            "lengthMenu": [[7, 14, 28, -1], [12, 14, 28, "Afficher tout"]],
             language: {
                 processing:     "Traitement en cours...",
                 search:         "Rechercher&nbsp;:",

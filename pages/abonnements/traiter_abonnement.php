@@ -1,5 +1,17 @@
 <?php
-include_once "../../assets/class/includes/header.php"
+include_once "../../assets/class/includes/header.php";
+require_once '../../vendor/autoload.php';
+
+$adherent = (new Adherent())->AdherentById($_GET['adherent']);
+$abonnement = (new Abonnement())->AbonnementById($_GET['abonnement']);
+$versement = (new Versement())->VersementById($_GET['abonnement']);
+$villes = (new Villes())->AllVilles();
+$type_abonnement = (new Activite())->AllTypeabonnement();
+$activite = (new Activite())->AllActivite();
+$date = new Abonnement();
+//dump($villes);
+//dump($abonnement);
+//dump($adherent);
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -24,13 +36,13 @@ include_once "../../assets/class/includes/header.php"
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Nom</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir le nom de l'adherent" required/>
+                                    <input type="text" class="form-control" value="<?= $adherent->nom_adherent ?>" name="nom_adherent" placeholder="Saisir le nom de l'adherent" readonly required/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Prenom</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir le prenom" required/>
+                                    <input type="text" class="form-control" value="<?= $adherent->prenom_adherent ?>" name="nom_adherent" placeholder="Saisir le prenom" readonly required/>
                                 </div>
                             </div>
                         </div>
@@ -39,13 +51,17 @@ include_once "../../assets/class/includes/header.php"
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Date de naissance</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir la date de naissance" required/>
+                                    <input type="text" class="form-control" value="<?= $adherent->date_naissance ?>" name="nom_adherent" placeholder="Saisir la date de naissance" readonly required/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Ville</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir la ville" required/>
+                                    <select class="form-control select2" style="width: 100%;" required name="ville">
+                                        <?php foreach ($villes as $ville): ?>
+                                            <option value="<?= $ville->id_ville ?>" <?= ($adherent->ville == $ville->id_ville)?"selected":"" ?>><?= $ville->ville ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -54,13 +70,13 @@ include_once "../../assets/class/includes/header.php"
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Téléphone</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir le numéro de téléphone" required/>
+                                    <input type="text" class="form-control" value="<?= $adherent->tel ?>" name="nom_adherent" placeholder="Saisir le numéro de téléphone" readonly required/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir l'adresse email" required/>
+                                    <input type="text" class="form-control"  value="<?= $adherent->email ?>" name="nom_adherent" placeholder="Saisir l'adresse email" readonly required/>
                                 </div>
                             </div>
                         </div>
@@ -71,13 +87,17 @@ include_once "../../assets/class/includes/header.php"
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Date de certificat</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir la date de certificat" >
+                                    <input type="text" class="form-control" value="<?= $abonnement->date_certificat ?>" name="nom_adherent" placeholder="Saisir la date de certificat" >
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Type d'abonnement</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir le type d'abonnement" >
+                                    <select class="form-control select2" style="width: 100%;" required name="type_abonn">
+                                        <?php foreach ($type_abonnement as $type) { ?>
+                                            <option selected="selected" value="<?= $type->id ?> <?= ($type->id == $abonnement->type_abonnement)?"selected":"" ?>"><?= $type->type_abonnement ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -86,13 +106,13 @@ include_once "../../assets/class/includes/header.php"
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Date d'abonnement</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir la date d'abonnement" >
+                                    <input type="text" class="form-control" value="<?= $date->getDateAbonnement(); ?>" name="nom_adherent" placeholder="Saisir la date d'abonnement" readonly>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Montant</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir le montant" >
+                                    <input type="text" class="form-control" value="<?= $abonnement->montant ?>" name="nom_adherent" placeholder="Saisir le montant" >
                                 </div>
                             </div>
                         </div>
@@ -100,14 +120,31 @@ include_once "../../assets/class/includes/header.php"
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Activité</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir le type d'activité" >
+                                    <label>Activité choisis</label>
+                                    <select class="form-control select2" style="width: 100%;" required name="activite">
+                                        <?php foreach ($activite as $activ) { ?>
+                                            <option selected="selected" value="<?= $activ->id ?>"><?= $activ->nom_activite ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Durée d'abonnement</label>
-                                    <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir la durée d'abonnement" >
+                                    <label>Durée d'abonnement:</label>
+                                    <div class="input-group">
+                                        <label>
+                                            3 mois &nbsp;
+                                            <input type="radio" name="duree_abonne" class="flat-red" value="3">
+                                        </label>
+                                        <label>
+                                            &nbsp; 6 mois &nbsp;
+                                            <input type="radio" name="duree_abonne" class="flat-red" value="6">
+                                        </label>
+                                        <label>
+                                            &nbsp; 12 mois &nbsp;
+                                            <input type="radio" name="duree_abonne" class="flat-red" value="12">
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

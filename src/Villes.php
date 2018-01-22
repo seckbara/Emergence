@@ -74,7 +74,7 @@ class Villes  extends DBManager
 
     public function AllVilles(){
         try {
-            return DBManager::connect()->executeQuery('select * from '.$this->getTable().'')->fetchAll(PDO::FETCH_OBJ);
+            return DBManager::connect()->executeQuery('select * from '.$this->getTable())->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer le dernier id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }    }

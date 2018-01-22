@@ -7,12 +7,74 @@ class Abonnement extends DBManager{
     protected $tablepaiement = "type_de_paiements";
     protected $tableactivite = "activites";
     protected $tabletypeabonnement = "type_abonnement";
-
     protected $id;
-    protected  $date_certificat;
+    protected $date_certificat;
     protected $type_abonnement;
     protected $date_abonnement;
     protected $duree_abonnement;
+    protected $montant;
+    protected $id_adherent;
+    protected $id_activite;
+    protected $type_paiement;
+
+
+    /**
+     * Abonnement constructor.
+     * @param string $dbname
+     */
+    public function __construct($dbname)
+    {
+        $this->dbname = $dbname;
+        $this->date_abonnement = date("Y-m-d");
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdAdherent()
+    {
+        return $this->id_adherent;
+    }
+
+    /**
+     * @param mixed $id_adherent
+     */
+    public function setIdAdherent($id_adherent)
+    {
+        $this->id_adherent = $id_adherent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdActivite()
+    {
+        return $this->id_activite;
+    }
+
+    /**
+     * @param mixed $id_activite
+     */
+    public function setIdActivite($id_activite)
+    {
+        $this->id_activite = $id_activite;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypePaiement()
+    {
+        return $this->type_paiement;
+    }
+
+    /**
+     * @param mixed $type_paiement
+     */
+    public function setTypePaiement($type_paiement)
+    {
+        $this->type_paiement = $type_paiement;
+    }
 
     /**
      * @return string
@@ -61,7 +123,6 @@ class Abonnement extends DBManager{
     {
         $this->tablepaiement = $tablepaiement;
     }
-    protected $montant;
 
     /**
      * @return string
@@ -192,17 +253,17 @@ class Abonnement extends DBManager{
     }
 
 
-    public function AjoutAbonnement($date_certificat,$type_abonn,$date_abonn,$duree_abonn,$montant,$id_adherent,$id_activite,$type_paie){
+    public function AjoutAbonnement(){
         try {
             $query =  DBManager::connect()->insert($this->getTable(), array(
-                'date_certificat' => $date_certificat,
-                'type_abonnement' => $type_abonn,
-                'date_abonnement' => $date_abonn,
-                'duree_abonnement' => $duree_abonn,
-                'montant' => $montant,
-                'id_adherent' => $id_adherent,
-                'id_activite' => $id_activite,
-                'type_paiement' => $type_paie
+                'date_certificat' => $this->getDateCertificat(),
+                'type_abonnement' => $this->getTypeAbonnement(),
+                'date_abonnement' => $this->getDateAbonnement(),
+                'duree_abonnement' => $this->getDureeAbonnement(),
+                'montant' => $this->getMontant(),
+                'id_adherent' => $this->getIdAdherent(),
+                'id_activite' => $this->getIdActivite(),
+                'type_paiement' => $this->getTypePaiement()
             ));
 
             return $query;
