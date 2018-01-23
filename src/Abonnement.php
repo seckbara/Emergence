@@ -363,4 +363,22 @@ class Abonnement extends DBManager{
             sprintf("Impossible de recuperer l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
+
+    public function updateAbonnementById($id, $date_certificat, $date_abonnement, $duree_abonnement, $montant, $id_activite){
+        try {
+            DBManager::connect()->update($this->getTable(), [
+                'date_certificat' => $date_certificat,
+                'date_abonnement' => $date_abonnement,
+                'duree_abonnement' => $duree_abonnement,
+                'montant' => $montant,
+                'id_activite' => $id_activite
+            ],
+                [
+                    'id' => $id
+                ]
+            );
+        } catch (DBALException $e) {
+            sprintf("Impossible de modifier l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
 }

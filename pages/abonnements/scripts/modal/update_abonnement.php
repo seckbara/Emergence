@@ -1,5 +1,5 @@
 <?php
- require_once '../../../../vendor/autoload.php';
+require_once '../../../../vendor/autoload.php';
 $abonnement = (new Abonnement())->AbonnementById($_POST['id_abonn']);
 $adherent = (new Adherent())->AdherentById($abonnement->id_adherent);
 $type_abonnement = (new Activite())->AllTypeabonnement();
