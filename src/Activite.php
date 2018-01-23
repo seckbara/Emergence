@@ -145,4 +145,12 @@ class Activite extends DBManager{
             sprintf("Impossible de recuperer les données da la table activité id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
+
+    public function countActvite(){
+        try {
+            return DBManager::connect()->executeQuery('select count(id_activite) as nombre_activite, activites.nom_activite from abonnements, activites WHERE abonnements.id_activite = activites.id GROUP BY id_activite')->fetchAll(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer les données da la table activité id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
 }

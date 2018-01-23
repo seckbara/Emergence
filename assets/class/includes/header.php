@@ -48,6 +48,8 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+
     <![endif]-->
 
     <!-- Google Font -->
@@ -371,13 +373,30 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="treeview active">
                     <a href="#">
-                        <i class="fa fa-bar-chart" aria-hidden="true"></i> <span>Statistique</span>
+                        <i class="fa fa-bar-chart" aria-hidden="true"></i> <span>Afficher les stats</span>
                         <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i> Stats adherent</a></li>
+                        <li><a href="../../pages/statistique/stats.php"><i class="fa fa-line-chart" aria-hidden="true"></i> Stats adherent</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!--   -->
+
+            <!-- partie statistique -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-bar-chart" aria-hidden="true"></i> <span>Devis</span>
+                        <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../../pages/statistique/stats.php"><i class="fa fa-bar-chart" aria-hidden="true"></i>Devis</a></li>
+                        <li><a href="../../pages/statistique/stats.php"><i class="fa fa-th-list" aria-hidden="true"></i>Listing</a></li>
                     </ul>
                 </li>
             </ul>

@@ -22,9 +22,8 @@ class Abonnement extends DBManager{
      * Abonnement constructor.
      * @param string $dbname
      */
-    public function __construct($dbname)
+    public function __construct()
     {
-        $this->dbname = $dbname;
         $this->date_abonnement = date("Y-m-d");
     }
 

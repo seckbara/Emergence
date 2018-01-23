@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: seck
- * Date: 13/08/17
- * Time: 14:07
- */
 
 include_once "../../assets/class/includes/header.php"
 ?>
