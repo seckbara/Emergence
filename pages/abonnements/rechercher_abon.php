@@ -1,6 +1,9 @@
 <?php
 require_once '../../vendor/autoload.php';
 use Carbon\Carbon;
+use Emergence\Abonnement;
+use Emergence\Adherent;
+use Emergence\Functions;
 include_once "../../assets/class/includes/header.php";
 
 $adherent = new Adherent();

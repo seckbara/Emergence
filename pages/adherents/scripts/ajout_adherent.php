@@ -1,5 +1,10 @@
 <?php
  require_once '../../../vendor/autoload.php';
+ use Emergence\Adherent;
+ use Emergence\Abonnement;
+ use Emergence\Activite;
+ use Emergence\Functions;
+ use Emergence\Versement;
  $_POST = filter_input_array(INPUT_POST);
  $adherent =  new Adherent();
  $adherent->id = $_POST['id_adh'];

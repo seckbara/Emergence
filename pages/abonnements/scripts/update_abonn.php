@@ -1,12 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Bara
- * Date: 22/01/2018
- * Time: 17:12
- */
-
 require_once '../../../vendor/autoload.php';
+use Emergence\Abonnement;
+
 
 $abonnement  = new Abonnement();
 $abonnement->setId(filter_var($_POST['id_abonnement'], FILTER_SANITIZE_NUMBER_INT));

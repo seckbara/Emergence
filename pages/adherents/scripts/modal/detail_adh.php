@@ -1,5 +1,6 @@
 <?php
 require_once '../../../../vendor/autoload.php';
+use Emergence\Adherent;
 
 $adherent = $_POST['id_adher'];
 

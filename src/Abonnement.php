@@ -1,5 +1,6 @@
 <?php
-
+namespace Emergence;
+use PDO;
 class Abonnement extends DBManager{
 
     protected $dbname = "emergence";

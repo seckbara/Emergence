@@ -1,6 +1,10 @@
 <?php
 require_once '../../../../vendor/autoload.php';
 use Carbon\Carbon;
+use Emergence\Adherent;
+use Emergence\Abonnement;
+use Emergence\Versement;
+use Emergence\Functions;
 
 $abonn = $_POST['id_abonn'];
 $adherent = $_POST['id_adher'];

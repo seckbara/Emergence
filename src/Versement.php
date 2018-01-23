@@ -1,4 +1,6 @@
 <?php
+namespace Emergence;
+use PDO;
 
 class Versement extends DBManager{
 

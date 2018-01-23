@@ -1,5 +1,6 @@
 <?php
-
+namespace Emergence;
+use PDO;
 class Utilisateurs extends DBManager
 {
 

@@ -1,5 +1,6 @@
 <?php
-
+namespace Emergence;
+use PDO;
 class Activite extends DBManager{
 
     protected $id;

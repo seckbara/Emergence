@@ -1,5 +1,5 @@
 <?php
-
+namespace Emergence;
     class FusionCharts {
         
         private $constructorOptions = array();

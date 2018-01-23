@@ -2,6 +2,11 @@
 
 include_once "../../assets/class/includes/header.php";
 require_once '../../vendor/autoload.php';
+use Emergence\Abonnement;
+use Emergence\Adherent;
+use Emergence\Activite;
+use Emergence\Functions;
+use Emergence\Versement;
 
 $abonnement  = new Abonnement();
 $abonnement->setId($_GET['abonnement']);

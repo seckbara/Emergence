@@ -1,5 +1,7 @@
 <?php
-
+namespace Emergence;
+use Emergence\DBManager;
+use PDO;
 class Villes  extends DBManager
 {
     protected $dbname = "emergence";

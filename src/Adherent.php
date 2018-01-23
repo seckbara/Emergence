@@ -1,6 +1,7 @@
 <?php
+namespace Emergence;
 use Doctrine\DBAL\DBALException;
-
+use PDO;
 class Adherent extends DBManager {
 
     protected $dbname = "adherents";

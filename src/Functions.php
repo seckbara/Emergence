@@ -1,4 +1,5 @@
 <?php
+namespace Emergence;
 use Carbon\Carbon;
 class Functions{
 

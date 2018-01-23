@@ -2,6 +2,8 @@
 <?php
 include_once "../../assets/class/includes/header.php";
 require_once '../../vendor/autoload.php';
+use Emergence\Activite;
+use Emergence\FusionCharts;
 $activite = (new Activite())->countActvite();
 //dump($activite);
 /**

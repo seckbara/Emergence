@@ -1,5 +1,6 @@
 <?php
 
+namespace Emergence;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
 
@@ -10,7 +11,7 @@ class DBManager {
         $connParametr = array(
             'dbname' => 'emergence',
             'user' => 'root',
-            'password' => '',
+            'password' => 'mamadou',
             'host' => 'localhost',
             'driver' => 'pdo_mysql',
             'charset' => 'utf8mb4'
