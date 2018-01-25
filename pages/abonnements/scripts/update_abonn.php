@@ -10,8 +10,9 @@ $abonnement->setDateAbonnement(filter_var($_POST['date_abonnement'], FILTER_SANI
 $abonnement->setDureeAbonnement(filter_var($_POST['duree_abonne'], FILTER_SANITIZE_NUMBER_INT));
 $abonnement->setMontant(filter_var($_POST['montant'], FILTER_SANITIZE_NUMBER_INT));
 $abonnement->setIdActivite(filter_var($_POST['activite'], FILTER_SANITIZE_NUMBER_INT));
+$abonnement->setTypeAbonnement(filter_var($_POST['type_abonn'], FILTER_SANITIZE_NUMBER_INT));
 
-$t = $abonnement->updateAbonnementById($abonnement->getId(), $abonnement->getDateCertificat(), $abonnement->getDateAbonnement(), $abonnement->getDureeAbonnement(), $abonnement->getMontant(), $abonnement->getIdActivite());
+$t = $abonnement->updateAbonnementById($abonnement->getId(), $abonnement->getDateCertificat(), $abonnement->getDateAbonnement(), $abonnement->getDureeAbonnement(), $abonnement->getMontant(), $abonnement->getIdActivite(), $abonnement->getTypeAbonnement());
 
 header('Location: ../../abonnements/rechercher_abon.php');
 exit();
