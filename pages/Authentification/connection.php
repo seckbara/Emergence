@@ -32,9 +32,9 @@
       require_once '../../vendor/autoload.php';
 
       if (!empty($_POST)):
-            if(!empty($_POST['email'] && !empty($_POST{'password'}))):
-                $user = (new Utilisateurs())->ConnectUser($_POST['email'],$_POST['password']);
-                if($user){
+            if (!empty($_POST['email'] && !empty($_POST{'password'}))):
+                $user = (new Utilisateurs())->ConnectUser($_POST['email'], $_POST['password']);
+                if ($user) {
                     $_SESSION['utilisateur'] = [];
                     $_SESSION['utilisateur']['nom'] = $user->username;
                     $_SESSION['utilisateur']['prenom'] = $user->lastname;
@@ -43,7 +43,7 @@
 
                     header('Location: ../../index.php');
                     die();
-                }else{
+                } else {
                     header('Location: inscription.php');
                     die();
                 }

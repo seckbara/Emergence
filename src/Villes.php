@@ -1,8 +1,11 @@
 <?php
 namespace Emergence;
+
 use Emergence\DBManager;
 use PDO;
-class Villes  extends DBManager
+use Doctrine\DBAL\DBALException;
+
+class Villes extends DBManager
 {
     protected $dbname = "emergence";
     protected $table = "villes";
@@ -74,11 +77,12 @@ class Villes  extends DBManager
         $this->nom = $nom;
     }
 
-    public function AllVilles(){
+    public function AllVilles()
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTable())->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer le dernier id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
-        }    }
-
+        }
+    }
 }

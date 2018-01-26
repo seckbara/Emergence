@@ -1,12 +1,14 @@
 <?php
 
 namespace Emergence;
+
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
 
-class DBManager {
-
-    public function connect(){
+class DBManager
+{
+    public function connect()
+    {
         $config = new Configuration();
         $connParametr = array(
             'dbname' => 'emergence',
@@ -21,7 +23,5 @@ class DBManager {
 
     public function getlastId()
     {
-
     }
 }
-

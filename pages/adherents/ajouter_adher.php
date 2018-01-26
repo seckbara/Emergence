@@ -1,8 +1,10 @@
 <?php
 use Emergence\Adherent;
 use Emergence\Villes;
+
 require_once '../../vendor/autoload.php';
 use Carbon\Carbon;
+
 include_once "../../assets/class/includes/header.php";
 
 $ville = new Villes();

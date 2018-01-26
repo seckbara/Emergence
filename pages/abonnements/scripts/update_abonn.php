@@ -2,7 +2,6 @@
 require_once '../../../vendor/autoload.php';
 use Emergence\Abonnement;
 
-
 $abonnement  = new Abonnement();
 $abonnement->setId(filter_var($_POST['id_abonnement'], FILTER_SANITIZE_NUMBER_INT));
 $abonnement->setDateCertificat(filter_var($_POST['date_certificat'], FILTER_SANITIZE_STRING));

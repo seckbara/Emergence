@@ -4,13 +4,12 @@ use Carbon\Carbon;
 use Emergence\Abonnement;
 use Emergence\Adherent;
 use Emergence\Functions;
+
 include_once "../../assets/class/includes/header.php";
 
 $adherent = new Adherent();
 $adherents = $adherent->Alladherent();
 $allabonnement = (new Abonnement())->AllabonnementByAdherent();
-//dump($allabonnement);
-//exit();
 
 ?>
 
@@ -94,14 +93,23 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                             </tr>
                             </thead>
                             <tbody>
-                            <?php  foreach($allabonnement as $abonnement): ?>
+                            <?php  foreach ($allabonnement as $abonnement): ?>
                                 <?php $adh = (new Adherent())->AdherentById($abonnement->id_adherent) ?>
                                 <?php
                                 $formatdate = new Functions();
-                                $date = date_parse($abonnement->date_abonnement);
-                                $date_fin = $formatdate->DureeAbonnement($date['year'],$date['month'],$date['day'], $abonnement->duree_abonnement);
+                                if (!empty($abonnement->date_abonnement)) {
+                                    $date = date_parse($abonnement->date_abonnement);
+                                    $date_fin = $formatdate->DureeAbonnement($date['year'], $date['month'], $date['day'], $abonnement->duree_abonnement);
+                                } else {
+                                    $date = "";
+                                    $date_fin = "";
+                                }
                                 ?>
-                                <tr <?php if(strtotime((new DateTime())->format('d-m-Y')) > strtotime(((new Functions())->Date_Format_Fr($date_fin)))) {echo "style=\"background-color: red\"" ;} else {echo "";}?>>
+                                <tr <?php if (strtotime((new DateTime())->format('d-m-Y')) > strtotime(((new Functions())->Date_Format_Fr($date_fin)))) {
+                                    echo "style=\"background-color: red\"" ;
+                                } else {
+                                    echo "";
+                                }?>>
                                     <td><?= $abonnement->id ?></td>
                                     <td><?= $adh->nom_adherent ?></td>
                                     <td><?= $adh->prenom_adherent ?></td>

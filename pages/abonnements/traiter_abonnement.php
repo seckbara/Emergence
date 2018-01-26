@@ -14,9 +14,7 @@ $villes = (new Villes())->AllVilles();
 $type_abonnement = (new Activite())->AllTypeabonnement();
 $activite = (new Activite())->AllActivite();
 $date = new Abonnement();
-//dump($villes);
-//dump($abonnement);
-//dump($adherent);
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -99,9 +97,11 @@ $date = new Abonnement();
                                 <div class="form-group">
                                     <label>Type d'abonnement</label>
                                     <select class="form-control select2" style="width: 100%;" required name="type_abonn">
-                                        <?php foreach ($type_abonnement as $type) { ?>
+                                        <?php foreach ($type_abonnement as $type) {
+    ?>
                                             <option selected="selected" value="<?= $type->id ?> <?= ($type->id == $abonnement->type_abonnement)?"selected":"" ?>"><?= $type->type_abonnement ?></option>
-                                        <?php } ?>
+                                        <?php
+} ?>
                                     </select>
                                 </div>
                             </div>
@@ -127,9 +127,11 @@ $date = new Abonnement();
                                 <div class="form-group">
                                     <label>Activité choisis</label>
                                     <select class="form-control select2" style="width: 100%;" required name="activite">
-                                        <?php foreach ($activite as $activ) { ?>
+                                        <?php foreach ($activite as $activ) {
+        ?>
                                             <option selected="selected" value="<?= $activ->id ?>"><?= $activ->nom_activite ?></option>
-                                        <?php } ?>
+                                        <?php
+    } ?>
                                     </select>
                                 </div>
                             </div>

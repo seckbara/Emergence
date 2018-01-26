@@ -1,9 +1,14 @@
 <?php
-ini_set("display_errors",0);error_reporting(0);
+ini_set("display_errors", 0);error_reporting(0);
 require_once '../../vendor/autoload.php';
 use Carbon\Carbon;
-include_once "../../assets/class/includes/header.php";
 
+include_once "../../assets/class/includes/header.php";
+use Emergence\Abonnement;
+use Emergence\Adherent;
+use Emergence\Activite;
+use Emergence\Functions;
+use Emergence\Versement;
 
 // recuperation de l'adherent en cours
 $this_adherents = (new Adherent())->AdherentById($_GET['id']);
@@ -14,7 +19,6 @@ $type_abonnement = (new Activite())->AllTypeabonnement();
 // recuperation de tout les types de paiement
 $type_paie = (new Activite())->AllTypePaiement();
 $id_adherent = $_GET['id'];
-
 
 $now = Carbon::now();
 $today = Carbon::now()->toDateString();
@@ -68,18 +72,22 @@ $today = Carbon::now()->toDateString();
                                 <div class="form-group">
                                     <label>Activité choisis</label>
                                     <select class="form-control select2" style="width: 100%;" required name="activite">
-                                        <?php foreach ($activite as $activ) { ?>
+                                        <?php foreach ($activite as $activ) {
+    ?>
                                         <option selected="selected" value="<?= $activ->id ?>"><?= $activ->nom_activite ?></option>
-                                        <?php } ?>
+                                        <?php
+} ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Type d'abonnement</label>
                                 <select class="form-control select2" style="width: 100%;" required name="type_abonn">
-                                    <?php foreach ($type_abonnement as $type) { ?>
+                                    <?php foreach ($type_abonnement as $type) {
+        ?>
                                         <option selected="selected" value="<?= $type->id ?>"><?= $type->type_abonnement ?></option>
-                                    <?php } ?>
+                                    <?php
+    } ?>
                                 </select>
                             </div>
                         </div>
@@ -123,9 +131,11 @@ $today = Carbon::now()->toDateString();
                             <div class="form-group">
                                 <label>Type de debut paiement</label>
                                 <select class="form-control select2" style="width: 100%;" required name="type_paie">
-                                    <?php foreach ($type_paie as $types_paiement) { ?>
+                                    <?php foreach ($type_paie as $types_paiement) {
+        ?>
                                         <option selected="selected" value="<?= $types_paiement->id ?>"><?= $types_paiement->type ?></option>
-                                    <?php } ?>
+                                    <?php
+    } ?>
                                 </select>
                             </div>
                         </div>

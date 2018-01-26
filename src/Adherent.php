@@ -1,9 +1,11 @@
 <?php
 namespace Emergence;
+
 use Doctrine\DBAL\DBALException;
 use PDO;
-class Adherent extends DBManager {
 
+class Adherent extends DBManager
+{
     protected $dbname = "adherents";
     protected $table = "adherent";
     protected $table_Situation = "situations";
@@ -30,7 +32,6 @@ class Adherent extends DBManager {
      */
     public function __construct()
     {
-
     }
 
 
@@ -341,7 +342,8 @@ class Adherent extends DBManager {
      * @param $commentaire
      * @return int
      */
-    public function AjoutAdherents(){
+    public function AjoutAdherents()
+    {
         try {
             return DBManager::connect()->insert($this->getTable(), array(
                 'nom_adherent' => $this->getNomAdherent(),
@@ -362,13 +364,14 @@ class Adherent extends DBManager {
             ));
         } catch (DBALException $e) {
             sprintf("Insert adherent has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
-            }
+        }
     }
 
     /**
      * @return mixed
      */
-    public function LastIdAdherent(){
+    public function LastIdAdherent()
+    {
         try {
             return DBManager::connect()->executeQuery('select max(id) as id from '.$this->getTable())->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -380,7 +383,8 @@ class Adherent extends DBManager {
      * @param $id
      * @return mixed
      */
-    public function AdherentById($id){
+    public function AdherentById($id)
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -388,7 +392,8 @@ class Adherent extends DBManager {
         }
     }
 
-    public function Alladherent(){
+    public function Alladherent()
+    {
         try {
             return DBManager::connect()->fetchAll('select * from '.$this->getTable());
         } catch (DBALException $e) {
@@ -396,7 +401,8 @@ class Adherent extends DBManager {
         }
     }
 
-    public function AllSituation(){
+    public function AllSituation()
+    {
         try {
             return DBManager::connect()->fetchAll('select * from '.$this->getTableSituation().'');
         } catch (DBALException $e) {
@@ -408,7 +414,8 @@ class Adherent extends DBManager {
      * @param $id
      * @return mixed
      */
-    public function SituationById($id){
+    public function SituationById($id)
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTableSituation().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -416,9 +423,12 @@ class Adherent extends DBManager {
         }
     }
 
-    public function updateAdherent($nom, $prenom, $date_naissance, $tel, $adresse, $mail, $type_doc, $commentaire,$id){
+    public function updateAdherent($nom, $prenom, $date_naissance, $tel, $adresse, $mail, $type_doc, $commentaire, $id)
+    {
         try {
-             DBManager::connect()->update($this->getTable(), [
+            DBManager::connect()->update(
+                 $this->getTable(),
+                 [
                 'nom_adherent' => $nom,
                 'prenom_adherent' => $prenom,
                 'date_naissance' => $date_naissance,
@@ -440,12 +450,12 @@ class Adherent extends DBManager {
     /**
      * @param $id
      */
-    public function deleteAdherent($id){
+    public function deleteAdherent($id)
+    {
         try {
             return  DBManager::connect()->delete($this->getTable(), array('id' => $id));
         } catch (DBALException $e) {
             sprintf("Impossible de supprimer l'adherents avec id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
-
 }

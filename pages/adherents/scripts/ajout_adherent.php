@@ -5,6 +5,7 @@
  use Emergence\Activite;
  use Emergence\Functions;
  use Emergence\Versement;
+
  $_POST = filter_input_array(INPUT_POST);
  $adherent =  new Adherent();
  $adherent->id = $_POST['id_adh'];
@@ -24,31 +25,28 @@
  $adherent->tel_fixe = $_POST['tel_fixe'];
  $adherent->commentaire = $_POST['commentaire'];
 
- if($adherent->id != null){
+ if ($adherent->id != null) {
      $abonnement_adh = (new Abonnement())->AbonnementByIdAdhe($adherent->id);
      $versement = (new Versement())->deleteVersement($abonnement_adh->id);
      $abonnement = (new Abonnement())->deleteAbonnement($abonnement_adh->id);
      $adherent = (new Adherent())->deleteAdherent($adherent->id);
 
-     if($adherent){
+     if ($adherent) {
          $return['result'] = 'success';
          echo json_encode($return);
          exit();
-     }
-     else{
+     } else {
          $return['result'] = 'echec';
          echo json_encode($return);
          exit();
      }
- }
- else{
+ } else {
      $adh = $adherent->AjoutAdherents();
-     if($adh){
+     if ($adh) {
          $lasId = $adherent->LastIdAdherent();
          header('Location: ../../abonnements/ajouter_abonn.php?id='.$lasId->id.'"');
          exit();
-     }
-     else{
+     } else {
          header('Location: ../../adherents/ajouter_adher.php');
          exit();
      }

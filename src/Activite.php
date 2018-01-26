@@ -1,8 +1,12 @@
 <?php
 namespace Emergence;
-use PDO;
-class Activite extends DBManager{
 
+use PDO;
+
+use Doctrine\DBAL\DBALException;
+
+class Activite extends DBManager
+{
     protected $id;
     protected $nom;
     protected $actif;
@@ -123,7 +127,8 @@ class Activite extends DBManager{
         $this->actif = $actif;
     }
 
-    public function AllActivite(){
+    public function AllActivite()
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTable())->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -131,7 +136,8 @@ class Activite extends DBManager{
         }
     }
 
-    public function AllTypeabonnement(){
+    public function AllTypeabonnement()
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTableTyeAbonn())->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -139,7 +145,8 @@ class Activite extends DBManager{
         }
     }
 
-    public function AllTypePaiement(){
+    public function AllTypePaiement()
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTableTypePaiement())->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -147,7 +154,8 @@ class Activite extends DBManager{
         }
     }
 
-    public function countActvite(){
+    public function countActvite()
+    {
         try {
             return DBManager::connect()->executeQuery('select count(id_activite) as nombre_activite, activites.nom_activite from abonnements, activites WHERE abonnements.id_activite = activites.id GROUP BY id_activite')->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {

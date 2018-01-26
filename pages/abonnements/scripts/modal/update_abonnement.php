@@ -3,7 +3,7 @@ require_once '../../../../vendor/autoload.php';
 use Emergence\Abonnement;
 use Emergence\Adherent;
 use Emergence\Activite;
-use Emergence\Functions;
+
 $abonnement = (new Abonnement())->AbonnementById($_POST['id_abonn']);
 $adherent = (new Adherent())->AdherentById($abonnement->id_adherent);
 $type_abonnement = (new Activite())->AllTypeabonnement();
@@ -60,18 +60,22 @@ Modification de l'abonnement de <?= $adherent->nom_adherent.' '.$adherent->preno
     <div class="form-group">
         <label>Activité choisis</label>
         <select class="form-control select2" style="width: 100%;" required name="activite">
-            <?php foreach ($activite as $activ) { ?>
+            <?php foreach ($activite as $activ) {
+    ?>
                 <option  value="<?= $activ->id ?>"<?= ($activ->id == $abonnement->id_activite)?"selected":""?>><?= $activ->nom_activite ?></option>
-            <?php } ?>
+            <?php
+} ?>
         </select>
     </div>
 
     <div class="form-group">
         <label>Type d'abonnement</label>
         <select class="form-control select2" style="width: 100%;" required name="type_abonn">
-            <?php foreach ($type_abonnement as $type)  { ?>
-                <option selected="selected" value="<?= $type->id ?>" <?= ($type->id == $abonnement->type_abonnement)?"selected":"" ?>><?= $type->type_abonnement ?></option>
-            <?php } ?>
+            <?php foreach ($type_abonnement as $type) {
+        ?>
+                <option value="<?= $type->id ?>" <?= ($type->id == $abonnement->type_abonnement)?"selected":"" ?>><?= $type->type_abonnement ?></option>
+            <?php
+    } ?>
         </select>
     </div><br>
 

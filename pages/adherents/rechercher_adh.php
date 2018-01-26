@@ -2,6 +2,7 @@
 require_once '../../vendor/autoload.php';
 use Carbon\Carbon;
 use Emergence\Adherent;
+
 include_once "../../assets/class/includes/header.php";
 
 $adherent = new Adherent();
@@ -84,7 +85,7 @@ $adherents = $adherent->Alladherent();
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php  foreach($adherents as $adherent): ?>
+                                <?php  foreach ($adherents as $adherent): ?>
                                 <tr>
                                     <td><?= $adherent['id'] ?></td>
                                     <td><?= $adherent['nom_adherent'] ?></td>

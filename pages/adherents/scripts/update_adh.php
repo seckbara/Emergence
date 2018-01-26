@@ -21,6 +21,6 @@
  $t = $_POST['id_adherent'];
 
  $adherent =  new Adherent();
- $adherent->updateAdherent($nom, $prenom, $date_naissance, $tel, $adresse, $mail, $type_doc, $commentaire,$_POST['id_adherent']);
+ $adherent->updateAdherent($nom, $prenom, $date_naissance, $tel, $adresse, $mail, $type_doc, $commentaire, $_POST['id_adherent']);
  header('Location: ../../adherents/rechercher_adh.php');
  exit();

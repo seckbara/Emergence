@@ -1,5 +1,10 @@
 <?php
  require_once '../../../vendor/autoload.php';
+    use Emergence\Abonnement;
+    use Emergence\Adherent;
+    use Emergence\Activite;
+    use Emergence\Functions;
+    use Emergence\Versement;
 
     $aboonnements = new Abonnement();
     $aboonnements->setDateCertificat(date('d-m-Y', strtotime($_POST['date_certificiat'])));
@@ -14,9 +19,9 @@
     $abonn = $aboonnements->AjoutAbonnement();
 
 
-     if($abonn){
+     if ($abonn) {
          $listvers = $_POST['versement'];
-         foreach ($listvers as $val){
+         foreach ($listvers as $val) {
              $versements = new Versement();
              $versements->date_versement = date('d-m-Y', strtotime($val['date_verse']));
              $versements->commentaire = $val['commentaire'];
@@ -27,8 +32,7 @@
 
          header('Location: ../../abonnements/rechercher_abon.php');
          exit();
-     }
-     else{
+     } else {
          header('Location: ../../abonnements/ajouter_abonn.php?id='.$aboonnements->getIdAdherent().'"');
          exit();
      }

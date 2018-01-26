@@ -1,9 +1,11 @@
 <?php
 namespace Emergence;
+
 use PDO;
+use Doctrine\DBAL\DBALException;
 
-class Versement extends DBManager{
-
+class Versement extends DBManager
+{
     protected $dbname = "emergence";
     protected $table = "versements";
     protected $id;
@@ -158,7 +160,8 @@ class Versement extends DBManager{
         $this->montant = $montant;
     }
 
-    public function AjoutVersement($date_versement,$commentaire,$montant,$abonn_id){
+    public function AjoutVersement($date_versement, $commentaire, $montant, $abonn_id)
+    {
         try {
             return DBManager::connect()->insert($this->getTable(), array(
                 'date_versement' => $date_versement,
@@ -172,7 +175,8 @@ class Versement extends DBManager{
     }
 
 
-    public function AjoutVersementTEST(){
+    public function AjoutVersementTEST()
+    {
         try {
             return DBManager::connect()->insert($this->getTable(), array(
                 'date_versement' => $this->getDateVersement(),
@@ -190,7 +194,8 @@ class Versement extends DBManager{
      * @param $id
      * @return mixed
      */
-    public function VersementById($id){
+    public function VersementById($id)
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where abonnement_id = ?', array($id))->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -198,12 +203,12 @@ class Versement extends DBManager{
         }
     }
 
-    public function deleteVersement($id){
+    public function deleteVersement($id)
+    {
         try {
             return  DBManager::connect()->delete($this->getTable(), array('abonnement_id' => $id));
         } catch (DBALException $e) {
             sprintf("Impossible de supprimer l'abonnement avec id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
-
 }

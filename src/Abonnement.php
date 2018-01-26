@@ -1,8 +1,12 @@
 <?php
 namespace Emergence;
-use PDO;
-class Abonnement extends DBManager{
 
+use PDO;
+
+use Doctrine\DBAL\DBALException;
+
+class Abonnement extends DBManager
+{
     protected $dbname = "emergence";
     protected $table = "abonnements";
     protected $tablepaiement = "type_de_paiements";
@@ -253,7 +257,8 @@ class Abonnement extends DBManager{
     }
 
 
-    public function AjoutAbonnement(){
+    public function AjoutAbonnement()
+    {
         try {
             $query =  DBManager::connect()->insert($this->getTable(), array(
                 'date_certificat' => $this->getDateCertificat(),
@@ -267,7 +272,6 @@ class Abonnement extends DBManager{
             ));
 
             return $query;
-
         } catch (DBALException $e) {
             sprintf("Insert abonnement has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
             echo "Insert abonnement has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString();
@@ -277,7 +281,8 @@ class Abonnement extends DBManager{
     /**
      * @return mixed
      */
-    public function LastIdAbonnement(){
+    public function LastIdAbonnement()
+    {
         try {
             return DBManager::connect()->executeQuery('select max(id) as id from '.$this->getTable().'')->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -288,7 +293,8 @@ class Abonnement extends DBManager{
     /**
      * @return mixed
      */
-    public function AllabonnementByAdherent(){
+    public function AllabonnementByAdherent()
+    {
         try {
             return DBManager::connect()->executeQuery('select * from abonnements ')->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -301,7 +307,8 @@ class Abonnement extends DBManager{
      * @param $id
      * @return mixed
      */
-    public function AbonnementById($id){
+    public function AbonnementById($id)
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -313,7 +320,8 @@ class Abonnement extends DBManager{
      * @param $id
      * @return mixed
      */
-    public function TypePaiment($id){
+    public function TypePaiment($id)
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTablepaiement().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -325,7 +333,8 @@ class Abonnement extends DBManager{
      * @param $id
      * @return mixed
      */
-    public function TypeActivite($id){
+    public function TypeActivite($id)
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTableactivite().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -337,7 +346,8 @@ class Abonnement extends DBManager{
      * @param $id
      * @return mixed
      */
-    public function TypeAbonn($id){
+    public function TypeAbonn($id)
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTabletypeabonnement().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -348,7 +358,8 @@ class Abonnement extends DBManager{
     /**
      * @param $id
      */
-    public function deleteAbonnement($id){
+    public function deleteAbonnement($id)
+    {
         try {
             return  DBManager::connect()->delete($this->getTable(), array('id' => $id));
         } catch (DBALException $e) {
@@ -356,7 +367,8 @@ class Abonnement extends DBManager{
         }
     }
 
-    public function AbonnementByIdAdhe($id){
+    public function AbonnementByIdAdhe($id)
+    {
         try {
             return DBManager::connect()->executeQuery('select id from '.$this->getTable().' where id_adherent = ?', array($id))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -364,9 +376,12 @@ class Abonnement extends DBManager{
         }
     }
 
-    public function updateAbonnementById($id, $date_certificat, $date_abonnement, $duree_abonnement, $montant, $id_activite, $type_abonnement){
+    public function updateAbonnementById($id, $date_certificat, $date_abonnement, $duree_abonnement, $montant, $id_activite, $type_abonnement)
+    {
         try {
-            DBManager::connect()->update($this->getTable(), [
+            DBManager::connect()->update(
+                $this->getTable(),
+                [
                 'date_certificat' => $date_certificat,
                 'date_abonnement' => $date_abonnement,
                 'duree_abonnement' => $duree_abonnement,

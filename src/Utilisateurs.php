@@ -1,9 +1,11 @@
 <?php
 namespace Emergence;
+
 use PDO;
+use Doctrine\DBAL\DBALException;
+
 class Utilisateurs extends DBManager
 {
-
     protected $id;
     protected $nom;
     protected $prenom;
@@ -138,7 +140,8 @@ class Utilisateurs extends DBManager
         }
     }
 
-    public function VerifExistUser($prenom){
+    public function VerifExistUser($prenom)
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where lastname = ?', array($prenom))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -146,17 +149,12 @@ class Utilisateurs extends DBManager
         }
     }
 
-    public function ConnectUser($email, $pass){
+    public function ConnectUser($email, $pass)
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where email = ? and passw = ?', array($email, $pass))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer le prenom id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
-
-
-
-
 }
-
-

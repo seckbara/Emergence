@@ -30,36 +30,25 @@
         include 'scripts/function.php';
         require_once '../../vendor/autoload.php';
 
-        if(!empty($_POST)){
+        if (!empty($_POST)) {
             $error = [];
-            if (empty($_POST['nom'])){
+            if (empty($_POST['nom'])) {
                 $error['nom'] = "Vous n'avaez pas saisie le nom de votre utilsatuer";
-            }
-
-            else if(empty($_POST['prenom'])){
+            } elseif (empty($_POST['prenom'])) {
                 $error['prenom'] = "Vous n'avaez pas saisie le prenom de votre utilsatuer";
-            }
-            else if(empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+            } elseif (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = "Vous adresse email est invalide";
-            }
-
-            else if(empty($_POST['pass'])){
+            } elseif (empty($_POST['pass'])) {
                 $error['pass'] = "Vous n'avaez pas saisie un bon mot de passe";
-            }
-
-            else if(empty($_POST['cpass'])){
+            } elseif (empty($_POST['cpass'])) {
                 $error['cpass'] = "Vous n'avaez pas saisie la conformation de votre mots de passe";
-            }
-
-            else if ($_POST['cpass'] != $_POST['pass']){
+            } elseif ($_POST['cpass'] != $_POST['pass']) {
                 $error['ver_mot'] = "Le mots de passe n'est pas identique";
-            }
-            else{
-                if((new Utilisateurs())->VerifExistUser($_POST['prenom'])){
+            } else {
+                if ((new Utilisateurs())->VerifExistUser($_POST['prenom'])) {
                     $error['valider'] = "Ce nom d'utilisateur existe deja";
-                }
-                else{
-                    $user = (new Utilisateurs())->SaveUsers($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['pass']);
+                } else {
+                    $user = (new Utilisateurs())->SaveUsers($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['pass']);
                     $error['valider'] = "le compte à été créer";
                     header('Location: connection.php');
                     die();

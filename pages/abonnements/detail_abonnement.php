@@ -4,13 +4,10 @@ include_once "../../assets/class/includes/header.php";
 require_once '../../vendor/autoload.php';
 use Emergence\Abonnement;
 use Emergence\Adherent;
-use Emergence\Activite;
-use Emergence\Functions;
 use Emergence\Versement;
 
 $abonnement  = new Abonnement();
 $abonnement->setId($_GET['abonnement']);
-//$abonn = $_GET['abonnement'];
 $adherent = $_GET['adherent'];
 $versement = (new Versement())->VersementById($abonnement->getId());
 $abonnement = (new Abonnement())->AbonnementById($abonnement->getId());
@@ -123,7 +120,7 @@ $typeabonn = (new Abonnement())->TypeAbonn($abonnement->type_abonnement);
                             </thead>
                             <tbody>
                             <?php foreach ($versement as $vers): ?>
-                            <tr>
+                                <tr>
                                     <td><?= $vers->id ?></td>
                                     <td><?= $vers->abonnement_id ?></td>
                                     <td><?= $vers->date_versement ?></td>
