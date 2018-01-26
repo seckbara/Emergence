@@ -458,4 +458,13 @@ class Adherent extends DBManager
             sprintf("Impossible de supprimer l'adherents avec id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
+
+    public function countAdherent()
+    {
+        try {
+            return DBManager::connect()->executeQuery('select count(*) as nb from '.$this->getTableSituation())->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer la situation id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
 }

@@ -397,4 +397,16 @@ class Abonnement extends DBManager
             sprintf("Impossible de modifier l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCount()
+    {
+        try {
+            return DBManager::connect()->executeQuery('select count(id_activite) as nb from '.$this->getTable().' GROUP BY id_activite')->fetchAll(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer la situation id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
 }
