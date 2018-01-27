@@ -55,7 +55,7 @@ $columnChart = new FusionCharts("column3d", "ex1", "100%", 400, "chart-1", "json
 $columnChart->render();
 
 $pie3dChart = new FusionCharts("pie3d", "ex2", "100%", 400, "chart-2", "json", '{   "chart": {
-        "caption": "Statistique des adherents par age",
+        "caption": "Statistique des adherents selon leurs age",
         "startingangle": "120",
         "showlabels": "0",
         "showlegend": "1",
@@ -63,7 +63,7 @@ $pie3dChart = new FusionCharts("pie3d", "ex2", "100%", 400, "chart-2", "json", '
         "slicingdistance": "15",
         "showpercentvalues": "1",
         "showpercentintooltip": "0",
-        "plottooltext": "Nombre $label sur $datavalue",
+        "plottooltext": "Nombre $label: $datavalue",
         "theme": "ocean"
     },
     "data": [
