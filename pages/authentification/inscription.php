@@ -1,3 +1,7 @@
+<?php
+require '../../vendor/autoload.php';
+use Emergence\Utilisateurs;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,80 +37,92 @@
         if (!empty($_POST)) {
             $error = [];
             if (empty($_POST['nom'])) {
-                $error['nom'] = "Vous n'avaez pas saisie le nom de votre utilsatuer";
+                $error['nom'] = "Vous n'avez pas saisie le nom de votre utilisateur";
             } elseif (empty($_POST['prenom'])) {
-                $error['prenom'] = "Vous n'avaez pas saisie le prenom de votre utilsatuer";
+                $error['prenom'] = "Vous n'avez pas saisie le prenom de votre utilisateur";
             } elseif (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = "Vous adresse email est invalide";
             } elseif (empty($_POST['pass'])) {
                 $error['pass'] = "Vous n'avaez pas saisie un bon mot de passe";
             } elseif (empty($_POST['cpass'])) {
-                $error['cpass'] = "Vous n'avaez pas saisie la conformation de votre mots de passe";
+                $error['cpass'] = "Saisissez la conformation de votre mots de passe";
             } elseif ($_POST['cpass'] != $_POST['pass']) {
-                $error['ver_mot'] = "Le mots de passe n'est pas identique";
+                $error['ver_mot'] = "Les mots de passe ne sont pas identique";
             } else {
                 if ((new Utilisateurs())->VerifExistUser($_POST['prenom'])) {
                     $error['valider'] = "Ce nom d'utilisateur existe deja";
                 } else {
                     $user = (new Utilisateurs())->SaveUsers($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['pass']);
-                    $error['valider'] = "le compte à été créer";
-                    header('Location: connection.php');
-                    die();
+
+                echo "<script>setTimeout(function() {
+                        window.location='connection.php';
+                    }, 2000)</script>"  ;
+
                 }
             }
-            debuug($error);
         }
     ?>
 
   <div class="register-box-body">
     <h5 class="login-box-msg">Page d'inscription pour les utilisateurs</h5>
-
+          <?php if (empty($error) && (isset($_POST['valider']))): ?>
+              <div class="alert alert-success">
+                  <strong>le compte à été créé avec succès</strong>
+              </div>
+          <?php elseif (!($_POST['valider']) && (!empty($error))): ?>
+              <div class="alert alert-danger">
+                  <strong>Erreur: </strong> <?php foreach ($error as $val){ echo $val;}  ?>
+              </div>
+          <?php endif; ?>
     <form action="" method="post">
 
         <div class="form-group has-feedback">
-          <input type="text" name="nom" class="form-control" placeholder="Saisir votre nom">
+          <input type="text" name="nom" class="form-control" placeholder="Saisir votre nom" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
 
         <div class="form-group has-feedback">
-            <input type="text" name="prenom" class="form-control" placeholder="Saisir votre prenom">
+            <input type="text" name="prenom" class="form-control" placeholder="Saisir votre prenom" required>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
 
         <div class="form-group has-feedback">
-          <input type="email" name="email" class="form-control" placeholder="Saisir votre adresse email">
+          <input type="email" name="email" class="form-control" placeholder="Saisir votre adresse email" required>
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
 
         <div class="form-group has-feedback">
-          <input type="password" name="pass" class="form-control" placeholder="Votre mots de passe">
+          <input type="password" name="pass" class="form-control" placeholder="Votre mots de passe" required>
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
 
         <div class="form-group has-feedback">
-          <input type="password" name="cpass" class="form-control" placeholder="Confirmation de votre mots de passe">
+          <input type="password" name="cpass" class="form-control" placeholder="Confirmation de votre mots de passe" required>
           <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
 
         <div class="row">
           <div class="col-xs-12">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">S'inscrire</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat" name="valider">S'inscrire</button>
           </div>
         </div>
     </form>
 
-    <div class="social-auth-links text-center">
-      <p>- OU -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Se connecter avec
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Se connecter avec votre compte
-        Google+</a>
-    </div>
+<!--    <div class="social-auth-links text-center">-->
+<!--      <p>- OU -</p>-->
+<!--      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Se connecter avec-->
+<!--        Facebook</a>-->
+<!--      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Se connecter avec votre compte-->
+<!--        Google+</a>-->
+<!--    </div>-->
 
   </div>
 </div>
 
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+
+</script>
 </body>
 </html>

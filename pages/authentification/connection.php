@@ -1,5 +1,13 @@
 <?php
     session_start();
+    require_once '../../vendor/autoload.php';
+    use Emergence\Utilisateurs;
+
+//    if ((!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['id'] == null) )
+//    {
+//        header('Location: connection.php');
+//        exit();
+//    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,8 +37,6 @@
     <p class="login-box-msg">Veuillez vous connectez</p>
 
       <?php
-      require_once '../../vendor/autoload.php';
-
       if (!empty($_POST)):
             if (!empty($_POST['email'] && !empty($_POST{'password'}))):
                 $user = (new Utilisateurs())->ConnectUser($_POST['email'], $_POST['password']);
@@ -50,8 +56,7 @@
 
             endif;
         endif;
-      session_destroy();
-
+      unset($_SESSION['utilisateur']);
       ?>
 
     <form action="" method="post">
@@ -77,20 +82,19 @@
           <button type="submit" class="btn btn-primary btn-block btn-flat">Se connecter</button>
         </div>
       </div>
-
     </form>
 
-    <div class="social-auth-links text-center">
-      <p>- OU -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Se connecter avec
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Se connecter avec votre compte
-        Google+</a>
-    </div>
+<!--    <div class="social-auth-links text-center">-->
+<!--      <p>- OU -</p>-->
+<!--      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Se connecter avec-->
+<!--        Facebook</a>-->
+<!--      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Se connecter avec votre compte-->
+<!--        Google+</a>-->
+<!--    </div>-->
     <!-- /.social-auth-links -->
 
-    <a href="#">Mots de passe oublier</a><br>
-    <a href="inscription.html" class="text-center">Vous n'avez pas de compte s'inscrire</a>
+<!--    <a href="#">Mots de passe oublier</a><br>-->
+<!--    <a href="inscription.html" class="text-center">Vous n'avez pas de compte s'inscrire</a>-->
 
   </div>
   <!-- /.login-box-body -->

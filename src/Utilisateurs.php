@@ -11,8 +11,51 @@ class Utilisateurs extends DBManager
     protected $prenom;
     protected $email;
     protected $password;
+    protected $role;
+    protected $confirme_pass;
     protected $dbname = "emergence";
     protected $table = "utilisateurs";
+
+    /**
+     * Utilisateurs constructor.
+     */
+    public function __construct()
+    {
+        $this->role = "visiteur";
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmePass()
+    {
+        return $this->confirme_pass;
+    }
+
+    /**
+     * @param mixed $confirme_pass
+     */
+    public function setConfirmePass($confirme_pass)
+    {
+        $this->confirme_pass = $confirme_pass;
+    }
 
     /**
      * @return mixed
@@ -126,6 +169,13 @@ class Utilisateurs extends DBManager
         $this->table = $table;
     }
 
+    /**
+     * @param $nom
+     * @param $prenom
+     * @param $email
+     * @param $password
+     * @return int
+     */
     public function SaveUsers($nom, $prenom, $email, $password)
     {
         try {
@@ -140,6 +190,10 @@ class Utilisateurs extends DBManager
         }
     }
 
+    /**
+     * @param $prenom
+     * @return mixed
+     */
     public function VerifExistUser($prenom)
     {
         try {
@@ -149,6 +203,11 @@ class Utilisateurs extends DBManager
         }
     }
 
+    /**
+     * @param $email
+     * @param $pass
+     * @return mixed
+     */
     public function ConnectUser($email, $pass)
     {
         try {

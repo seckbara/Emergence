@@ -1,3 +1,3 @@
 <?php
 
-header('Location: pages/Profile/profile.php');
+header('Location: pages/profile/profile.php');

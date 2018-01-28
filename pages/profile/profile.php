@@ -1,7 +1,8 @@
 <?php
+require '../../vendor/autoload.php';
+include_once "../../assets/class/includes/header.php";
 
-include_once "../../assets/class/includes/header.php"
-?>
+//?>
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- Content Wrapper. Contains page content -->

@@ -1,6 +1,10 @@
 <?php
     session_start();
-    $t = $_SESSION;
+    if ((!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['id'] == ""))
+    {
+        header('Location: ../../pages/authentification/connection.php');
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -296,10 +300,10 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="../../pages/Profile/profile.php" class="btn btn-success btn-sm btn-flat">Profile</a>
+                                    <a href="../../pages/profile/profile.php" class="btn btn-success btn-xs btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="../../pages/Authentification/connection.php" class="btn btn-danger btn-sm btn-flat">Se déconnecter</a>
+                                    <a href="../../pages/authentification/connection.php" class="btn btn-danger btn-xs btn-flat">Se déconnecter</a>
                                 </div>
                             </li>
                         </ul>
