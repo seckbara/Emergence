@@ -2,9 +2,28 @@
 namespace Emergence;
 
 use Carbon\Carbon;
+use PDO;
+use Exception;
 
-class Functions
+class Functions extends DBManager
 {
+    protected $table_annee = "annee";
+
+    /**
+     * @return string
+     */
+    public function getTableAnnee(): string
+    {
+        return $this->table_annee;
+    }
+
+    /**
+     * @param string $table_annee
+     */
+    public function setTableAnnee(string $table_annee)
+    {
+        $this->table_annee = $table_annee;
+    }
     /**
      * @param $annee
      * @param $mois
@@ -36,5 +55,18 @@ class Functions
             $somme += $val->nb;
         }
         return $somme;
+    }
+
+
+    /**
+     * @return array
+     */
+    public static function getAnnee(){
+        try{
+            return DBManager::connect()->executeQuery("select * from " .(new Functions())->getTableAnnee())->fetchAll(PDO::FETCH_OBJ);
+        }
+        catch (Exception $exception){
+            $exception->getMessage();
+        }
     }
 }

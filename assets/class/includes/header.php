@@ -366,7 +366,7 @@
                     </a>
                     <ul class="treeview-menu">
 <!--                        <li><a href="../../pages/abonnements/ajouter_abonn.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter</a></li>-->
-                        <li><a href="../../pages/abonnements/historique.php"><i class="fa fa-address-card-o" aria-hidden="true"></i> Fin abonnement</a></li>
+                        <li><a href="../../pages/abonnements/fin_abonn.php"><i class="fa fa-address-card-o" aria-hidden="true"></i> Fin abonnement</a></li>
                         <li><a href="../../pages/abonnements/rechercher_abon.php"><i class="fa fa-search" aria-hidden="true"></i> Rechercher</a></li>
                     </ul>
                 </li>
