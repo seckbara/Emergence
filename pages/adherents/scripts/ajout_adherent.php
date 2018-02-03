@@ -6,6 +6,7 @@
  use Emergence\Functions;
  use Emergence\Versement;
 
+ $depth = "../../";
  $_POST = filter_input_array(INPUT_POST);
  $adherent =  new Adherent();
  $adherent->id = $_POST['id_adh'];
@@ -41,9 +42,17 @@
          exit();
      }
  } else {
+     $chemin = "../../../documents/".$_POST['nom_adherent'].'_'. $_POST['prenom_adherent'].'/';
+     $chemin_adherent = "../../documents/".$_POST['nom_adherent'].'_'. $_POST['prenom_adherent'].'/';
+     if (!file_exists($chemin)) {
+         mkdir($chemin, 0755, true);
+     }
+     $adherent->chemin_certificat =  $chemin_adherent.$_FILES['file_certificat']['name'];
      $adh = $adherent->AjoutAdherents();
      if ($adh) {
          $lasId = $adherent->LastIdAdherent();
+         move_uploaded_file($_FILES['file_certificat']['tmp_name'], $chemin.$_FILES['file_certificat']['name']);
+
          header('Location: ../../abonnements/ajouter_abonn.php?id='.$lasId->id.'"');
          exit();
      } else {

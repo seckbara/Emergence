@@ -95,9 +95,10 @@ $adherents = $adherent->Alladherent();
                                     <td><?= $adherent['tel'] ?></td>
                                     <td><?= $adherent['email'] ?></td>
                                     <td style='text-align:center;'>
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail" onclick="detail_adherent(<?= $adherent['id'] ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-info" data-title="detail"  data-toggle="modal" data-target="#detail" onclick="detail_adherent(<?= $adherent['id'] ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modifier"  onclick="update_adherent(<?= $adherent['id'] ?>);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        <a href="<?= $adherent['chemin_certificat'] ?>" class="btn btn-default" target="_blank"><i class="fa fa-file"></i></a>
                                     </td>
                                 </tr>
                                 <?php endforeach;?>
