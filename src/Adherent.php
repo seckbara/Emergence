@@ -25,6 +25,7 @@ class Adherent extends DBManager
     public $document;
     public $tel_fixe;
     public $commentaire;
+    public $chemin_certificat;
 
 
     /**
@@ -32,6 +33,22 @@ class Adherent extends DBManager
      */
     public function __construct()
     {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCheminCertificat()
+    {
+        return $this->chemin_certificat;
+    }
+
+    /**
+     * @param mixed $chemin_certificat
+     */
+    public function setCheminCertificat($chemin_certificat)
+    {
+        $this->chemin_certificat = $chemin_certificat;
     }
 
 
@@ -360,7 +377,9 @@ class Adherent extends DBManager
                 'num_secu' => $this->getNumSecu(),
                 'document' => $this->getDocument(),
                 'tel_fixe' => $this->getTelFixe(),
-                'commentaire' => $this->getCommentaire()
+                'commentaire' => $this->getCommentaire(),
+                'chemin_certificat' =>$this->getCheminCertificat()
+
             ));
         } catch (DBALException $e) {
             sprintf("Insert adherent has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());

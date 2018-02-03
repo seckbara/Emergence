@@ -28,7 +28,7 @@ $situations = (new Adherent())->AllSituation();
     <section class="content">
         <div class="box box-default">
             <div class="box-body">
-                <form action="scripts/ajout_adherent.php" method="post">
+                <form action="scripts/ajout_adherent.php" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -140,18 +140,16 @@ $situations = (new Adherent())->AllSituation();
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <label>Situation Professionnel</label>
-                                    <select class="form-control select2" style="width: 100%;" name="situation" required>
-                                        <?php foreach ($situations as $situation): ?>
-                                            <option value="<?= $situation['id'] ?>"><?= $situation['situation'] ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                    <label>Choisir le fichier</label>
+                                        <input id="file-certificat" name="file_certificat" type="file" class="file">
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     <div class="row">
@@ -205,6 +203,19 @@ $situations = (new Adherent())->AllSituation();
                                 <textarea class="form-control" rows="3" placeholder="Ajouter un commentaire" name="commentaire" required></textarea>
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Situation Professionnel</label>
+                                    <select class="form-control select2" style="width: 100%;" name="situation" required>
+                                        <?php foreach ($situations as $situation): ?>
+                                            <option value="<?= $situation['id'] ?>"><?= $situation['situation'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <br><br>
@@ -223,6 +234,14 @@ $situations = (new Adherent())->AllSituation();
 <?php include_once "../../assets/class/includes/footer.php" ?>
 
 <script>
+
+    $("#file-certificat").fileinput({
+        showPreview: false,
+        showUpload: false,
+        elErrorContainer: '#kartik-file-errors',
+        allowedFileExtensions: ["jpg", "png", "gif","pdf"]
+        //uploadUrl: '/site/file-upload-single'
+    });
 //
 //    var placeSearch, autocomplete;
 //    var componentForm = {
