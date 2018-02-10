@@ -15,6 +15,7 @@ class Utilisateurs extends DBManager
     protected $confirme_pass;
     protected $dbname = "emergence";
     protected $table = "utilisateurs";
+    protected $chemin;
 
     /**
      * Utilisateurs constructor.
@@ -22,7 +23,25 @@ class Utilisateurs extends DBManager
     public function __construct()
     {
         $this->role = "visiteur";
+        $this->chemin = "";
     }
+
+    /**
+     * @return mixed
+     */
+    public function getChemin()
+    {
+        return $this->chemin;
+    }
+
+    /**
+     * @param mixed $chemin
+     */
+    public function setChemin($chemin)
+    {
+        $this->chemin = $chemin;
+    }
+
 
 
     /**
@@ -183,7 +202,9 @@ class Utilisateurs extends DBManager
                 'username' => $nom,
                 'lastname' => $prenom,
                 'email' => $email,
-                'passw' => $password
+                'passw' => $password,
+                'role' => $this->getRole(),
+                'chemin' => $this->getChemin()
             ));
         } catch (DBALException $e) {
             sprintf("Insert utilsateurs has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
@@ -214,6 +235,58 @@ class Utilisateurs extends DBManager
             return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where email = ? and passw = ?', array($email, $pass))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer le prenom id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getUsers($id){
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer le prenom id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    public function updateUser()
+    {
+        try {
+            return DBManager::connect()->update(
+                $this->getTable(),
+                [
+                    'username' => $this->getPrenom(),
+                    'lastname' => $this->getNom(),
+                    'email' => $this->getEmail(),
+                    'passw' => $this->getPassword(),
+                    'role' => $this->getRole(),
+                ],
+                [
+                    'id' => $this->getId()
+                ]
+            );
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer la situation id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+
+
+    public function updateImage()
+    {
+        try {
+            return DBManager::connect()->update(
+                $this->getTable(),
+                [
+                    'chemin' => $this->getChemin()
+                ],
+                [
+                    'id' => $this->getId()
+                ]
+            );
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer la situation id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
 }

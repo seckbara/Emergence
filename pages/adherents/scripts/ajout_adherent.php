@@ -6,7 +6,6 @@
  use Emergence\Functions;
  use Emergence\Versement;
 
- $depth = "../../";
  $_POST = filter_input_array(INPUT_POST);
  $adherent =  new Adherent();
  $adherent->id = $_POST['id_adh'];
