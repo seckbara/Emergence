@@ -16,6 +16,7 @@ class DBManager
             'password' => 'mamadou',
             'host' => 'localhost',
             'driver' => 'pdo_mysql',
+            'port' => 3306,
             'charset' => 'utf8mb4'
         );
         return $conn = DriverManager::getConnection($connParametr, $config);

@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require '../../../vendor/autoload.php';
+    require '../../vendor/autoload.php';
     use Emergence\Utilisateurs;
 
     if ((!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['id'] == ""))
@@ -104,7 +104,7 @@
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
                                                 Support Team
@@ -117,7 +117,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
                                                 AdminLTE Design Team
@@ -129,7 +129,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
                                                 Developers
@@ -141,7 +141,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
                                                 Sales Department
@@ -153,7 +153,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
                                                 Reviewers
@@ -297,7 +297,7 @@
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
 
                                 <p>
                                     <?= ucfirst($_SESSION['utilisateur']['nom']) ?> <?= strtoupper($_SESSION['utilisateur']['prenom']) ?>
