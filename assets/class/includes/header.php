@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require '../../../vendor/autoload.php';
+    require '../../vendor/autoload.php';
     use Emergence\Utilisateurs;
 
     if ((!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['id'] == ""))
