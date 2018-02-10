@@ -14,11 +14,12 @@ $user->setRole( $_POST['role']);
 $user->setPassword( $_POST['mp']);
 //$user->setChemin($_FILES['input-freq-1']['tmp_name'][0]);
 
-
+$response = [];
 if ($user->updateUser()) {
-
+    $response["result"] = "success";
+echo json_encode($response);
 
 } else {
-    header('Location: ../../adherents/ajouter_adher.php');
-    exit();
+    $response["result"] = "error";
+    echo json_encode($response);
 }

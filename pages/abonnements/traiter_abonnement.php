@@ -1,11 +1,14 @@
 <?php
-include_once "../../assets/class/includes/header.php";
 require_once '../../vendor/autoload.php';
+
+include_once "../../assets/class/includes/header.php";
+
 use Emergence\Abonnement;
 use Emergence\Adherent;
 use Emergence\Versement;
 use Emergence\Villes;
 use Emergence\Activite;
+
 
 $adherent = (new Adherent())->AdherentById($_GET['adherent']);
 $abonnement = (new Abonnement())->AbonnementById($_GET['abonnement']);

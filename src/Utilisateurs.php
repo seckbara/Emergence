@@ -250,6 +250,9 @@ class Utilisateurs extends DBManager
         }
     }
 
+    /**
+     * @return int
+     */
     public function updateUser()
     {
         try {
@@ -272,7 +275,9 @@ class Utilisateurs extends DBManager
     }
 
 
-
+    /**
+     * @return int
+     */
     public function updateImage()
     {
         try {

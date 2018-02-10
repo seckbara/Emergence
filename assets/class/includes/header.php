@@ -1,12 +1,15 @@
 <?php
     session_start();
+
+    require '../../../vendor/autoload.php';
+    use Emergence\Utilisateurs;
+
     if ((!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['id'] == ""))
     {
         header('Location: ../../pages/authentification/connection.php');
         exit;
     }
 
-    use Emergence\Utilisateurs;
     $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
 
 ?>

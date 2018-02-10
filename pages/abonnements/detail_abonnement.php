@@ -1,7 +1,7 @@
 <?php
-
-include_once "../../assets/class/includes/header.php";
 require_once '../../vendor/autoload.php';
+include_once "../../assets/class/includes/header.php";
+
 use Emergence\Abonnement;
 use Emergence\Adherent;
 use Emergence\Versement;
