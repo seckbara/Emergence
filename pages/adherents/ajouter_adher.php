@@ -232,10 +232,12 @@ $situations = (new Adherent())->AllSituation();
 </div>
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
+<script src="../../web/asset/bootstrap-fileinput/js/locales/fr.js"></script>
 
 <script>
 
     $("#file-certificat").fileinput({
+        language: "fr",
         showPreview: false,
         showUpload: false,
         elErrorContainer: '#kartik-file-errors',

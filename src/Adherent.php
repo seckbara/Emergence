@@ -442,6 +442,17 @@ class Adherent extends DBManager
         }
     }
 
+    /**
+     * @param $nom
+     * @param $prenom
+     * @param $date_naissance
+     * @param $tel
+     * @param $adresse
+     * @param $mail
+     * @param $type_doc
+     * @param $commentaire
+     * @param $id
+     */
     public function updateAdherent($nom, $prenom, $date_naissance, $tel, $adresse, $mail, $type_doc, $commentaire, $id)
     {
         try {
@@ -478,6 +489,9 @@ class Adherent extends DBManager
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function countAdherent()
     {
         try {
