@@ -367,6 +367,10 @@ class Abonnement extends DBManager
         }
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function AbonnementByIdAdhe($id)
     {
         try {
@@ -407,6 +411,18 @@ class Abonnement extends DBManager
             return DBManager::connect()->executeQuery('select count(id_activite) as nb from '.$this->getTable().' GROUP BY id_activite')->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer la situation id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function AllAbonnement()
+    {
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTable())->fetchAll(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
 }
