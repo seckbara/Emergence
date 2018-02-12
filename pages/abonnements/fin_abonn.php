@@ -18,60 +18,49 @@ $annee = (Functions::getAnnee());
                 <li class="active">Abonnements expirés</li>
             </ol>
         </section>
+
+
+        <div class="modal fade" id="modal-default">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Veuillez patientez</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p align="center"><img src="../../dist/img/loadind.gif" align="center"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- Main content -->
         <section class="content">
             <div class="box box-default">
                 <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Choisir un mois</label>
-                                <select class="form-control select2" style="width: 100%;" required name="type_abonn">
-                                    <?php foreach ($annee as $a) {
-                                        ?>
-                                        <option selected="selected" value="<?= $a->id ?>"><?= $a->month ?></option>
-                                        <?php
-                                    } ?>
-                                </select>
+                    <form id="fin_abonn" action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Choisir un mois</label>
+                                    <select class="form-control select2" style="width: 100%;" required name="type_abonn">
+                                        <?php foreach ($annee as $a) {
+                                            ?>
+                                            <option selected="selected" value="<?= $a->id ?>"><?= $a->month ?></option>
+                                            <?php
+                                        } ?>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">Rechercher</button>
                             </div>
-                            <button type="button" class="btn btn-primary btn-sm">Rechercher</button>
                         </div>
-                    </div>
+                    </form>
                     <br>
                     <!-- commencememnt du datatable -->
-                        <table id="example1" class="table table-bordered table-striped"><br>
-                            <thead>
-                            <tr>
-                                <th>Identifiant</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                                <th>Date de certificat</th>
-                                <th>Presence certificat</th>
-                                <th>Date d'abonnement</th>
-                                <th>Montant</th>
-                                <th>Durée d'abonnement</th>
-                                <th>Email</th>
-                                <th>Sexe</th>
-                                <th>Quartier</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th>Identifiant</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                                <th>Date de certificat</th>
-                                <th>Presence certificat</th>
-                                <th>Date d'abonnement</th>
-                                <th>Montant</th>
-                                <th>Durée d'abonnement</th>
-                                <th>Email</th>
-                                <th>Sexe</th>
-                                <th>Quartier</th>
-                                <th>Action</th>
-                            </tr>
-                            </tbody>
+                        <table id="example1" class="table table-bordered table-striped" hide><br>
+
                         </table>
                     <!-- Fin du datatable -->
 
@@ -84,12 +73,15 @@ $annee = (Functions::getAnnee());
 
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
-<script type="text/javascript" src= "https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" src= "https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 <script>
     $(function () {
-        $('#example1').DataTable({
+
+        var $table = $('#example1');
+        var $searchForm = $("#fin_abonn");
+
+
+        $table.dataTable({
             'paging'      : true,
             'lengthChange': true,
             'searching'   : true,
@@ -119,9 +111,51 @@ $annee = (Functions::getAnnee());
                     sortAscending:  ": activer pour trier la colonne par ordre croissant",
                     sortDescending: ": activer pour trier la colonne par ordre décroissant"
                 }
-            }
-        })
-    });
+            },
+            columns: [
+                { title: "Identifiant", data: 'id' },
+                { title: "Date de certificat", data: 'date_certificat' },
+                { title: "Type d'abonnement", data: 'type_abonnement' },
+                { title: "Date d'abonnement", data: 'date_abonnement' },
+                { title: "Durée d'abonnement", data: 'duree_abonnement'},
+                { title: "Montant du versement", data: 'montant'},
+                { title: "Id Adherent", data: 'id_adherent'},
+                { title: "Id Activité", data: 'id_activite'},
+                { title: "Type de paiement", data: 'type_paiement'},
+                { title: "Actions", data:'OrgBp', className: 'datatable-column-actions'}
+            ],
+            columnDefs: [
+                {
+                    render: function (data, type, row) {
+                        return '<a href="#" class="link-modal">' + data + '</a>';
+                    },
+                    targets: 0
+                },
+                {
+                    render: function (data, type, row) {
+                        return '<a href="" class="link-modal btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>';
+                    },
+                    targets: 9
+                }
+            ]
+        }).removeClass('hide');
 
+        $("#fin_abonn").submit(function(event){
+            event.preventDefault();
+            $('#modal-default').modal('show');
+            $.post( "scripts/fin_abonn.php", function( json ) {
+                if (json) {
+                    console.log(json);
+                    //$('#searchContainer').removeClass('hide');
+                    $table.DataTable().clear().rows.add(json).draw();
+                    $('#modal-default').modal('hide');
+                }
+            }, "json");
+           });
+        });
+
+    App.Utils.Form.persistData($searchForm, {
+        'autoSubmit': true
+    });
 
 </script>
