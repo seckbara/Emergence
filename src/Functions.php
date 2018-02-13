@@ -69,4 +69,45 @@ class Functions extends DBManager
             $exception->getMessage();
         }
     }
+
+    public function getYears($months, $years){
+        switch ($months) {
+            case "12":
+                return $years.'-'.$months.'-'.'31';
+                break;
+            case "11":
+                return $years.'-'.$months.'-'.'30';
+                break;
+            case "10":
+                return $years.'-'.$months.'-'.'31';
+                break;
+            case "9":
+                return $years.'-'.'09'.'-'.'30';
+                break;
+            case "8":
+                return $years.'-'.'08'.'-'.'31';
+                break;
+            case "7":
+                return $years.'-'.'07'.'-'.'30';
+                break;
+            case "6":
+                return $years.'-'.'06'.'-'.'31';
+                break;
+            case "5":
+                return $years.'-'.'05'.'-'.'30';
+                break;
+            case "4":
+                return $years.'-'.'04'.'-'.'31';
+                break;
+            case "3":
+                return $years.'-'.'03'.'-'.'30';
+                break;
+            case "2":
+                return $years.'-'.'02'.'-'.'28';
+                break;
+            case "1":
+                return $years.'-'.'01'.'-'.'31';
+                break;
+        }
+    }
 }

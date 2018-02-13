@@ -40,15 +40,16 @@ $annee = (Functions::getAnnee());
         <section class="content">
             <div class="box box-default">
                 <div class="box-body">
-                    <form id="fin_abonn" action="">
+                    <form id="fin_abonn" action="" method="post">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Choisir un mois</label>
-                                    <select class="form-control select2" style="width: 100%;" required name="type_abonn">
+                                    <select class="form-control select2" style="width: 100%;"  name="type_abonn">
+                                        <option selected="selected" value="">Selectionner un mois</option>
                                         <?php foreach ($annee as $a) {
                                             ?>
-                                            <option selected="selected" value="<?= $a->id ?>"><?= $a->month ?></option>
+                                            <option value="<?= $a->id ?>"><?= $a->month ?></option>
                                             <?php
                                         } ?>
                                     </select>
@@ -143,19 +144,19 @@ $annee = (Functions::getAnnee());
         $("#fin_abonn").submit(function(event){
             event.preventDefault();
             $('#modal-default').modal('show');
-            $.post( "scripts/fin_abonn.php", function( json ) {
+            $.post( "scripts/fin_abonn.php",$('#fin_abonn').serializeArray(), function( json ) {
                 if (json) {
                     console.log(json);
                     //$('#searchContainer').removeClass('hide');
                     $table.DataTable().clear().rows.add(json).draw();
                     $('#modal-default').modal('hide');
                 }
+                else{
+                    $('#modal-default').modal('hide');
+                    console.log('ufu');
+                }
             }, "json");
            });
         });
-
-    App.Utils.Form.persistData($searchForm, {
-        'autoSubmit': true
-    });
 
 </script>
