@@ -29,7 +29,7 @@ $annee = (Functions::getAnnee());
                         <h4 class="modal-title">Veuillez patientez</h4>
                     </div>
                     <div class="modal-body">
-                        <p align="center"><img src="../../dist/img/loadind.gif" align="center"></p>
+                        <p align="center"><img src="../../dist/img/loadind.gif" align="center" width="450" ></p>
                     </div>
                 </div>
             </div>

@@ -178,7 +178,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
             'info'        : true,
             'autoWidth'   : true,
             "sSearch":         "Rechercher&nbsp;:",
-            "lengthMenu": [[7, 14, 28, -1], [12, 14, 28, "Afficher tout"]],
+            "lengthMenu": [[16, 20, 28, -1], [16, 20, 28, "Afficher tout"]],
             language: {
                 processing:     "Traitement en cours...",
                 search:         "Rechercher&nbsp;:",

@@ -128,24 +128,18 @@ $situations = (new Adherent())->AllSituation();
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Certificat: &nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                <div class="input-group">
-                                    <label>
-                                        Oui &nbsp;
-                                        <input type="radio" name="certificat" value="O" class="flat-red" >
-                                    </label>
-                                    <label>
-                                        &nbsp; Non &nbsp;
-                                        <input type="radio" name="certificat" value="N" class="flat-red" checked>
-                                    </label>
-                                </div>
+                                <select class="form-control select2" style="width: 100%;" name="certificat" required>
+                                    <option value="O" selected>Oui</option>
+                                    <option value="N">Non</option>
+                                </select>
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="file_certificat">
                             <div class="form-group">
                                 <div class="form-group">
                                     <label>Choisir le fichier</label>
-                                        <input id="file-certificat" name="file_certificat" type="file" class="file">
+                                        <input id="file-certificats" name="file_certificat" type="file" class="file">
                                 </div>
                             </div>
                         </div>
@@ -244,7 +238,18 @@ $situations = (new Adherent())->AllSituation();
         allowedFileExtensions: ["jpg", "png", "gif","pdf"]
         //uploadUrl: '/site/file-upload-single'
     });
-//
+
+
+    $("select[name='certificat']").change(function()
+    {
+        if($(this).val() == "N"){
+            $('#file_certificat').hide();
+        }
+        else{
+            $('#file_certificat').show();
+        }
+    });
+
 //    var placeSearch, autocomplete;
 //    var componentForm = {
 //        street_number: 'short_name',

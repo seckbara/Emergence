@@ -71,15 +71,18 @@
       </div>
 
       <div class="row">
+
         <div class="col-xs-12">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> Sauvegarder votre mots de passe
+              <input type="checkbox">  Sauvegarder votre mots de passe
             </label>
           </div>
         </div>
+
         <div>
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Se connecter</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Se connecter</button><br>
+            <a href="inscription.php"  class="btn btn-default btn-block btn-sm">Créer un compte</a>
         </div>
       </div>
     </form>

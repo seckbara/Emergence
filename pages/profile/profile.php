@@ -158,12 +158,17 @@ $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
     $("#input-freqd-1").fileinput({
         language: "fr",
         uploadUrl: "scripts/saveImage.php",
+        uploadAsync: false,
+        showRemove: true,
+        showCancel: false,
+        showCaption: true,
+        initialPreviewShowDelete: false,
         allowedFileExtensions: ["jpg", "png", "gif"],
         initialPreview: [
             "<img class='kv-preview-data file-preview-image' src='<?= $current_user->chemin ?>' width='300px'>",
         ],
         initialPreviewConfig: [
-            {caption: "Nature-1.jpg", size: 6287, width: "", url: "/site/file-delete", key: 1},
+            {caption: "Nature-1.jpg", size: 6287, width: "", url: "", key: 1},
         ],
         uploadExtraData: {
             id : $( "input[name*='id']" ).val(),

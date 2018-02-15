@@ -12,7 +12,7 @@ $activite_name = (new Activite())->AllActivite();
 $activite_array = (new Abonnement())->getCount();
 $nomber_adherent = Functions::getNomberActivite($activite_array);
 
-$columnChart = new FusionCharts("column3d", "ex1", "100%", 400, "chart-1", "json", '{  
+$columnChart = new FusionCharts("column3d", "ex1", "100%", 500, "chart-1", "json", '{  
                 "chart":{  
                   "caption":"Statistique des activités en fonction du nombre d\'adherent",
                   "theme":"ocean",
@@ -54,8 +54,8 @@ $columnChart = new FusionCharts("column3d", "ex1", "100%", 400, "chart-1", "json
 // Render the chart
 $columnChart->render();
 
-$pie3dChart = new FusionCharts("pie3d", "ex2", "100%", 400, "chart-2", "json", '{   "chart": {
-        "caption": "Statistique des adherents selon leurs age",
+$pie3dChart = new FusionCharts("pie3d", "ex2", "100%", 500, "chart-2", "json", '{   "chart": {
+        "caption": "Statistique des adherents en fonction de leur âge",
         "startingangle": "120",
         "showlabels": "0",
         "showlegend": "1",

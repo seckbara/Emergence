@@ -406,7 +406,7 @@
                     </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="../../pages/statistique/stats.php"><i class="fa fa-bar-chart" aria-hidden="true"></i>Devis</a></li>
+                        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>Devis</a></li>
                         <li><a href="../../pages/statistique/listing.php"><i class="fa fa-th-list" aria-hidden="true"></i>Listing</a></li>
                     </ul>
                 </li>
