@@ -100,7 +100,7 @@ $today = Carbon::now()->toDateString();
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right datepicker" value="<?= $today ?>"  name="date_abonn" disabled required>
+                                    <input type="text" class="form-control pull-right datepicker" value="<?= $today ?>"  name="date_abonn" readonly required>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +153,6 @@ $today = Carbon::now()->toDateString();
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
 
                     <div class="row">
