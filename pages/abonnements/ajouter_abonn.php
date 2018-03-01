@@ -20,8 +20,7 @@ $type_abonnement = (new Activite())->AllTypeabonnement();
 $type_paie = (new Activite())->AllTypePaiement();
 $id_adherent = $_GET['id'];
 
-$now = Carbon::now();
-$today = Carbon::now()->toDateString();
+$today = Carbon::now()->format('d-m-Y');
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -44,7 +43,7 @@ $today = Carbon::now()->toDateString();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Certificat:</label>
+                                <label>Certificat :</label>
                                 <div class="input-group">
                                     <label>
                                         &nbsp; Oui &nbsp;
@@ -57,7 +56,7 @@ $today = Carbon::now()->toDateString();
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Date de certificat:</label>
+                                <label>Date de certificat :</label>
                                 <div class="input-group date">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
@@ -70,7 +69,7 @@ $today = Carbon::now()->toDateString();
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <label>Activité choisis</label>
+                                    <label>Activité choisis :</label>
                                     <select class="form-control select2" style="width: 100%;" required name="activite">
                                         <?php foreach ($activite as $activ) {
     ?>
@@ -81,7 +80,7 @@ $today = Carbon::now()->toDateString();
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Type d'abonnement</label>
+                                <label>Type d'abonnement :</label>
                                 <select class="form-control select2" style="width: 100%;" required name="type_abonn">
                                     <?php foreach ($type_abonnement as $type) {
         ?>
@@ -95,7 +94,7 @@ $today = Carbon::now()->toDateString();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Date d'abonnement:</label>
+                                <label>Date d'abonnement :</label>
                                 <div class="input-group date">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
@@ -106,7 +105,7 @@ $today = Carbon::now()->toDateString();
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Durée d'abonnement:</label>
+                                <label>Durée d'abonnement :</label>
                                 <div class="input-group">
                                     <label>
                                         3 mois &nbsp;
@@ -129,7 +128,7 @@ $today = Carbon::now()->toDateString();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Type de debut paiement</label>
+                                <label>Type de debut paiement :</label>
                                 <select class="form-control select2" style="width: 100%;" required name="type_paie">
                                     <?php foreach ($type_paie as $types_paiement) {
         ?>
@@ -141,7 +140,7 @@ $today = Carbon::now()->toDateString();
                         </div>
                         <div class="col-md-6 hide" id="div1">
                             <div class="form-group">
-                                <label>Choisir le certficat</label>
+                                <label>Choisir le certficat :</label>
                                 <div class="form-group" >
                                     <label class="control-label col-md-3" ><b>Choisir un fichier</b></label>
                                     <div class="controls col-md-9" >
@@ -158,14 +157,14 @@ $today = Carbon::now()->toDateString();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Montant total l'abonnement:</label>
+                                <label>Montant total l'abonnement :</label>
                                 <input type="number" min="0" class="form-control" name="montanttotal" placeholder="Montant d'abonnement" required/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="row marginBottom-20">
                                 <div class="col-md-11 col-xs-11">
-                                    <label>Versement</label>
+                                    <label>Versement :</label>
                                 </div>
                                 <div class="col-xs-1">
                                     <button type="button" class="btn btn-primary btn-sm addButton"><i class="fa fa-plus"></i>
@@ -178,16 +177,16 @@ $today = Carbon::now()->toDateString();
                                     <span></span>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="form-control-label col-md-4 marginLeft-10">Montant </label>
+                                    <label class="form-control-label col-md-4 marginLeft-10">Montant :</label>
                                     <div class="col-md-7 col-xs-11"><input type="number" min="0" name="versement[0][montant]" class="form-control" value="" placeholder="Versement"></div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="form-control-label col-md-4 marginLeft-10">Date de versement</label>
+                                    <label class="form-control-label col-md-4 marginLeft-10">Date de versement :</label>
                                     <div class="col-md-7 col-xs-11"><input type="text" name="versement[0][date_verse]" class="form-control pull-right datepicker"  placeholder="saisir la date de versement" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="form-control-label col-md-4 marginLeft-10">Commentaire</label>
+                                    <label class="form-control-label col-md-4 marginLeft-10">Commentaire :</label>
                                     <div class="col-md-7 col-xs-11">
                                         <textarea type="text" class="form-control pull-right" name="versement[0][commentaire]" rows="3" placeholder="Ajouter un commentaire" required></textarea>
                                     </div>
@@ -197,17 +196,17 @@ $today = Carbon::now()->toDateString();
 
                             <div class="form-group hidden marginLeft-10" id="contactTemplate">
                                 <div class="form-group row">
-                                    <label class="form-control-label col-md-4">Montant</label>
+                                    <label class="form-control-label col-md-4">Montant :</label>
                                     <div class="col-md-6 col-xs-11"><input type="number" min="0" class="form-control" name="montant" placeholder="Nom"></div>
                                     <div class="col-xs-1"><button type="button" class="btn btn-danger btn-sm btn removeButton"><i class="fa fa-minus"></i></button></div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-4 form-control-label">Date de versement</label>
+                                    <label class="col-md-4 form-control-label">Date de versement :</label>
                                     <div class="col-md-7 col-xs-11"><input type="text" class="form-control pull-right datepicker"  name="date_verse" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-4 form-control-label">Commentaire</label>
+                                    <label class="col-md-4 form-control-label">Commentaire :</label>
                                     <div class="col-md-7 col-xs-11"><textarea type="text" class="form-control pull-right"  name="commentaire" rows="3" placeholder="Ajouter un commentaire" required></textarea>
                                     </div>
                                 </div>

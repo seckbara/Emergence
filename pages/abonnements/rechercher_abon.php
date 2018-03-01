@@ -33,8 +33,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                 <div class="box">
                     <div class="box-header">
                         <div class="callout bg-info text-white hidden">
-                            <p>The construction of this layout differs from the normal one. In other words, the HTML markup of the navbar
-                                and the content will slightly differ than that of the normal layout.</p>
+                            <p></p>
                         </div>
                     </div>
 

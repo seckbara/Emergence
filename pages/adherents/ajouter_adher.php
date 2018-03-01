@@ -17,7 +17,7 @@ $situations = (new Adherent())->AllSituation();
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1><b>Formulaire d'ajout d'adherent</b></h1>
+        <h1>Formulaire d'ajout d'adherent</h1>
         <ol class="breadcrumb">
             <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Accueil</a></li>
             <li><a href="ajouter_adher.php">Adherent</a></li>
@@ -32,11 +32,11 @@ $situations = (new Adherent())->AllSituation();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Nom</label>
+                                <label>Nom :</label>
                                 <input type="text" class="form-control" name="nom_adherent" placeholder="Saisir le nom de l'adherent" required/>
                             </div>
                             <div class="form-group">
-                                <label>Date de naissance:</label>
+                                <label>Date de naissance :</label>
                                 <div class="input-group date">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
@@ -48,12 +48,12 @@ $situations = (new Adherent())->AllSituation();
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <label>Prenom</label>
+                                    <label>Prenom :</label>
                                     <input type="text" class="form-control" name="prenom_adherent" placeholder="Saisir le prenom de l'adherent" required/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Ville</label>
+                                <label>Ville :</label>
                                 <select class="form-control select2" style="width: 100%;" required name="ville">
                                     <?php foreach ($villes as $ville): ?>
                                     <option value="<?= $ville->id_ville ?>"><?= $ville->ville ?></option>
@@ -65,7 +65,7 @@ $situations = (new Adherent())->AllSituation();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Sexe &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <label>Sexe :&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 <div class="input-group">
                                     <label>
                                         Homme &nbsp;
@@ -80,7 +80,7 @@ $situations = (new Adherent())->AllSituation();
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Numéro de Téléphone</label>
+                                <label>Numéro de Téléphone :</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-phone"></i>
@@ -94,31 +94,20 @@ $situations = (new Adherent())->AllSituation();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Adresse</label>
+                                <label>Adresse :</label>
                                 <input type="text" class="form-control" name="adresse" placeholder="Saisir l'adresse" required/>
 
                             </div>
                         </div>
 
-<!--                        <div class="col-md-6">-->
-<!--                            <div id="locationField">-->
-<!--                                <label>Adresse2</label>-->
-<!--                                <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" class="form-control"><br>-->
-<!--                                <input class="form-control" id="street_number" disabled="true">-->
-<!--                                <input class="form-control" id="route" disabled="true">-->
-<!--                                <input class="form-control" id="locality" disabled="true">-->
-<!--                                <input class="form-control" id="administrative_area_level_1" disabled="true">-->
-<!--                                <input class="form-control" id="postal_code" disabled="true">-->
-<!--                                <input class="form-control" id="country" disabled="true"><br>-->
-<!--                        </div>-->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Adresse Email:</label>
+                                <label>Adresse Email :</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-envelope"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="email" placeholder="Saisir l'adresse email" required/>
+                                    <input type="email" class="form-control" name="email" placeholder="Saisir l'adresse email" required/>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +116,7 @@ $situations = (new Adherent())->AllSituation();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Certificat: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <label>Certificat : &nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 <select class="form-control select2" style="width: 100%;" name="certificat" required>
                                     <option value="O" selected>Oui</option>
                                     <option value="N">Non</option>
@@ -138,7 +127,7 @@ $situations = (new Adherent())->AllSituation();
                         <div class="col-md-6" id="file_certificat">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <label>Choisir le fichier</label>
+                                    <label>Choisir le fichier :</label>
                                         <input id="file-certificats" name="file_certificat" type="file" class="file">
                                 </div>
                             </div>
@@ -149,7 +138,7 @@ $situations = (new Adherent())->AllSituation();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Quartier</label>
+                                <label>Quartier :</label>
                                 <select class="form-control select2" style="width: 100%;" name="quartier" required>
                                     <option selected="selected">Le Havre</option>
                                     <option>Rouen</option>
@@ -164,7 +153,7 @@ $situations = (new Adherent())->AllSituation();
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Numéro de sécurité social</label>
+                                <label>Numéro de sécurité social :</label>
                                 <input type="text" class="form-control pull-right" placeholder="Numéro de sécurité social" name="num_secu" required>
                             </div>
                         </div>
@@ -173,7 +162,7 @@ $situations = (new Adherent())->AllSituation();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Type de document</label>
+                                <label>Type de document :</label>
                                 <select class="form-control select2" style="width: 100%;" name="document" required>
                                     <option selected="selected">Carte d'etudiant</option>
                                     <option>APS</option>
@@ -184,7 +173,7 @@ $situations = (new Adherent())->AllSituation();
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Téléphone fixe</label>
+                                <label>Téléphone fixe :</label>
                                 <input type="text" class="form-control pull-right" placeholder="Numéro de téléphone fixe" name="tel_fixe" required>
                             </div>
                         </div>
@@ -193,7 +182,7 @@ $situations = (new Adherent())->AllSituation();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Commentaire:</label>
+                                <label>Commentaire :</label>
                                 <textarea class="form-control" rows="3" placeholder="Ajouter un commentaire" name="commentaire" required></textarea>
                             </div>
                         </div>
@@ -201,7 +190,7 @@ $situations = (new Adherent())->AllSituation();
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <label>Situation Professionnel</label>
+                                    <label>Situation Professionnel :</label>
                                     <select class="form-control select2" style="width: 100%;" name="situation" required>
                                         <?php foreach ($situations as $situation): ?>
                                             <option value="<?= $situation['id'] ?>"><?= $situation['situation'] ?></option>

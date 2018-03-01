@@ -26,7 +26,7 @@ $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
                             <h4 class="modal-title">Veuillez patientez</h4>
                         </div>
                         <div class="modal-body">
-                            <p align="center"><img src="../../dist/img/loadind.gif" align="center"></p>
+                            <p align="center"><img src="../../dist/img/loadind.gif" align="center" width="450" ></p>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -93,8 +93,7 @@ $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
                             </div>
 
                             <div class="alert alert-error" role="alert" id="error" style="display: none">
-                                Les modification ne sont pas prise en compte, Car vous n'avez pas saisis les valeurs
-                                à modifier
+                                Les modification ne sont pas prises en compte.
                             </div>
 
                             <div class="box-body">

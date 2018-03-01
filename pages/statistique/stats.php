@@ -14,7 +14,7 @@ $nomber_adherent = Functions::getNomberActivite($activite_array);
 
 $columnChart = new FusionCharts("column3d", "ex1", "100%", 500, "chart-1", "json", '{  
                 "chart":{  
-                  "caption":"Statistique des activités en fonction du nombre d\'adherent",
+                  "caption":"Diagramme des adherents",
                   "theme":"ocean",
                   "xAxisName": "Nombre activités",
                   "yAxisName": "Nombre d\'adherent",
@@ -55,7 +55,7 @@ $columnChart = new FusionCharts("column3d", "ex1", "100%", 500, "chart-1", "json
 $columnChart->render();
 
 $pie3dChart = new FusionCharts("pie3d", "ex2", "100%", 500, "chart-2", "json", '{   "chart": {
-        "caption": "Statistique des adherents en fonction de leur âge",
+        "caption": "Diagramme des adherents",
         "startingangle": "120",
         "showlabels": "0",
         "showlegend": "1",
@@ -99,7 +99,7 @@ $pie3dChart->render();
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Statistique des adherents et abonnements</h1>
+            <h1>Statistique des adherents en fonction des activités choisis</h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
                 <li><a href="#">Adherent</a></li>

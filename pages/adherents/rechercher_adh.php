@@ -74,7 +74,7 @@ $adherents = $adherent->Alladherent();
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Id adherents</th>
+                                    <th>Identifiant</th>
                                     <th>Nom</th>
                                     <th>Prenom</th>
                                     <th>Date de naissance</th>
@@ -105,7 +105,7 @@ $adherents = $adherent->Alladherent();
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>Id adherents</th>
+                                    <th>Identifiant</th>
                                     <th>Nom</th>
                                     <th>Prenom</th>
                                     <th>Date de naissance</th>
