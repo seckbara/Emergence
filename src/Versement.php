@@ -12,6 +12,7 @@ class Versement extends DBManager
     public $date_versement;
     public $type_paiement;
     public $montant;
+    public $commentaire;
     protected $last_abonn_id;
     protected $abonnement_id;
 
@@ -62,7 +63,6 @@ class Versement extends DBManager
     {
         $this->commentaire = $commentaire;
     }
-    public $commentaire;
 
     /**
      * @return string
@@ -160,6 +160,13 @@ class Versement extends DBManager
         $this->montant = $montant;
     }
 
+    /**
+     * @param $date_versement
+     * @param $commentaire
+     * @param $montant
+     * @param $abonn_id
+     * @return int
+     */
     public function AjoutVersement($date_versement, $commentaire, $montant, $abonn_id)
     {
         try {
@@ -174,7 +181,9 @@ class Versement extends DBManager
         }
     }
 
-
+    /**
+     * @return int
+     */
     public function AjoutVersementTEST()
     {
         try {
@@ -203,12 +212,50 @@ class Versement extends DBManager
         }
     }
 
+    /**
+     * @param $id
+     * @return int
+     */
     public function deleteVersement($id)
     {
         try {
-            return  DBManager::connect()->delete($this->getTable(), array('abonnement_id' => $id));
+            return  DBManager::connect()->delete($this->getTable(), array('id' => $id));
         } catch (DBALException $e) {
             sprintf("Impossible de supprimer l'abonnement avec id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getVersement($id)
+    {
+        try {
+            return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
+        } catch (DBALException $e) {
+            sprintf("Impossible de recuperer le versement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function updateVersementById(){
+        try {
+            return DBManager::connect()->update(
+                $this->getTable(),
+                [
+                    'date_versement' => $this->getDateVersement(),
+                    'montant' => $this->getMontant(),
+                    'commentaire' => $this->getCommentaire()
+                ],
+                [
+                    'id' => $this->getId()
+                ]
+            );
+        } catch (DBALException $e) {
+            sprintf("Impossible de modifier l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
 }

@@ -43,7 +43,7 @@ $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
                             </div>
                             <div class="box-body">
                                 <div class="file-loading">
-                                    <input id="input-freqd-1" name="input-freqd-1[]" multiple type="file" accept="image/*" >
+                                    <input id="input-freqd-1" name="input-freqd-1" multiple type="file" accept="image/*">
                                 </div><br>
                             </div>
 
@@ -166,16 +166,14 @@ $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
         initialPreview: [
             "<img class='kv-preview-data file-preview-image' src='<?= $current_user->chemin ?>' width='300px'>",
         ],
-        initialPreviewConfig: [
-            {caption: "Nature-1.jpg", size: 6287, width: "", url: "", key: 1},
-        ],
         uploadExtraData: {
             id : $( "input[name*='id']" ).val(),
             nom : $( "input[name*='nom']" ).val(),
             prenom : $( "input[name*='prenom']" ).val()
         }
 
-    });
+    })
+
 
     $(".btn-upload-3").on("click", function() {
         $("#input-freqd-1").fileinput('upload');

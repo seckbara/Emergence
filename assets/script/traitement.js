@@ -20,6 +20,30 @@ function detail_adherent(adher)
     ajaxModaltoShow(data, url, 'detail');
 }
 
+function detail_verse(id_vers, id_abonn)
+{
+    console.log(id_vers, id_abonn);
+    var url 	= "scripts/modal/detail_vers.php";
+    var data = {
+        id_vers: id_vers,
+        id_abonn: id_abonn
+    };
+    ajaxModaltoShow(data, url, 'detail');
+}
+
+function modifier_verse(id_vers, id_abon, id_adh){
+    console.log(id_vers);
+    var url 	= "scripts/modal/update_vers.php";
+    var data = {
+        id_vers: id_vers,
+        id_abon: id_abon,
+        id_adhe: id_adh
+    };
+    console.log(data);
+    ajaxModaltoShow(data, url, 'modifier_vers');
+}
+
+
 function update_abonn(id_abonn){
     console.log(id_abonn);
     var url 	= "scripts/modal/update_abonnement.php";
@@ -41,12 +65,14 @@ function update_adherent(adher)
 }
 
 function ajaxModaltoShow(data, url, idModal) {
+    console.log('ddd');
     jQuery.ajax({
         type: 'POST',
         data: data,
         url: url,
         async: false,
         success: function(returnData, textStatus, jqXHR) {
+            console.log(returnData);
             var modalContent = returnData.split('##');
             //console.log(returnData);
             $('#'+idModal+' .modal-title').html(modalContent[0]);
@@ -79,3 +105,4 @@ function ajaxModaltoShowUpdate(data, url, idModal) {
         }
     });
 };
+

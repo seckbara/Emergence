@@ -32,6 +32,44 @@ $typeabonn = (new Abonnement())->TypeAbonn($abonnement->type_abonnement);
 
         <section class="content">
 
+            <div class="alert alert-success" style="display: none" id="success"></div>
+            <div class="alert alert-danger" style="display: none" id="error"></div>
+
+            <div class="modal fade" id="detail">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modifier_vers">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title primary"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p></p>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- SELECT2 EXAMPLE -->
             <div class="box box-default">
                 <!-- /.box-header -->
@@ -127,8 +165,8 @@ $typeabonn = (new Abonnement())->TypeAbonn($abonnement->type_abonnement);
                                     <td><?= $vers->montant ?></td>
                                     <td><?= $vers->commentaire ?></td>
                                     <td style='text-align:center;'>
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                                        <button type="button" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#detail"  onclick="detail_verse(<?=$vers->id ?>, <?= $_GET['abonnement'] ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modifier_vers" onclick="modifier_verse(<?= $vers->id ?>, <?= $_GET['abonnement'] ?>, <?= $_GET['adherent'] ?>)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                     </td>
                                 </tr>
@@ -144,9 +182,8 @@ $typeabonn = (new Abonnement())->TypeAbonn($abonnement->type_abonnement);
 
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
-
-<script src="../../assets/script/traitement.js"></script>
 <script src="../../web/asset/jquery-confirm/jquery.confirm.js"></script>
+<script src="../../assets/script/traitement.js"></script>
 
 
 <script>
@@ -185,18 +222,49 @@ $typeabonn = (new Abonnement())->TypeAbonn($abonnement->type_abonnement);
         })
     });
 
-    $(".confirm").confirm({
-        title:"Voulez-vous confirrmer",
-        text:"ëtes vous sur de vouloir supprimer cette abonnement",
-        confirm: function(button) {
-            //alert("You just confirmed.");
-        },
-        cancel: function(button) {
-            //alert("You aborted the operation.");
-        },
-        cancelButton: "Annuler",
-        confirmButton: "Supprimer"
+//    $(".confirm").confirm({
+//        title:"Voulez-vous confirrmer",
+//        text:"ëtes vous sur de vouloir supprimer cette abonnement",
+//        confirm: function(button) {
+//            //alert("You just confirmed.");
+//        },
+//        cancel: function(button) {
+//            //alert("You aborted the operation.");
+//        },
+//        cancelButton: "Annuler",
+//        confirmButton: "Supprimer"
+//    });
+
+    $('#example1').on("click", ".confirm", function(e){
+        e.preventDefault();
+        $link = $(this);
+        console.log($link);
+        var rowData = $('#example1').DataTable().row($link.closest('tr')).data();
+        var id = rowData[0];
+        $.confirm({
+            text: "Etes-vous sûr de vouloir suprrimer ce versement",
+            confirmButton: "Supprimer",
+            cancelButton: "Annuler",
+            confirm: function(data) {
+                console.log(id);
+
+                $.post("scripts/supprimer_vers.php", { id_vers: id}, function (data) {
+                    if(data['result'] === 'success') {
+                        $("#success").html("La supression s'est effectuer avec succée").show();
+                        setTimeout(function() { window.location.reload() },5000);
+                    }
+                    else{
+                        $("#error").html("Erreur lors de la supression").show();
+                        setTimeout(function() { window.location.reload() },5000);
+                    }
+                }, 'json');
+            }
+        });
     });
+
+//    function detail_vers($id){
+//        console.log($id);
+//    }
 
 </script>
 

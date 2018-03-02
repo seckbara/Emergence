@@ -14,13 +14,16 @@ $chemin_users = "../../dist/img/".$user->getNom().'_'.$user->getPrenom().'_'.$us
 if (!file_exists($chemin) && $_FILES) {
     mkdir($chemin, 0755, true);
 }
-$user->setChemin($chemin_users.$_FILES['input-freqd-1']['name'][0]);
+$user->setChemin($chemin_users.$_FILES['input-freqd-1']['name']);
 
 
 
 if ($user->updateImage()) {
 
-    move_uploaded_file($_FILES['input-freqd-1']['tmp_name'][0], $chemin.$_FILES['input-freqd-1']['name'][0]);
+    move_uploaded_file($_FILES['input-freqd-1']['tmp_name'], $chemin.$_FILES['input-freqd-1']['name']);
+    $reponse['status'] = "succe";
+    echo json_encode($reponse);
+
 
 } else {
     header('Location: ../../adherents/ajouter_adher.php');
