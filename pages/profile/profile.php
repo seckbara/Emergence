@@ -3,6 +3,8 @@ require '../../vendor/autoload.php';
 include_once "../../assets/class/includes/header.php";
 use Emergence\Utilisateurs;
 $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
+$allUser = (new Utilisateurs())->getAllUsers();
+//dump($allUser);
 ?>
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
 
@@ -44,28 +46,14 @@ $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
                             <div class="box-body">
                                 <div class="file-loading">
                                     <input id="input-freqd-1" name="input-freqd-1" multiple type="file" accept="image/*">
-                                </div><br>
+                                </div>
                             </div>
 
-<!--                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">-->
-<!--                                Launch Default Modal-->
-
                             <div class="box-body">
-<!--                                <div class="file-loading">-->
-<!--                                    <input id="input-freqd-1" name="input-freqd-1[]" multiple type="file" accept="image/*" >-->
-<!--                                </div><br>-->
-<!--                                <div class="text-left">-->
-<!--                                    <button type="button" class="btn btn-sm btn-danger btn-reset-3"><i class="fa fa-ban"></i> Supprimer la photo</button>-->
-<!--                                </div>-->
-                                <br><br><br><br><br><br>
+
                             </div>
                             <div class="box-body">
-<!--                                <div class="file-loading">-->
-<!--                                    <input id="input-freqd-1" name="input-freqd-1[]" multiple type="file" accept="image/*" >-->
-<!--                                </div><br>-->
-<!--                                <div class="text-left">-->
-<!--                                    <button type="button" class="btn btn-sm btn-danger btn-reset-3"><i class="fa fa-ban"></i> Supprimer la photo</button>-->
-<!--                                </div>-->
+
                             </div>
                         </div>
 
@@ -142,7 +130,48 @@ $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
 
                         </div>
 
+                    <div class="col-md-4">
+                        <div class="box box-info">
+
+                            <div class="box-header">
+                                <h3 class="box-title">Envoyer un message :</h3>
+                            </div>
+
+                            <div class="box-body">
+
+                                <form id="message">
+                                    <div class="form-group">
+                                        <label>Sujet :</label>
+                                        <input type="text" class="form-control pull-right" placeholder="Saisir le sujet du message" name="sujet" value="" >
+                                        <input type="hidden"name="current_id" value="<?= $current_user->id ?>" >
+                                    </div><br><br>
+
+                                    <div class="form-group">
+                                        <label>Destinataire :</label>
+                                        <select class="form-control select2" style="width: 100%;" required name="destinataire">
+                                            <?php foreach ($allUser as $user): ?>
+                                                <option value="<?= $user->id ?>"><?= $user->email ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Message :</label>
+                                        <textarea rows="2" cols="2" placeholder="Saisissez votre message" type="text" class="form-control pull-right" name="message" value="" ></textarea>
+                                    </div><br><br><br>
+
+                                    <div class="form-group">
+                                        <button type="button" class="btn-block btn-sm btn-primary message"> Envoyer</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
                     </div>
+
+
                 </div>
         </section>
     </section>
@@ -200,6 +229,25 @@ $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
 
     $(".enregistrer").on("click", function() {
         location.reload();
+    });
+
+    $(".message").on("click", function() {
+        $('#modal-default').modal('show');
+
+        $.post( "scripts/sendMessage.php",$( "#message" ).serialize(), function( datas ) {
+            console.log(datas.result);
+            if(datas.result == "success"){
+                $('#error').hide();
+                $('#success').show();
+            }
+            else{
+                $('#success').hide();
+                $('#error').show();
+            }
+            console.log(datas);
+            $('#modal-default').modal('hide');
+        }, "json");
+
     });
 </script>
 
