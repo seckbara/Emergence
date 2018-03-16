@@ -44,10 +44,6 @@ $columnChart = new FusionCharts("column3d", "ex1", "100%", 500, "chart-1", "json
                   {  
                      "label":"'.$activite[4]->nom_activite.'",
                       "value":"'.$activite[4]->nombre_activite.'"
-                  },
-                  {  
-                     "label":"'.$activite[5]->nom_activite.'",
-                      "value":"'.$activite[5]->nombre_activite.'"
                   }
                 ]
             }');
@@ -86,10 +82,6 @@ $pie3dChart = new FusionCharts("pie3d", "ex2", "100%", 500, "chart-2", "json", '
         {  
            "label":"'.$activite[4]->nom_activite.'",
            "value":"'.$activite[4]->nombre_activite.'"
-        },
-        {  
-           "label":"'.$activite[5]->nom_activite.'",
-           "value":"'.$activite[5]->nombre_activite.'"
         }
     ]
 }');

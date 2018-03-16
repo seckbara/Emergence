@@ -34,7 +34,7 @@ $date = new Abonnement();
 
         <!-- Main content -->
         <section class="content">
-            <form id="example-form" action="#">
+            <form id="renouveller_abonnement" action="post">
                 <div>
                     <h3>Adherent</h3>
                     <section>
@@ -42,13 +42,13 @@ $date = new Abonnement();
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Nom</label>
-                                    <input type="text" class="form-control" value="<?= $adherent->nom_adherent ?>" name="nom_adherent" placeholder="Saisir le nom de l'adherent" readonly required/>
+                                    <input type="text" class="form-control" value="<?= $adherent->nom_adherent ?>" name="nom_adherent" placeholder="Saisir le nom de l'adherent"  required/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Prenom</label>
-                                    <input type="text" class="form-control" value="<?= $adherent->prenom_adherent ?>" name="nom_adherent" placeholder="Saisir le prenom" readonly required/>
+                                    <input type="text" class="form-control" value="<?= $adherent->prenom_adherent ?>" name="nom_adherent" placeholder="Saisir le prenom"  required/>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@ $date = new Abonnement();
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" class="form-control"  value="<?= $adherent->email ?>" name="nom_adherent" placeholder="Saisir l'adresse email" readonly required/>
+                                    <input type="text" class="form-control"  value="<?= $adherent->email ?>" name="nom_adherent" placeholder="Saisir l'adresse email" required/>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ $date = new Abonnement();
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Date de certificat</label>
-                                    <input type="text" class="form-control" value="<?= $abonnement->date_certificat ?>" name="nom_adherent" placeholder="Saisir la date de certificat" >
+                                    <input type="text" class="form-control" value="<?= $abonnement->date_certificat ?>" id="datepicker" name="nom_adherent" placeholder="Saisir la date de certificat" >
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -120,7 +120,7 @@ $date = new Abonnement();
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Montant</label>
-                                    <input type="text" class="form-control" value="<?= $abonnement->montant ?>" name="nom_adherent" placeholder="Saisir le montant" >
+                                    <input type="text" class="form-control" value="<?= $abonnement->montant ?>" name="nom_adherent" placeholder="Saisir le montant" readonly>
                                 </div>
                             </div>
                         </div>
@@ -161,58 +161,29 @@ $date = new Abonnement();
                     </section>
                     <h3>Versements</h3>
                     <section>
-                        <div class="col-md-6">
-                            <div class="row marginBottom-20">
-                                <div class="col-xs-3">
-                                    <button type="button" class="btn btn-primary btn-sm addButton"><i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div><hr/>
+                        <div class="col-md-12">
                             <div id="contactForm">
                                 <div id="signupalert" style="display:none" class="alert alert-danger">
                                     <p>Error:</p>
                                     <span></span>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="form-control-label col-md-4 marginLeft-10">Montant </label>
-                                    <div class="col-md-9 col-xs-11"><input type="number" min="0" name="versement[0][montant]" class="form-control" value="" placeholder="Versement"></div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="form-control-label col-md-4 marginLeft-10">Date de versement</label>
-                                    <div class="col-md-9 col-xs-11"><input type="text" name="versement[0][date_verse]" class="form-control pull-right datepicker"  placeholder="saisir la date de versement" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="form-control-label col-md-4 marginLeft-10">Commentaire</label>
-                                    <div class="col-md-9 col-xs-11">
-                                        <textarea type="text" class="form-control pull-right" name="versement[0][commentaire]" rows="3" placeholder="Ajouter un commentaire" required></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- The template for adding new field -->
-
-                            <div class="form-group hidden marginLeft-10" id="contactTemplate">
-                                <div class="form-group row">
-                                    <label class="form-control-label col-md-4">Montant</label>
-                                    <div class="col-md-6 col-xs-11"><input type="number" min="0" class="form-control" name="montant" placeholder="Nom"></div>
-                                    <div class="col-xs-1"><button type="button" class="btn btn-danger btn-sm btn removeButton"><i class="fa fa-minus"></i></button></div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 form-control-label">Date de versement</label>
-                                    <div class="col-md-7 col-xs-11"><input type="text" class="form-control pull-right datepicker"  name="date_verse" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 form-control-label">Commentaire</label>
-                                    <div class="col-md-7 col-xs-11"><textarea type="text" class="form-control pull-right"  name="commentaire" rows="3" placeholder="Ajouter un commentaire" required></textarea>
-                                    </div>
+                                    <div class = "col-md-4"><input type="number" min="0" name="montant" class="form-control" value="" placeholder="Saisir le montant du versement"></div>
+                                    <div class = "col-md-4"><input type="text" name="date_versement" id="datepicker" class="form-control" placeholder="Saisir la date du versement"></div>
+                                    <div class = "col-md-4"><textarea name="commentaire" rows="5" cols="5" class="form-control" value="" placeholder="Saisir votre commentaire"></textarea></div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <h3>Validation</h3>
+                    <h3>Liste des versements</h3>
                     <section>
-                        <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+                        <div class="col-md-12">
+                            <div id="contactForm">
+                                <div class="form-group row">
+
+                                </div>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </form>
@@ -227,11 +198,31 @@ $date = new Abonnement();
 
 
 <script>
-    var form = $("#example-form");
+    var form = $("#renouveller_abonnement");
+
+//    var settings = {
+//        labels: {
+//            current: "current step:",
+//            pagination: "Pagination",
+//            finish: "Finish",
+//            next: "Next",
+//            previous: "Previous",
+//            loading: "Loading ..."
+//        }
+//    };
+//
     form.children("div").steps({
         headerTag: "h3",
         bodyTag: "section",
         transitionEffect: "slideLeft",
+        labels: {
+            current: "current step:",
+            pagination: "Pagination",
+            finish: "Valider",
+            next: "Suivant",
+            previous: "Précédent",
+            loading: "Loading ..."
+        },
         onStepChanging: function (event, currentIndex, newIndex)
         {
             form.validate().settings.ignore = ":disabled,:hidden";
