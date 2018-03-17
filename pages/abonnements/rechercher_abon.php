@@ -7,6 +7,8 @@ use Emergence\Functions;
 
 include_once "../../assets/class/includes/header.php";
 
+unset($_SESSION['versement']);
+
 $adherent = new Adherent();
 $adherents = $adherent->Alladherent();
 $allabonnement = (new Abonnement())->AllabonnementByAdherent();
