@@ -2,7 +2,6 @@
 
 namespace Emergence;
 
-
 class Message extends DBManager
 {
     private $id;
@@ -18,7 +17,6 @@ class Message extends DBManager
      */
     public function __construct()
     {
-
     }
 
 
@@ -137,7 +135,8 @@ class Message extends DBManager
     /**
      * @return int
      */
-    public function sendMessage(){
+    public function sendMessage()
+    {
         try {
             return DBManager::connect()->insert($this->getTable(), array(
                 'sujet' => $this->getSujet(),
@@ -150,5 +149,4 @@ class Message extends DBManager
             sprintf("Insert utilsateurs has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
-
 }

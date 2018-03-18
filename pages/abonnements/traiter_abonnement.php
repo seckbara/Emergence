@@ -9,7 +9,6 @@
     use Emergence\Villes;
     use Emergence\Activite;
 
-
     $adherent = (new Adherent())->AdherentById($_GET['adherent']);
     $abonnement = (new Abonnement())->AbonnementById($_GET['abonnement']);
     $versement = (new Versement())->VersementById($_GET['abonnement']);
@@ -23,10 +22,6 @@
     $_SESSION['villes'] = $villes;
     $_SESSION['type_abonnement'] = $type_abonnement;
     $_SESSION['activite'] = $activite;
-
-
-    $t = count($_SESSION['versement']);
-
 
     ?>
 
@@ -141,10 +136,10 @@
                                         <label>Activité choisis</label>
                                         <select class="form-control select2" style="width: 100%;" required name="activite">
                                             <?php foreach ($_SESSION['activite'] as $activ) {
-            ?>
+        ?>
                                                 <option selected="selected" value="<?= $activ->id ?>"><?= $activ->nom_activite ?></option>
                                             <?php
-        } ?>
+    } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -172,11 +167,17 @@
                         <h3>Versements</h3>
                         <section>
                             <div class="col-md-12">
-
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button type="button" id="voir" class="btn btn-primary btn-sm">Voir les versements</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
                                 <div id="table" style="display: none">
                                     <table class="table table-primary">
                                         <thead>
-                                        <tr>
+                                        <tr class="info">
                                             <th scope="col">Montant du versement</th>
                                             <th scope="col">Date de versement</th>
                                             <th scope="col">Commentaire</th>
@@ -200,20 +201,20 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Montant :</label>
-                                            <input type="number" min="0" name="montant" id="montant" class="form-control" placeholder="Saisir le montant du versement">
+                                            <input type="number" min="0" name="montant" id="montant" class="form-control" placeholder="Saisir le montant du versement" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Date de versement :</label>
-                                            <input type="text" name="date_versement" id="date" value="<?= date('d-m-Y') ?>" class="form-control" placeholder="Saisir la date du versement">
+                                            <input type="text" name="date_versement" id="date" value="<?= date('d-m-Y') ?>" class="form-control" placeholder="Saisir la date du versement" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Commentaire :</label>
-                                            <textarea name="commentaire" id="commentaire" rows="5" cols="5" class="form-control" placeholder="Saisir votre commentaire"></textarea>
+                                            <textarea name="commentaire" id="commentaire" rows="5" cols="5" class="form-control" placeholder="Saisir votre commentaire" required></textarea>
                                             <br>
                                             <button type="button" value="ajouter" id="ajout_vers" class="btn btn-primary btn-block btn-sm">Ajouter</button>
                                         </div>
@@ -226,6 +227,38 @@
                             <div class="col-md-12">
                                 <div id="contactForm">
                                     <div class="form-group row" id="list_versement">
+                                        <section>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="list-group">
+                                                        <p class="list-group-item active">Adherent</p>
+                                                        <p class="list-group-item"><b>Nom :</b> <?= $_SESSION['adherent']->nom_adherent ?></p>
+                                                        <p class="list-group-item"><b>Prénom :</b> <?= $_SESSION['adherent']->prenom_adherent ?></p>
+                                                        <p class="list-group-item"><b>Date de naissance :</b><?= $_SESSION['adherent']->date_naissance ?></p>
+                                                        <p class="list-group-item"><b>Présence certificat :</b><?= $_SESSION['adherent']->certificat ?></p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="list-group">
+                                                        <p class="list-group-item active">Abonnement</p>
+                                                        <p class="list-group-item"><b>Date d'abonnement :</b><?= $_SESSION['abonnement']->date_abonnement ?></p>
+                                                        <p class="list-group-item"><b>Type de paiement</b><?= $_SESSION['abonnement']->type_paiement ?></p>
+                                                        <p class="list-group-item"><b>Date de certfict</b><?= $_SESSION['abonnement']->date_certificat ?></p>
+                                                        <p class="list-group-item"><b>Durée d'abonnment</b><?= $_SESSION['abonnement']->duree_abonnement ?> mois</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="list-group">
+                                                        <p class="list-group-item active">Versement</p>
+                                                            <?php foreach ($_SESSION['versement'] as $versement){
+                                                                echo '<p class="list-group-item"><b>Montant du versement : </b>' .$versement["montant"].' &euro;</p> ';
+                                                            } ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
 
                                     </div>
                                 </div>
@@ -271,7 +304,6 @@
             },
             onFinished: function (event, currentIndex)
             {
-                alert('ok');
                 $.post(url, {data: data}, function(result){
 
                 });
@@ -301,6 +333,9 @@
         $("#rajouter").click(function() {
             $("#contactForm").show();
             $("#table").hide();
+            $("#montant").val('');
+            $("#commentaire").val('');
+            $("#voir").show();
         });
 
 
@@ -311,5 +346,14 @@
                 $("#liste-verse").html(data);
             });
         }
+
+        $("#voir").click(function() {
+            $.post('scripts/versement.php', function(data){
+                $("#table").show();
+                $("#contactForm").hide();
+                $("#liste-verse").html(data);
+                $("#voir").hide();
+            });
+        });
 
     </script>

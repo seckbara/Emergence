@@ -2,6 +2,7 @@
 require '../../vendor/autoload.php';
 include_once "../../assets/class/includes/header.php";
 use Emergence\Functions;
+
 $annee = (Functions::getAnnee());
 
 ?>
@@ -48,10 +49,10 @@ $annee = (Functions::getAnnee());
                                     <select class="form-control select2" style="width: 100%;"  name="type_abonn">
                                         <option selected="selected" value="">Selectionner un mois</option>
                                         <?php foreach ($annee as $a) {
-                                            ?>
+    ?>
                                             <option value="<?= $a->id ?>"><?= $a->month ?></option>
                                             <?php
-                                        } ?>
+} ?>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm">Rechercher</button>

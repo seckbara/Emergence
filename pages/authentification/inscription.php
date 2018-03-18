@@ -1,6 +1,7 @@
 <?php
 require '../../vendor/autoload.php';
 use Emergence\Utilisateurs;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,10 +55,9 @@ use Emergence\Utilisateurs;
                 } else {
                     $user = (new Utilisateurs())->SaveUsers($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['pass']);
 
-                echo "<script>setTimeout(function() {
+                    echo "<script>setTimeout(function() {
                         window.location='connection.php';
                     }, 2000)</script>"  ;
-
                 }
             }
         }
@@ -71,7 +71,9 @@ use Emergence\Utilisateurs;
               </div>
           <?php elseif (!($_POST['valider']) && (!empty($error))): ?>
               <div class="alert alert-danger">
-                  <strong>Erreur: </strong> <?php foreach ($error as $val){ echo $val;}  ?>
+                  <strong>Erreur: </strong> <?php foreach ($error as $val) {
+        echo $val;
+    }  ?>
               </div>
           <?php endif; ?>
     <form action="" method="post">

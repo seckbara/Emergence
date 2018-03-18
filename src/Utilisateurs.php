@@ -242,7 +242,8 @@ class Utilisateurs extends DBManager
      * @param $id
      * @return mixed
      */
-    public function getUsers($id){
+    public function getUsers($id)
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTable().' where id = ?', array($id))->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
@@ -298,7 +299,8 @@ class Utilisateurs extends DBManager
     /**
      * @return array
      */
-    public function getAllUsers(){
+    public function getAllUsers()
+    {
         try {
             return DBManager::connect()->executeQuery('select * from '.$this->getTable())->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {

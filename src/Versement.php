@@ -241,7 +241,8 @@ class Versement extends DBManager
     /**
      * @return int
      */
-    public function updateVersementById(){
+    public function updateVersementById()
+    {
         try {
             return DBManager::connect()->update(
                 $this->getTable(),

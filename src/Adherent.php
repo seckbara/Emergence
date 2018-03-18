@@ -26,7 +26,7 @@ class Adherent extends DBManager
     public $tel_fixe;
     public $commentaire;
     public $chemin_certificat;
-
+    
 
     /**
      * Adherent constructor.

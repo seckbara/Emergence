@@ -2,6 +2,7 @@
 require '../../vendor/autoload.php';
 include_once "../../assets/class/includes/header.php";
 use Emergence\Utilisateurs;
+
 $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
 $allUser = (new Utilisateurs())->getAllUsers();
 //dump($allUser);

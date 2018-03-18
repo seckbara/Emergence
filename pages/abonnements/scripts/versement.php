@@ -4,12 +4,12 @@
 
     use Emergence\Versement;
 
-    if(isset($_POST) && $_POST['action'] == "supprimer"){
+    if (isset($_POST) && $_POST['action'] == "supprimer") {
         unset($_SESSION['versement'][$_POST['id']]);
     }
 
     $i = max(array_keys($_SESSION['versement']));;
-    if($_POST['data']['action'] == "ajouter"){
+    if ($_POST['data']['action'] == "ajouter") {
         $i++;
         $_SESSION['versement'][$i]["montant"] = $_POST['data']['montant'];
         $_SESSION['versement'][$i]["date"] = $_POST['data']['date'];
@@ -19,13 +19,12 @@
 
     $html = "";
 
-    foreach ($_SESSION['versement'] as $t)
-    {
+    foreach ($_SESSION['versement'] as $t) {
         $d = $_SESSION['versement'][$i]["index"];
         $p = $t[$i]["montant"];
         $html .= '
-                            <tr class="info">
-                              <th>'.$t["montant"].'</th>
+                            <tr>
+                              <th>'.$t["montant"].' &euro;</th>
                               <th>'.$t["date"].'</th>
                               <th>'.$t["commentaire"].'</th>
                               <th>
@@ -38,5 +37,3 @@
 
 
     echo $html;
-
-

@@ -3,7 +3,7 @@
     require_once '../../vendor/autoload.php';
     use Emergence\Utilisateurs;
 
-//    if ((!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['id'] == null) )
+    //    if ((!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['id'] == null) )
 //    {
 //        header('Location: connection.php');
 //        exit();

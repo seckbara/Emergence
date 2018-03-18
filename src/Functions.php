@@ -61,16 +61,17 @@ class Functions extends DBManager
     /**
      * @return array
      */
-    public static function getAnnee(){
-        try{
+    public static function getAnnee()
+    {
+        try {
             return DBManager::connect()->executeQuery("select * from " .(new Functions())->getTableAnnee())->fetchAll(PDO::FETCH_OBJ);
-        }
-        catch (Exception $exception){
+        } catch (Exception $exception) {
             $exception->getMessage();
         }
     }
 
-    public function getYears($months, $years){
+    public function getYears($months, $years)
+    {
         switch ($months) {
             case "12":
                 return $years.'-'.$months.'-'.'31';
