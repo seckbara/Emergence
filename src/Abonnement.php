@@ -420,7 +420,7 @@ class Abonnement extends DBManager
     public function AllAbonnement()
     {
         try {
-            return DBManager::connect()->executeQuery('select * from '.$this->getTable())->fetchAll(PDO::FETCH_OBJ);
+            return DBManager::connect()->executeQuery('select * from abonnements a, adherent ad, activites ac, type_abonnement t, type_de_paiements tp where a.id_adherent = ad.id and ac.id = a.id_activite and t.id = a.type_abonnement and tp.id = a.type_paiement')->fetchAll(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }

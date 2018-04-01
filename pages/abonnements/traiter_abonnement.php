@@ -31,9 +31,9 @@
             <section class="content-header">
                 <h1>Renouveller un abonnement</h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                    <li><a href="#">Adherent</a></li>
-                    <li class="active">Renouvellement</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i><b>Accueil</b></a></li>
+                    <li><a href="#"><b>Adherent</b></a></li>
+                    <li class="active"><b>Renouvellement</b></li>
                 </ol>
             </section>
 

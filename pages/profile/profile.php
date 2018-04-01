@@ -1,22 +1,40 @@
 <?php
+error_reporting(0);
 require '../../vendor/autoload.php';
 include_once "../../assets/class/includes/header.php";
 use Emergence\Utilisateurs;
 
 $current_user = (new Utilisateurs())->getUsers($_SESSION['utilisateur']['id']);
 $allUser = (new Utilisateurs())->getAllUsers();
-//dump($allUser);
+//dump($current_user->chemin);
 ?>
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+<style>
+    .kv-avatar ,.kv-avatar{
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        text-align: center;
+    }
+    .kv-avatar {
+        display: inline-block;
+    }
+    .kv-avatar {
+        display: table-cell;
+        width: 213px;
+    }
+</style>
 
     <!-- Content Wrapper. Contains page content -->
     <section class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                    <li><a href="#">Adherent</a></li>
-                    <li class="active">Espace uitilisateur</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i><b>Accueil</b></a></li>
+                    <li><a href="#"><b>Profile</b></a></li>
+                    <li class="active"><b>Esapce utilisateur</b></li>
             </ol>
             <h1>Bienvenu <?= $_SESSION['utilisateur']['nom'] ?>  <?= $_SESSION['utilisateur']['prenom']  ?></h1><br><br>
 
@@ -37,40 +55,42 @@ $allUser = (new Utilisateurs())->getAllUsers();
                 <!-- /.modal-dialog -->
             </div>
 
+            <div id="kv-avatar-errors-1" class="center-block" style="width:800px;display:none"></div>
                 <div class="row">
+                    <form class="form form-vertical" id="avatar" action="scripts/saveImage.php" method="post" enctype="multipart/form-data">
+                            <div class="col-md-4">
+                                <input type="hidden" class="form-control pull-right" name="id" value="<?= $current_user->id ?>">
+                                <input type="text" class="form-control pull-right" name="nom" value="<?= $current_user->lastname ?>" readonly>
+                                <input type="text" class="form-control pull-right" name="prenom" value="<?= $current_user->username ?>" readonly>
+                                <div class="box box-info">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Changer votre photo de profil</h3>
+                                    </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-2 text-center">
+                                                <div class="kv-avatar">
+                                                    <div class="file-loading">
+                                                        <input id="avatar-1" name="avatar-1" type="file" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
+
+                                <div class="box box-info">
+                                    <div class="box-body">
+                                        <div class="text-center">
+                                            <input type="submit" class="btn-block btn-sm btn-success" value="Enregistrer"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                    </form>
+
                     <div class="col-md-8">
-
-                        <div class="box box-info">
-                            <div class="box-header">
-                                <h3 class="box-title">Changer votre photo de profil</h3>
-                            </div>
-                            <div class="box-body">
-                                <div class="file-loading">
-                                    <input id="input-freqd-1" name="input-freqd-1" multiple type="file" accept="image/*">
-                                </div>
-                            </div>
-
-                            <div class="box-body">
-
-                            </div>
-                            <div class="box-body">
-
-                            </div>
-                        </div>
-
-                        <div class="box box-info">
-                            <div class="box-body">
-                                <div class="text-center">
-                                    <button type="button" class="btn-block btn-sm btn-success enregistrer"></i> Enregistrer</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="col-md-4">
                         <div class="box box-info">
 
                             <div class="box-header">
@@ -125,7 +145,6 @@ $allUser = (new Utilisateurs())->getAllUsers();
                                     <button type="button" class="btn-block btn-sm btn-success formulaire"> Valider</button>
 
                                 </form>
-
                                 </div>
                             </div>
 
@@ -184,30 +203,6 @@ $allUser = (new Utilisateurs())->getAllUsers();
 <script src="../../web/asset/bootstrap-fileinput/js/locales/fr.js"></script>
 
 <script>
-    $("#input-freqd-1").fileinput({
-        language: "fr",
-        uploadUrl: "scripts/saveImage.php",
-        uploadAsync: false,
-        showRemove: true,
-        showCancel: false,
-        showCaption: true,
-        initialPreviewShowDelete: false,
-        allowedFileExtensions: ["jpg", "png", "gif"],
-        initialPreview: [
-            "<img class='kv-preview-data file-preview-image' src='<?= $current_user->chemin ?>' width='300px'>",
-        ],
-        uploadExtraData: {
-            id : $( "input[name*='id']" ).val(),
-            nom : $( "input[name*='nom']" ).val(),
-            prenom : $( "input[name*='prenom']" ).val()
-        }
-
-    })
-
-
-    $(".btn-upload-3").on("click", function() {
-        $("#input-freqd-1").fileinput('upload');
-    });
 
     $(".formulaire").on("click", function() {
         $('#modal-default').modal('show');
@@ -228,9 +223,6 @@ $allUser = (new Utilisateurs())->getAllUsers();
 
     });
 
-    $(".enregistrer").on("click", function() {
-        location.reload();
-    });
 
     $(".message").on("click", function() {
         $('#modal-default').modal('show');
@@ -249,6 +241,34 @@ $allUser = (new Utilisateurs())->getAllUsers();
             $('#modal-default').modal('hide');
         }, "json");
 
+    });
+
+    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
+        '' +
+        '' +
+        '</button>';
+    $("#avatar-1").fileinput({
+        overwriteInitial: true,
+        maxFileSize: 1500,
+        showClose: false,
+        showCaption: false,
+        browseLabel: '',
+        removeLabel: '',
+        <?php if ($current_user->chemin != ""): ?>
+        initialPreview: [
+            "<img class='kv-preview-data file-preview-image' src='<?= $current_user->chemin ?>' width='300px'>"
+        ],
+        <?php endif; ?>
+        browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+        removeTitle: 'Cancel or reset changes',
+        elErrorContainer: '#kv-avatar-errors-1',
+        msgErrorClass: 'alert alert-block alert-danger',
+        <?php if ($current_user->chemin == ""): ?>
+        defaultPreviewContent: '<img src="../../dist/img/default.png" width="380" height="380" alt="Your Avatar">',
+        <?php endif; ?>
+        layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+        allowedFileExtensions: ["jpg", "png", "gif"]
     });
 </script>
 

@@ -94,9 +94,9 @@ $pie3dChart->render();
         <section class="content-header">
             <h1>Statistique des adherents en fonction des activités choisis</h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                <li><a href="#">Afficher les stats</a></li>
-                <li class="active">Stats adherent</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i><b>Accueil</b></a></li>
+                <li><a href="#"><b>Afficher les stats</b></a></li>
+                <li class="active"><b>Stats adherent</b></li>
 
             </ol>
             <br>
@@ -104,7 +104,6 @@ $pie3dChart->render();
             <div id="chart-2"><!-- Fusion Charts will render here--></div>
         </section>
     </div>
-<!-- /.content-wrapper -->
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
 

@@ -24,9 +24,9 @@ $typeabonn = (new Abonnement())->TypeAbonn($abonnement->type_abonnement);
         <section class="content-header">
             <h1>Détail de l'abonnement de <?= $adherent->nom_adherent.' '.$adherent->prenom_adherent  ?></h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
-                <li><a href="#">Abonnement</a></li>
-                <li class="active">Detail abonnement</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i><b>Accueil</b></a></li>
+                <li><a href="#"><b>Abonnement</b></a></li>
+                <li class="active"><b>Detail abonnement</b></li>
             </ol>
         </section>
 

@@ -13,9 +13,9 @@ $adherents = $adherent->Alladherent();
     <section class="content-header">
         <h1>Formulaire de recherche d'adherent</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li><a href="#">Adherents</a></li>
-            <li class="active">Rechercher</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i><b>Accueil</b></a></li>
+            <li><a href="#"><b>Adherents</b></a></li>
+            <li class="active"><b>Rechercher</b></li>
         </ol>
     </section>
 

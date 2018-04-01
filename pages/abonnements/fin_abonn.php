@@ -14,9 +14,9 @@ $annee = (new Functions())->getAnnee();
         <section class="content-header">
             <h1>Liste des abonnements expirés en <?= date("Y"); ?></h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                <li><a href="#">Afficher les stats</a></li>
-                <li class="active">Fin abonnement</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i><b>Accueil</b></a></li>
+                <li><a href="#"><b>Afficher les stats</b></a></li>
+                <li class="active"><b>Fin abonnement</b></li>
             </ol>
         </section>
 
@@ -46,7 +46,7 @@ $annee = (new Functions())->getAnnee();
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Choisir un mois</label>
-                                    <select class="form-control select2" style="width: 100%;"  name="type_abonn">
+                                    <select class="form-control select2" style="width: 100%;"  name="type_abonn" required>
                                         <option selected="selected" value="">Selectionner un mois</option>
                                         <?php foreach ($annee as $a) {
     ?>
@@ -121,10 +121,10 @@ $annee = (new Functions())->getAnnee();
                 { title: "Date d'abonnement", data: 'date_abonnement' },
                 { title: "Durée d'abonnement", data: 'duree_abonnement'},
                 { title: "Montant du versement", data: 'montant'},
-                { title: "Id Adherent", data: 'id_adherent'},
-                { title: "Id Activité", data: 'id_activite'},
-                { title: "Type de paiement", data: 'type_paiement'},
-                { title: "Actions", data:'OrgBp', className: 'datatable-column-actions'}
+                { title: "Nom Adherent", data: 'nom_adherent'},
+                { title: "Prenom Adherent", data: 'prenom_adherent'},
+                { title: "Activité choisis", data: 'nom_activite'},
+                { title: "Type de paiement", data: 'type'},
             ],
             columnDefs: [
                 {
@@ -135,9 +135,15 @@ $annee = (new Functions())->getAnnee();
                 },
                 {
                     render: function (data, type, row) {
-                        return '<a href="" class="link-modal btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>';
+                        return '' + data + ' €';
                     },
-                    targets: 9
+                    targets: 4
+                },
+                {
+                    render: function (data, type, row) {
+                        return '' + data + ' mois';
+                    },
+                    targets: 5
                 }
             ]
         }).removeClass('hide');

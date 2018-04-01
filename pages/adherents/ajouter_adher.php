@@ -17,9 +17,9 @@ $situations = (new Adherent())->AllSituation();
     <section class="content-header">
         <h1>Formulaire d'ajout d'adherent</h1>
         <ol class="breadcrumb">
-            <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li><a href="ajouter_adher.php">Adherent</a></li>
-            <li class="active">Ajouter</li>
+            <li><a href="../../index.html"><i class="fa fa-dashboard"></i><b>Accueil</b></a></li>
+            <li><a href="ajouter_adher.php"><b>Adherent</b></a></li>
+            <li class="active"><b>Ajouter</b></li>
         </ol>
     </section>
 
