@@ -253,6 +253,9 @@
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- Page script -->
 <script type="text/javascript" src= "../../web/asset/kartik-v/bootstrap-fileinput/js/fileinput.js"></script>
+<!-- bootstrap date time picker -->
+<script type="text/javascript" src="../../web/asset/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
 <script>
     $(function () {
         //Initialize Select2 Elements
@@ -287,11 +290,6 @@
                 $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
             }
         )
-
-        //Date picker
-        $('#datepicker').datepicker({
-            autoclose: true
-        })
 
         //iCheck for checkbox and radio inputs
         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({

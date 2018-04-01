@@ -219,8 +219,7 @@ $typeabonn = (new Abonnement())->TypeAbonn($abonnement->type_abonnement);
                     sortDescending: ": activer pour trier la colonne par ordre décroissant"
                 }
             }
-        })
-    });
+        });
 
 //    $(".confirm").confirm({
 //        title:"Voulez-vous confirrmer",
@@ -262,9 +261,8 @@ $typeabonn = (new Abonnement())->TypeAbonn($abonnement->type_abonnement);
         });
     });
 
-//    function detail_vers($id){
-//        console.log($id);
-//    }
+    });
+
 
 </script>
 

@@ -10,12 +10,10 @@ include_once "../../assets/class/includes/header.php";
 $ville = new Villes();
 $villes = $ville->AllVilles();
 $situations = (new Adherent())->AllSituation();
-//dump($situations);
 ?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>Formulaire d'ajout d'adherent</h1>
         <ol class="breadcrumb">
@@ -85,7 +83,7 @@ $situations = (new Adherent())->AllSituation();
                                     <div class="input-group-addon">
                                         <i class="fa fa-phone"></i>
                                     </div>
-                                    <input type="text" class="form-control"  required name="tel">
+                                    <input type="tel" class="form-control"  required name="tel" pattern="[0-9]{10}">
                                 </div>
                             </div>
                         </div>
@@ -124,11 +122,15 @@ $situations = (new Adherent())->AllSituation();
                             </div>
                         </div>
 
-                        <div class="col-md-6" id="file_certificat">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <label>Choisir le fichier :</label>
-                                        <input id="file-certificats" name="file_certificat" type="file" class="file">
+                                    <label>Situation Professionnel :</label>
+                                    <select class="form-control select2" style="width: 100%;" name="situation" required>
+                                        <?php foreach ($situations as $situation): ?>
+                                            <option value="<?= $situation['id'] ?>"><?= $situation['situation'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +176,7 @@ $situations = (new Adherent())->AllSituation();
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Téléphone fixe :</label>
-                                <input type="text" class="form-control pull-right" placeholder="Numéro de téléphone fixe" name="tel_fixe" required>
+                                <input type="text" class="form-control pull-right" placeholder="Numéro de téléphone fixe" pattern="[0-9]{10}" name="tel_fixe" required>
                             </div>
                         </div>
                     </div>
@@ -187,15 +189,11 @@ $situations = (new Adherent())->AllSituation();
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="file_certificat">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <label>Situation Professionnel :</label>
-                                    <select class="form-control select2" style="width: 100%;" name="situation" required>
-                                        <?php foreach ($situations as $situation): ?>
-                                            <option value="<?= $situation['id'] ?>"><?= $situation['situation'] ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                    <label>Choisir le fichier :</label>
+                                    <input id="file-certificats" name="file_certificat" type="file" class="file">
                                 </div>
                             </div>
                         </div>
@@ -215,89 +213,32 @@ $situations = (new Adherent())->AllSituation();
 </div>
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
-<script src="../../web/asset/bootstrap-fileinput/js/locales/fr.js"></script>
 
 <script>
+    $(function () {
+        $("#file-certificat").fileinput({
+            language: "fr",
+            showPreview: false,
+            showUpload: false,
+            elErrorContainer: '#kartik-file-errors',
+            allowedFileExtensions: ["jpg", "png", "gif", "pdf"]
+        });
 
-    $("#file-certificat").fileinput({
-        language: "fr",
-        showPreview: false,
-        showUpload: false,
-        elErrorContainer: '#kartik-file-errors',
-        allowedFileExtensions: ["jpg", "png", "gif","pdf"]
-        //uploadUrl: '/site/file-upload-single'
+
+        $("select[name='certificat']").change(function () {
+            if ($(this).val() == "N") {
+                $('#file_certificat').hide();
+            }
+            else {
+                $('#file_certificat').show();
+            }
+        });
+
+        $('#datepicker').datetimepicker({
+            format:'DD/MM/YYYY'
+        });
     });
 
-
-    $("select[name='certificat']").change(function()
-    {
-        if($(this).val() == "N"){
-            $('#file_certificat').hide();
-        }
-        else{
-            $('#file_certificat').show();
-        }
-    });
-
-//    var placeSearch, autocomplete;
-//    var componentForm = {
-//        street_number: 'short_name',
-//        route: 'long_name',
-//        locality: 'long_name',
-//        administrative_area_level_1: 'short_name',
-//        country: 'long_name',
-//        postal_code: 'short_name'
-//    };
-//
-//    function initAutocomplete() {
-//        // Create the autocomplete object, restricting the search to geographical
-//        // location types.
-//        autocomplete = new google.maps.places.Autocomplete(
-//            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-//            {types: ['geocode']});
-//
-//        // When the user selects an address from the dropdown, populate the address
-//        // fields in the form.
-//        autocomplete.addListener('place_changed', fillInAddress);
-//    }
-//
-//    function fillInAddress() {
-//        // Get the place details from the autocomplete object.
-//        var place = autocomplete.getPlace();
-//
-//        for (var component in componentForm) {
-//            document.getElementById(component).value = '';
-//            document.getElementById(component).disabled = false;
-//        }
-//
-//        // Get each component of the address from the place details
-//        // and fill the corresponding field on the form.
-//        for (var i = 0; i < place.address_components.length; i++) {
-//            var addressType = place.address_components[i].types[0];
-//            if (componentForm[addressType]) {
-//                var val = place.address_components[i][componentForm[addressType]];
-//                document.getElementById(addressType).value = val;
-//            }
-//        }
-//    }
-//
-//    // Bias the autocomplete object to the user's geographical location,
-//    // as supplied by the browser's 'navigator.geolocation' object.
-//    function geolocate() {
-//        if (navigator.geolocation) {
-//            navigator.geolocation.getCurrentPosition(function(position) {
-//                var geolocation = {
-//                    lat: position.coords.latitude,
-//                    lng: position.coords.longitude
-//                };
-//                var circle = new google.maps.Circle({
-//                    center: geolocation,
-//                    radius: position.coords.accuracy
-//                });
-//                autocomplete.setBounds(circle.getBounds());
-//            });
-//        }
-//    }
 </script>
 
 

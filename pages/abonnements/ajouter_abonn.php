@@ -259,10 +259,8 @@ $today = Carbon::now()->format('d-m-Y');
     });
 
     //Date picker
-    $('.datepicker').datepicker({
-        dateFormat: 'dd/mm/yy',
-        changeMonth: true,
-        numberOfMonths: 1
+    $('.datepicker').datetimepicker({
+        format:'DD/MM/YYYY'
     });
 
     $("#file").fileinput({

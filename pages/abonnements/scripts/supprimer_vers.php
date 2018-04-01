@@ -9,7 +9,7 @@ $versement->setId($_POST['id_vers']);
 
 
 if ($versement->getId() != null) {
-    $vers = (new Versement())->deleteVersement($versement->getId());
+    $vers = (new Versement())->deleteVersementByID($versement->getId());
 
     if ($vers) {
         $return['result'] = 'success';

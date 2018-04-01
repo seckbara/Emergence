@@ -3,7 +3,7 @@ require '../../vendor/autoload.php';
 include_once "../../assets/class/includes/header.php";
 use Emergence\Functions;
 
-$annee = (Functions::getAnnee());
+$annee = (new Functions())->getAnnee();
 
 ?>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">

@@ -106,7 +106,11 @@
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
+                                                <?php if ($current_user->chemin != "") : ?>
+                                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                                                <?php else: ?>
+                                                    <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
+                                                <?php endif; ?>
                                             </div>
                                             <h4>
                                                 Support Team
@@ -119,7 +123,11 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
+                                                <?php if ($current_user->chemin != "") : ?>
+                                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                                                <?php else: ?>
+                                                    <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
+                                                <?php endif; ?>
                                             </div>
                                             <h4>
                                                 AdminLTE Design Team
@@ -131,7 +139,11 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
+                                                <?php if ($current_user->chemin != "") : ?>
+                                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                                                <?php else: ?>
+                                                    <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
+                                                <?php endif; ?>
                                             </div>
                                             <h4>
                                                 Developers
@@ -143,7 +155,11 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
+                                                <?php if ($current_user->chemin != "") : ?>
+                                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                                                <?php else: ?>
+                                                    <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
+                                                <?php endif; ?>
                                             </div>
                                             <h4>
                                                 Sales Department
@@ -155,7 +171,11 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
+                                                <?php if ($current_user->chemin != "") : ?>
+                                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                                                <?php else: ?>
+                                                    <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
+                                                <?php endif; ?>
                                             </div>
                                             <h4>
                                                 Reviewers
@@ -216,13 +236,21 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src='<?= $current_user->chemin ?>' class="user-image" alt="User Image">
+                            <?php if ($current_user->chemin != "") : ?>
+                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                            <?php else: ?>
+                                <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
+                            <?php endif; ?>
                             <span class="hidden-xs"><?= ucfirst($_SESSION['utilisateur']['nom']) ?> <?= strtoupper($_SESSION['utilisateur']['prenom']) ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="User Image">
+                                <?php if ($current_user->chemin != "") : ?>
+                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                                <?php else: ?>
+                                    <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
+                                <?php endif; ?>
 
                                 <p>
                                     <?= ucfirst($_SESSION['utilisateur']['nom']) ?> <?= strtoupper($_SESSION['utilisateur']['prenom']) ?>
@@ -251,7 +279,11 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src='<?= $current_user->chemin ?>'class="img-circle" alt="User Image">
+                    <?php if ($current_user->chemin != "") : ?>
+                        <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                    <?php else: ?>
+                        <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
+                    <?php endif; ?>
                 </div>
                 <div class="pull-left info">
                     <p><?= ucfirst($_SESSION['utilisateur']['nom']) ?> <?= strtoupper($_SESSION['utilisateur']['prenom']) ?></p>

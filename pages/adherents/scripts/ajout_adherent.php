@@ -9,8 +9,8 @@
  $_POST = filter_input_array(INPUT_POST);
  $adherent =  new Adherent();
  $adherent->id = $_POST['id_adh'];
- $adherent->nom_adherent = $_POST['nom_adherent'];
- $adherent->prenom_adherent = $_POST['prenom_adherent'];
+ $adherent->nom_adherent = trim($_POST['nom_adherent'], " ");
+ $adherent->prenom_adherent = trim($_POST['prenom_adherent'], " ");
  $adherent->date_naissance = date('d-m-Y', strtotime($_POST['date_naissance']));
  $adherent->ville = $_POST['ville'];
  $adherent->sexe = $_POST['sexe'];
@@ -31,6 +31,7 @@
      $abonnement = (new Abonnement())->deleteAbonnement($abonnement_adh->id);
      $adherent = (new Adherent())->deleteAdherent($adherent->id);
 
+     $return = [];
      if ($adherent) {
          $return['result'] = 'success';
          echo json_encode($return);

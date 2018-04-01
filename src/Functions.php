@@ -61,7 +61,7 @@ class Functions extends DBManager
     /**
      * @return array
      */
-    public static function getAnnee()
+    public function getAnnee()
     {
         try {
             return DBManager::connect()->executeQuery("select * from " .(new Functions())->getTableAnnee())->fetchAll(PDO::FETCH_OBJ);

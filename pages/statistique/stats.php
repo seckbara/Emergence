@@ -1,5 +1,6 @@
 <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
 <?php
+error_reporting(0);
 include_once "../../assets/class/includes/header.php";
 require_once '../../vendor/autoload.php';
 use Emergence\Activite;
@@ -27,7 +28,7 @@ $columnChart = new FusionCharts("column3d", "ex1", "100%", 500, "chart-1", "json
                 "data":[  
                   {  
                      "label":"'.$activite_name[0]->nom_activite.'",
-                     "value":"'.$activite[0]->nombre_activite.'"
+                     "value":"'.($activite[0]->nombre_activite).'"
                   },
                   {  
                      "label":"'.$activite[1]->nom_activite.'",
