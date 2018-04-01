@@ -96,10 +96,10 @@
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
+                            <span class="label label-success">1</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">Vous avez 4 messages</li>
+                            <li class="header">Vous avez 1 messages</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
@@ -107,121 +107,33 @@
                                         <a href="#">
                                             <div class="pull-left">
                                                 <?php if ($current_user->chemin != "") : ?>
-                                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                                                    <img src="<?= $current_user->chemin ?>" idth="35" height="35" class="img-circle" alt="">
                                                 <?php else: ?>
                                                     <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
                                                 <?php endif; ?>
                                             </div>
                                             <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                <small><i class="fa fa-clock-o"></i> 5 mn</small>
                                             </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <!-- end message -->
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <?php if ($current_user->chemin != "") : ?>
-                                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
-                                                <?php else: ?>
-                                                    <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
-                                                <?php endif; ?>
-                                            </div>
-                                            <h4>
-                                                AdminLTE Design Team
-                                                <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <?php if ($current_user->chemin != "") : ?>
-                                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
-                                                <?php else: ?>
-                                                    <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
-                                                <?php endif; ?>
-                                            </div>
-                                            <h4>
-                                                Developers
-                                                <small><i class="fa fa-clock-o"></i> Today</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <?php if ($current_user->chemin != "") : ?>
-                                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
-                                                <?php else: ?>
-                                                    <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
-                                                <?php endif; ?>
-                                            </div>
-                                            <h4>
-                                                Sales Department
-                                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <?php if ($current_user->chemin != "") : ?>
-                                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
-                                                <?php else: ?>
-                                                    <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
-                                                <?php endif; ?>
-                                            </div>
-                                            <h4>
-                                                Reviewers
-                                                <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
+                                            <p>un exemple à afficher</p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
+                            <li class="footer"><a href="#">Voir tout les messages</a></li>
                         </ul>
                     </li>
                     <!-- Notifications: style can be found in dropdown.less -->
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
+                            <span class="label label-warning">1</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">Vous avez réçu 10 notifications</li>
+                            <li class="header">Vous avez réçu 1 notifications</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                                            page and may cause design problems
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-red"></i> 5 new members joined
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="#">
                                             <i class="fa fa-user text-red"></i> You changed your username
@@ -237,7 +149,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <?php if ($current_user->chemin != "") : ?>
-                                <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                                <img src="<?= $current_user->chemin ?>" idth="35" height="35" class="img-circle" alt="">
                             <?php else: ?>
                                 <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
                             <?php endif; ?>
@@ -247,7 +159,7 @@
                             <!-- User image -->
                             <li class="user-header">
                                 <?php if ($current_user->chemin != "") : ?>
-                                    <img src="<?= $current_user->chemin ?>" class="img-circle" alt="">
+                                    <img src="<?= $current_user->chemin ?>" idth="35" height="35" class="img-circle" alt="">
                                 <?php else: ?>
                                     <img src="../../dist/img/default.png" width="35" height="35" class="img-circle" alt="">
                                 <?php endif; ?>
@@ -304,7 +216,7 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
 
-                <li class="treeview active">
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-male" aria-hidden="true"></i> <span>Adherents</span>
                         <span class="pull-right-container">
@@ -321,7 +233,7 @@
 
             <!-- partie concernant un abonnement -->
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="treeview active">
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-credit-card-alt" aria-hidden="true"></i> <span>Abonnement</span>
                         <span class="pull-right-container">
@@ -339,7 +251,7 @@
 
             <!-- partie statistique -->
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="treeview active">
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-bar-chart" aria-hidden="true"></i> <span>Afficher les stats</span>
                         <span class="pull-right-container">
@@ -355,7 +267,7 @@
 
             <!-- partie statistique -->
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="treeview active">
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-bar-chart" aria-hidden="true"></i> <span>Devis</span>
                         <span class="pull-right-container">

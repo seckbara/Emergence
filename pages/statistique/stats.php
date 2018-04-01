@@ -95,8 +95,8 @@ $pie3dChart->render();
             <h1>Statistique des adherents en fonction des activités choisis</h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                <li><a href="#">Adherent</a></li>
-                <li class="active">Historique des adherents</li>
+                <li><a href="#">Afficher les stats</a></li>
+                <li class="active">Stats adherent</li>
 
             </ol>
             <br>

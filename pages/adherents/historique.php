@@ -11,7 +11,7 @@ include_once "../../assets/class/includes/header.php"
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
                 <li><a href="#">Adherent</a></li>
-                <li class="active">Historique des adherents</li>
+                <li class="active">Historique</li>
             </ol>
         </section>
 

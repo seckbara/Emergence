@@ -15,8 +15,8 @@ $annee = (new Functions())->getAnnee();
             <h1>Liste des abonnements expirés en <?= date("Y"); ?></h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                <li><a href="#">Adherent</a></li>
-                <li class="active">Abonnements expirés</li>
+                <li><a href="#">Afficher les stats</a></li>
+                <li class="active">Fin abonnement</li>
             </ol>
         </section>
 

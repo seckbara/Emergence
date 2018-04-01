@@ -19,7 +19,7 @@ $situations = (new Adherent())->AllSituation();
         <ol class="breadcrumb">
             <li><a href="../../index.html"><i class="fa fa-dashboard"></i> Accueil</a></li>
             <li><a href="ajouter_adher.php">Adherent</a></li>
-            <li class="active">Ajouter un adherent</li>
+            <li class="active">Ajouter</li>
         </ol>
     </section>
 
