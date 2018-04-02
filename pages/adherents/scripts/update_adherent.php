@@ -26,7 +26,7 @@ Modification de l'identité de <?= $adherent->nom_adherent.' '.$adherent->prenom
 
     <div class="form-group">
         <label>Date de naissance</label>
-        <input type="text" name="date_naissance" value="<?= $adherent->date_naissance ?>" class="form-control col-lg-1">
+        <input type="text" name="date_naissance" value="<?= $adherent->date_naissance ?>" class="form-control col-lg-1 datepicker">
     </div>
 
     <div class="form-group">
@@ -63,3 +63,9 @@ Modification de l'identité de <?= $adherent->nom_adherent.' '.$adherent->prenom
         <br><input type="submit" class="btn btn-success btn-sm btn-block" value="Valider"/>
     </div>
 </form>
+
+<script>
+    $('.datepicker').datetimepicker({
+        format:'DD/MM/YYYY'
+    });
+</script>

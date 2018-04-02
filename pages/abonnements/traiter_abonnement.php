@@ -1,5 +1,6 @@
     <?php
         session_start();
+    error_reporting(0);
     require_once '../../vendor/autoload.php';
     include_once "../../assets/class/includes/header.php";
 
@@ -39,7 +40,7 @@
 
             <!-- Main content -->
             <section class="content">
-                <form id="renouveller_abonnement" method="post" action="scripts/traiter.php">
+                <form id="renouveller_abonnement" method="post" action="scripts/renouve_abonn.php">
                     <div>
                         <h3>Adherent</h3>
                         <section>
@@ -47,13 +48,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nom</label>
-                                        <input type="text" class="form-control" value="<?= $_SESSION['adherent']->nom_adherent ?>" name="nom_adherent" placeholder="Saisir le nom de l'adherent"  required/>
+                                        <input type="text" class="form-control" value="<?= $_SESSION['adherent']->nom_adherent ?>" name="nom_adherent" placeholder="Saisir le nom de l'adherent" readonly required/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Prenom</label>
-                                        <input type="text" class="form-control" value="<?= $_SESSION['adherent']->prenom_adherent ?>" name="nom_adherent" placeholder="Saisir le prenom"  required/>
+                                        <input type="text" class="form-control" value="<?= $_SESSION['adherent']->prenom_adherent ?>" name="nom_adherent" placeholder="Saisir le prenom" readonly required/>
                                     </div>
                                 </div>
                             </div>
@@ -201,20 +202,20 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Montant :</label>
-                                            <input type="number" min="0" name="montant" id="montant" class="form-control" placeholder="Saisir le montant du versement" required>
+                                            <input type="number" min="0" name="montant" id="montant" class="form-control" placeholder="Saisir le montant du versement" >
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Date de versement :</label>
-                                            <input type="text" name="date_versement" id="date" value="<?= date('d-m-Y') ?>" class="form-control" placeholder="Saisir la date du versement" required>
+                                            <input type="text" name="date_versement" id="date" value="<?= date('d-m-Y') ?>" class="form-control" placeholder="Saisir la date du versement" >
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Commentaire :</label>
-                                            <textarea name="commentaire" id="commentaire" rows="5" cols="5" class="form-control" placeholder="Saisir votre commentaire" required></textarea>
+                                            <textarea name="commentaire" id="commentaire" rows="5" cols="5" class="form-control" placeholder="Saisir votre commentaire" ></textarea>
                                             <br>
                                             <button type="button" value="ajouter" id="ajout_vers" class="btn btn-primary btn-block btn-sm">Ajouter</button>
                                         </div>
@@ -242,21 +243,13 @@
                                                 <div class="col-md-6">
                                                     <div class="list-group">
                                                         <p class="list-group-item active">Abonnement</p>
-                                                        <p class="list-group-item"><b>Date d'abonnement :</b><?= $_SESSION['abonnement']->date_abonnement ?></p>
-                                                        <p class="list-group-item"><b>Type de paiement</b><?= $_SESSION['abonnement']->type_paiement ?></p>
-                                                        <p class="list-group-item"><b>Date de certfict</b><?= $_SESSION['abonnement']->date_certificat ?></p>
-                                                        <p class="list-group-item"><b>Durée d'abonnment</b><?= $_SESSION['abonnement']->duree_abonnement ?> mois</p>
+                                                        <p class="list-group-item"><b>Date d'abonnement :  </b><?= $date->getDateAbonnement(); ?></p>
+                                                        <p class="list-group-item"><b>Type de paiement :  </b><?= $_SESSION['abonnement']->type_paiement ?> fois</p>
+                                                        <p class="list-group-item"><b>Date de certfict :  </b><?= $_SESSION['abonnement']->date_certificat ?></p>
+                                                        <p class="list-group-item"><b>Durée d'abonnment :  </b><?= $_SESSION['abonnement']->duree_abonnement ?> mois</p>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
-                                                    <div class="list-group">
-                                                        <p class="list-group-item active">Versement</p>
-                                                            <?php foreach ($_SESSION['versement'] as $versement){
-                                                                echo '<p class="list-group-item"><b>Montant du versement : </b>' .$versement["montant"].' &euro;</p> ';
-                                                            } ?>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </section>
 
@@ -304,6 +297,7 @@
             },
             onFinished: function (event, currentIndex)
             {
+                alert('ici');
                 $.post(url, {data: data}, function(result){
 
                 });

@@ -79,7 +79,8 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>Identifiant</th>
+                                <th>Identifiant Abonnement</th>
+                                <th>Identifiant Adherent</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Date de certificat</th>
@@ -112,10 +113,11 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                                     echo "";
                                 }?>>
                                     <td><?= $abonnement->id ?></td>
+                                    <td><?= $adh->id ?></td>
                                     <td><?= $adh->nom_adherent ?></td>
                                     <td><?= $adh->prenom_adherent ?></td>
                                     <td><?= $abonnement->date_certificat ?></td>
-                                    <td><?= ($abonnement->date_certificat = "N")?"<p class=\"text-danger\">Non</p>":"Oui" ?></td>
+                                    <td><?= ($abonnement->date_certificat = "N")?"<p>Non</p>":"Oui" ?></td>
                                     <td><?= $abonnement->date_abonnement ?></td>
                                     <td><?= $abonnement->montant ?> &euro;</td>
                                     <td><?= $abonnement->duree_abonnement ?> mois</td>
@@ -128,7 +130,8 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
 <!--                                        <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>https://github.com/rstaib/jquery-steps-->
                                         <a href="detail_abonnement.php?abonnement=<?=  $abonnement->id;?>&amp;adherent=<?= $abonnement->id_adherent ?>" class="btn btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                         <?php if (strtotime((new DateTime())->format('d-m-Y')) > strtotime(((new Functions())->Date_Format_Fr($date_fin)))): ?>
-                                        <a href="traiter_abonnement.php?abonnement=<?=  $abonnement->id;?>&amp;adherent=<?= $abonnement->id_adherent ?>" class="btn btn-default"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                            <a href="ajouter_abonn.php?id=<?=  $adh->id;?>" class="btn btn-default"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                            <a href="traiter_abonnement.php?abonnement=<?=  $abonnement->id;?>&amp;adherent=<?= $abonnement->id_adherent ?>" class="btn btn-default"><i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i></a>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -137,12 +140,15 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
                             </tbody>
                             <tfoot>
                             <tr>
+                                <th>Identifiant Abonnement</th>
+                                <th>Identifiant Adherent</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Date de certificat</th>
                                 <th>Presence certificat</th>
+                                <th>Date d'abonnement</th>
                                 <th>Montant</th>
-                                <th>Type de paiement</th>
+                                <th>Durée d'abonnement</th>
                                 <th>Email</th>
                                 <th>Sexe</th>
                                 <th>Quartier</th>

@@ -3,7 +3,6 @@ require_once '../../../../vendor/autoload.php';
 use Emergence\Versement;
 
 $versement = (new Versement())->getVersement($_POST['id_vers']);
-dump($versement);
 ?>
 
 Modification du versement <?= $versement->id. "##" ?>

@@ -52,7 +52,17 @@ $adherent = (new Adherent())->AdherentById($adherent);
     <div class="form-group row">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Presence d'un certificat médical</label>
         <div>
-            <?= ($adherent->certificat == "O")?"OUI":"Non" ?>
+            <?php
+                if($adherent->certificat == "O"){
+                    echo "O";
+                }
+                else if($adherent->certificat == "NR"){
+                    echo "NR";
+                }
+                else{
+                    echo "N";
+                }
+            ?>
         </div>
     </div>
     <div class="form-group row">
@@ -69,3 +79,4 @@ $adherent = (new Adherent())->AdherentById($adherent);
     </div>
 
 </div>
+

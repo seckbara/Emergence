@@ -67,15 +67,15 @@ $allUser = (new Utilisateurs())->getAllUsers();
                                         <h3 class="box-title">Changer votre photo de profil</h3>
                                     </div>
 
-                                        <div class="row">
-                                            <div class="col-sm-2 text-center">
-                                                <div class="kv-avatar">
-                                                    <div class="file-loading">
-                                                        <input id="avatar-1" name="avatar-1" type="file" required>
-                                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2 text-center">
+                                            <div class="kv-avatar">
+                                                <div class="file-loading">
+                                                    <input id="avatar-1" name="avatar-1" type="file" required>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
                                 </div>
 

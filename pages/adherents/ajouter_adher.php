@@ -118,6 +118,7 @@ $situations = (new Adherent())->AllSituation();
                                 <select class="form-control select2" style="width: 100%;" name="certificat" required>
                                     <option value="O" selected>Oui</option>
                                     <option value="N">Non</option>
+                                    <option value="NR">Non Renseigné</option>
                                 </select>
                             </div>
                         </div>
@@ -192,7 +193,7 @@ $situations = (new Adherent())->AllSituation();
                         <div class="col-md-6" id="file_certificat">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <label>Choisir le fichier :</label>
+                                    <label>Choisir le certificat :</label>
                                     <input id="file-certificats" name="file_certificat" type="file" class="file">
                                 </div>
                             </div>
@@ -227,6 +228,9 @@ $situations = (new Adherent())->AllSituation();
 
         $("select[name='certificat']").change(function () {
             if ($(this).val() == "N") {
+                $('#file_certificat').hide();
+            }
+            else if($(this).val() == "NR"){
                 $('#file_certificat').hide();
             }
             else {

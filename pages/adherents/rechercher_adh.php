@@ -79,6 +79,9 @@ $adherents = $adherent->Alladherent();
                                 <th>Adresse</th>
                                 <th>Téléphone</th>
                                 <th>Email</th>
+                                <th>Numéro Sécu</th>
+                                <th>Sexe</th>
+                                <th>Commentaire</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -92,6 +95,9 @@ $adherents = $adherent->Alladherent();
                                     <td><?= $adherent['adresse'] ?></td>
                                     <td><?= $adherent['tel'] ?></td>
                                     <td><?= $adherent['email'] ?></td>
+                                    <td><?= $adherent['num_secu'] ?></td>
+                                    <td><?= $adherent['sexe'] ?></td>
+                                    <td><?= $adherent['commentaire'] ?></td>
                                     <td style='text-align:center;'>
                                         <button type="button" class="btn btn-info" data-title="detail"  data-toggle="modal" data-target="#detail" onclick="detail_adherent(<?= $adherent['id'] ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modifier"  onclick="update_adherent(<?= $adherent['id'] ?>);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
@@ -107,9 +113,12 @@ $adherents = $adherent->Alladherent();
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Date de naissance</th>
-                                <th>Ville</th>
+                                <th>Adresse</th>
                                 <th>Téléphone</th>
                                 <th>Email</th>
+                                <th>Numéro Sécu</th>
+                                <th>Sexe</th>
+                                <th>Commentaire</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>

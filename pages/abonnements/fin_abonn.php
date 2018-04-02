@@ -12,7 +12,7 @@ $annee = (new Functions())->getAnnee();
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Liste des abonnements expirés en <?= date("Y"); ?></h1>
+            <h1>Abonnements expirés en <?= date("Y"); ?></h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i><b>Accueil</b></a></li>
                 <li><a href="#"><b>Afficher les stats</b></a></li>

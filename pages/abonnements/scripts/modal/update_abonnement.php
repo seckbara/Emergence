@@ -25,12 +25,12 @@ Modification de l'abonnement de <?= $adherent->nom_adherent.' '.$adherent->preno
 
     <div class="form-group">
         <label>Date de certificat</label>
-        <input type="text" name="date_certificat" value="<?= $abonnement->date_certificat ?>" class="form-control col-lg-1">
+        <input type="text" name="date_certificat" value="<?= $abonnement->date_certificat ?>" class="form-control col-lg-1 datepicker">
     </div>
 
     <div class="form-group">
         <label>Date d'abonnement</label>
-        <input type="text" name="date_abonnement" value="<?= $abonnement->date_abonnement ?>" class="form-control col-lg-1">
+        <input type="text" name="date_abonnement" value="<?= $abonnement->date_abonnement ?>" class="form-control col-lg-1 datepicker">
     </div>
     <br>
     <div class="form-group">
@@ -83,3 +83,9 @@ Modification de l'abonnement de <?= $adherent->nom_adherent.' '.$adherent->preno
         <br><input type="submit" class="btn btn-success btn-sm btn-block" value="Valider"/>
     </div>
 </form>
+
+<script>
+    $('.datepicker').datetimepicker({
+        format:'DD/MM/YYYY'
+    });
+</script>

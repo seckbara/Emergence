@@ -29,7 +29,7 @@ class Abonnement extends DBManager
      */
     public function __construct()
     {
-        $this->date_abonnement = date("Y-m-d");
+        $this->date_abonnement = date("d-m-Y");
     }
 
     /**

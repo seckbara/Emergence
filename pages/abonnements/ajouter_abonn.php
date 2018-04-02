@@ -53,6 +53,10 @@ $today = Carbon::now()->format('d-m-Y');
                                         &nbsp; Non &nbsp;
                                         <input type="radio" name="certificat" value="Non" onclick="show2();" class="flat-red" <?= ($this_adherents->certificat == "N")?"checked":"" ?>>
                                     </label>
+                                    <label>
+                                        &nbsp; Non Renseigné&nbsp;
+                                        <input type="radio" name="certificat" value="NR" class="flat-red" <?= ($this_adherents->certificat == "NR")?"checked":"" ?>>
+                                    </label>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -197,7 +201,7 @@ $today = Carbon::now()->format('d-m-Y');
                             <div class="form-group hidden marginLeft-10" id="contactTemplate">
                                 <div class="form-group row">
                                     <label class="form-control-label col-md-4">Montant :</label>
-                                    <div class="col-md-6 col-xs-11"><input type="number" min="0" class="form-control" name="montant" placeholder="Nom"></div>
+                                    <div class="col-md-6 col-xs-11"><input type="number" min="0" class="form-control" name="montant" placeholder="Versement"></div>
                                     <div class="col-xs-1"><button type="button" class="btn btn-danger btn-sm btn removeButton"><i class="fa fa-minus"></i></button></div>
                                 </div>
                                 <div class="form-group row">
