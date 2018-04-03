@@ -269,7 +269,7 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-bar-chart" aria-hidden="true"></i> <span>Devis</span>
+                        <i class="fa fa-calculator" aria-hidden="true"></i> <span>Devis</span>
                         <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -277,6 +277,23 @@
                     <ul class="treeview-menu">
                         <li><a href="../../pages/devis/devis.php"><i class="fa fa-bar-chart" aria-hidden="true"></i>Devis</a></li>
                         <li><a href="../../pages/devis/listing.php"><i class="fa fa-th-list" aria-hidden="true"></i>Listing</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!--   -->
+
+
+            <!-- partie certificat & photo -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-image" aria-hidden="true"></i> <span>Certificat & Photo</span>
+                        <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../../pages/PhotoCert/photocert.php"><i class="fa fa-file-image-o" aria-hidden="true"></i>Certificat / Photo</a></li>
                     </ul>
                 </li>
             </ul>

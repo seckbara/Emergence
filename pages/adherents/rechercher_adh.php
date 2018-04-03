@@ -174,7 +174,7 @@ $adherents = $adherent->Alladherent();
                 }
             }
         })
-    })
+    });
     $('#example1').on("click", ".confirm", function(e){
         e.preventDefault();
         $link = $(this);

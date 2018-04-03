@@ -125,14 +125,12 @@ $situations = (new Adherent())->AllSituation();
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <div class="form-group">
-                                    <label>Situation Professionnel :</label>
-                                    <select class="form-control select2" style="width: 100%;" name="situation" required>
-                                        <?php foreach ($situations as $situation): ?>
-                                            <option value="<?= $situation['id'] ?>"><?= $situation['situation'] ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
+                                <label>Presence d'une photo : &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <select class="form-control select2" style="width: 100%;" name="photo" required>
+                                    <option value="O" selected>Oui</option>
+                                    <option value="N">Non</option>
+                                    <option value="NR">Non Renseigné</option>
+                                </select>
                             </div>
                         </div>
 
@@ -185,8 +183,32 @@ $situations = (new Adherent())->AllSituation();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <div class="form-group">
+                                    <label>Situation Professionnel :</label>
+                                    <select class="form-control select2" style="width: 100%;" name="situation" required>
+                                        <?php foreach ($situations as $situation): ?>
+                                            <option value="<?= $situation['id'] ?>"><?= $situation['situation'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label>Commentaire :</label>
                                 <textarea class="form-control" rows="3" placeholder="Ajouter un commentaire" name="commentaire" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6" id="photo">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Choisir la photo :</label>
+                                    <input id="photo" name="photo" type="file" class="file">
+                                </div>
                             </div>
                         </div>
 
@@ -199,6 +221,7 @@ $situations = (new Adherent())->AllSituation();
                             </div>
                         </div>
                     </div>
+
 
                     <br><br>
                     <div class="row">
@@ -237,6 +260,20 @@ $situations = (new Adherent())->AllSituation();
                 $('#file_certificat').show();
             }
         });
+
+
+        $("select[name='photo']").change(function () {
+            if ($(this).val() == "N") {
+                $('#photo').hide();
+            }
+            else if($(this).val() == "NR"){
+                $('#photo').hide();
+            }
+            else {
+                $('#photo').show();
+            }
+        });
+
 
         $('#datepicker').datetimepicker({
             format:'DD/MM/YYYY'

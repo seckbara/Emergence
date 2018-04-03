@@ -26,6 +26,7 @@ class Adherent extends DBManager
     public $tel_fixe;
     public $commentaire;
     public $chemin_certificat;
+    public $chemin_photo;
     
 
     /**
@@ -33,6 +34,23 @@ class Adherent extends DBManager
      */
     public function __construct()
     {
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getCheminPhoto()
+    {
+        return $this->chemin_photo;
+    }
+
+    /**
+     * @param mixed $chemin_photo
+     */
+    public function setCheminPhoto($chemin_photo)
+    {
+        $this->chemin_photo = $chemin_photo;
     }
 
     /**
@@ -498,6 +516,30 @@ class Adherent extends DBManager
             return DBManager::connect()->executeQuery('select count(*) as nb from '.$this->getTableSituation())->fetch(PDO::FETCH_OBJ);
         } catch (DBALException $e) {
             sprintf("Impossible de recuperer la situation id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
+
+
+    /**
+     * @param $chemin
+     * @param $id
+     */
+
+    public function updateCertAdhere($chemin_cert,$chemin_photo, $id)
+    {
+        try {
+          return DBManager::connect()->update(
+                $this->getTable(),
+                [
+                    'chemin_certificat' => $chemin_cert,
+                    'chemin_photo' => $chemin_photo,
+                ],
+                [
+                    'id' => $id
+                ]
+            );
+        } catch (DBALException $e) {
+            sprintf("Impossible de modifier le chemin du certifcat id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
 }

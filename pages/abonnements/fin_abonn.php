@@ -135,13 +135,13 @@ $annee = (new Functions())->getAnnee();
                 },
                 {
                     render: function (data, type, row) {
-                        return '' + data + ' €';
+                        return '' + data + ' mois';
                     },
                     targets: 4
                 },
                 {
                     render: function (data, type, row) {
-                        return '' + data + ' mois';
+                        return '' + data + ' €';
                     },
                     targets: 5
                 }
