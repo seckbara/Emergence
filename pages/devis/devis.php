@@ -1,5 +1,7 @@
 <?php
 include_once "../../assets/class/includes/header.php";
+use Emergence\Activite;
+$activite = (new Activite())->AllActivite();
 
 ?>
 <div class="content-wrapper">
@@ -34,7 +36,7 @@ include_once "../../assets/class/includes/header.php";
     <section class="content">
         <div class="box box-default">
             <div class="box-body">
-                <form action="scripts/generate_devis.php" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data" id="devis">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -62,10 +64,12 @@ include_once "../../assets/class/includes/header.php";
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Activité choisis : &nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                <select class="form-control select2" style="width: 100%;" name="actvite" required>
-                                    <option value="O" selected>Oui</option>
-                                    <option value="N">Non</option>
-                                    <option value="NR">Non Renseigné</option>
+                                <select class="form-control select2" style="width: 100%;" required name="activite">
+                                    <?php foreach ($activite as $activ) {
+                                        ?>
+                                        <option selected="selected" value="<?= $activ->nom_activite ?>"><?= $activ->nom_activite ?></option>
+                                        <?php
+                                    } ?>
                                 </select>
                             </div>
                         </div>
@@ -74,9 +78,21 @@ include_once "../../assets/class/includes/header.php";
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Durée D'abonnement :</label>
-                                <input type="text" class="form-control" name="duree" required/>
-
+                                <label>Durée d'abonnement :</label>
+                                <div class="input-group">
+                                    <label>
+                                        3 mois &nbsp;
+                                        <input type="radio" name="duree" class="flat-red" value="3">
+                                    </label>
+                                    <label>
+                                        &nbsp; 6 mois &nbsp;
+                                        <input type="radio" name="duree" class="flat-red" value="6">
+                                    </label>
+                                    <label>
+                                        &nbsp; 12 mois &nbsp;
+                                        <input type="radio" name="duree" class="flat-red" value="12">
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -114,8 +130,25 @@ include_once "../../assets/class/includes/header.php";
             </div>
     </section>
 
+    <section class="content" id="download_devis" style="display: none">
+
+    </section>
+
 
 </div>
 
 <?php include_once "../../assets/class/includes/footer.php" ?>
+
+<script>
+    $("#devis").submit(function(e) {
+        e.preventDefault();
+        $.post( "script/generate_devis.php",  $(this).serializeArray() ,  function(data) {
+            if(data){
+                $('#modal-devis').modal('show');
+                $('#download_devis').html(data).show();
+                $('#modal-devis').modal('hide');
+            }
+        });
+    });
+</script>
 

@@ -501,6 +501,9 @@ class Adherent extends DBManager
     public function deleteAdherent($id)
     {
         try {
+//            $conn = DBManager::connect();
+  //          $conn->beginTransaction();
+    //        $conn->commit();
             return  DBManager::connect()->delete($this->getTable(), array('id' => $id));
         } catch (DBALException $e) {
             sprintf("Impossible de supprimer l'adherents avec id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());

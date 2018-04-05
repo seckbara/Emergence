@@ -7,7 +7,6 @@ use Emergence\Activite;
 use Emergence\FusionCharts;
 use \Emergence\Functions;
 use \Emergence\Abonnement;
-
 $activite = (new Activite())->countActvite();
 $activite_name = (new Activite())->AllActivite();
 $activite_array = (new Abonnement())->getCount();
