@@ -186,7 +186,7 @@ $today = Carbon::now()->format('d-m-Y');
                                 </div>
                                 <div class="form-group row">
                                     <label class="form-control-label col-md-4 marginLeft-10">Date de versement :</label>
-                                    <div class="col-md-7 col-xs-11"><input type="text" name="versement[0][date_verse]" class="form-control pull-right datepicker"  placeholder="saisir la date de versement" required>
+                                    <div class="col-md-7 col-xs-11"><input type="text" name="versement[0][date_verse]" value="<?= date('d-m-Y') ?>" class="form-control pull-right"  placeholder="saisir la date de versement" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -206,7 +206,7 @@ $today = Carbon::now()->format('d-m-Y');
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-4 form-control-label">Date de versement :</label>
-                                    <div class="col-md-7 col-xs-11"><input type="text" class="form-control pull-right datepicker"  name="date_verse" required>
+                                    <div class="col-md-7 col-xs-11"><input type="text" class="form-control pull-right" value="<?= date('d-m-Y') ?>"  name="date_verse" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -239,27 +239,25 @@ $today = Carbon::now()->format('d-m-Y');
     $('.addButton').click(function () {
         //debugger;
         contactIndex++;
-        var $template = $('#contactTemplate'),
-            $clone = $template
-                .clone()
-                .removeClass('hidden')
-                .removeAttr('id')
-                .attr('data-contact-index', contactIndex)
-                .insertBefore($template);
+            var $template = $('#contactTemplate'),
+                $clone = $template
+                    .clone()
+                    .removeClass('hidden')
+                    .removeAttr('id')
+                    .attr('data-contact-index', contactIndex)
+                    .insertBefore($template);
 
-        // Update the name attributes
-        $clone
-            .find('[name="montant"]').attr('name', 'versement[' + contactIndex + '][montant]').end()
-            .find('[name="date_verse"]').attr('name', 'versement[' + contactIndex + '][date_verse]').end()
-            .find('[name="commentaire"]').attr('name', 'versement[' + contactIndex + '][commentaire]').end();
+            // Update the name attributes
+            $clone
+                .find('[name="montant"]').attr('name', 'versement[' + contactIndex + '][montant]').end()
+                .find('[name="date_verse"]').attr('name', 'versement[' + contactIndex + '][date_verse]').end()
+                .find('[name="commentaire"]').attr('name', 'versement[' + contactIndex + '][commentaire]').end();
 
 
-        $('.removeButton').click(function () {
-            var $row = $(this).parents('.form-group'),
-                index = $row.attr('data-contact-index');
-            // Remove element containing the fields
-            $row.remove();
-        });
+            $('.removeButton').click(function () {
+                var $row = $(this).parents('.form-group');
+                $row.remove();
+            });
     });
 
     //Date picker

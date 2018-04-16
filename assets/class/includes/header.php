@@ -293,7 +293,7 @@
                     </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="../../pages/PhotoCert/photocert.php"><i class="fa fa-file-image-o" aria-hidden="true"></i>Certificat / Photo</a></li>
+                        <li><a href="../../pages/photocert/photocert.php"><i class="fa fa-file-image-o" aria-hidden="true"></i>Certificat / Photo</a></li>
                     </ul>
                 </li>
             </ul>

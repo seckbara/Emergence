@@ -12,7 +12,7 @@ ini_set("display_errors",0);error_reporting(0);
  $adherent->id = $_POST['id_adh'];
  $adherent->nom_adherent = trim($_POST['nom_adherent'], " ");
  $adherent->prenom_adherent = trim($_POST['prenom_adherent'], " ");
- $adherent->date_naissance = date('d-m-Y', strtotime($_POST['date_naissance']));
+ $adherent->date_naissance = $_POST['date_naissance'];
  $adherent->ville = $_POST['ville'];
  $adherent->sexe = $_POST['sexe'];
  $adherent->tel = $_POST['tel'];

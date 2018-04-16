@@ -54,6 +54,16 @@ function update_abonn(id_abonn){
     ajaxModaltoShow(data, url, 'modifier_abonn');
 }
 
+function ajout_versement(id_abonn){
+    console.log(id_abonn);
+    var url 	= "scripts/modal/ajout_versement.php";
+    var data = {
+        id_abonn: id_abonn
+    };
+    console.log(data);
+    ajaxModaltoShow(data, url, 'ajout_versement');
+}
+
 function update_adherent(adher)
 {
     console.log(adher);

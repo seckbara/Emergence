@@ -425,4 +425,25 @@ class Abonnement extends DBManager
             sprintf("Impossible de recuperer l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
+
+    /**
+     * @return array
+     */
+    public static function listing() : array {
+        try{
+            return DBManager::connect()->executeQuery('SELECT ad.date_naissance, ad.nom_adherent, ad.prenom_adherent, a.date_abonnement,  (a.montant - sum(v.montant)) as difference , a.montant, a.id from abonnements a, versements v, adherent ad WHERE a.id = v.abonnement_id and ad.id = a.id_adherent GROUP BY a.id;')->fetchAll(PDO::FETCH_OBJ);
+        }catch (\Exception $exception){
+            sprintf("Impossible de recuperer l'abonnement id: %s, with stack trace: %s", $exception->getMessage(), $exception->getTraceAsString());
+        }
+    }
+
+
+    public function listingByAbonnement() : array {
+        try{
+            return DBManager::connect()->executeQuery('SELECT ad.date_naissance, ad.nom_adherent, ad.prenom_adherent, a.date_abonnement,  (a.montant - sum(v.montant)) as difference , a.montant, a.id from abonnements a, versements v, adherent ad WHERE a.id = v.abonnement_id and ad.id = a.id_adherent and a.id =  '.$this->getId().' GROUP BY a.id')->fetchAll(PDO::FETCH_OBJ);
+        }catch (\Exception $exception){
+            sprintf("Impossible de recuperer l'abonnement id: %s, with stack trace: %s", $exception->getMessage(), $exception->getTraceAsString());
+        }
+    }
+
 }

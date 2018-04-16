@@ -102,6 +102,7 @@ $adherents = $adherent->Alladherent();
                                         <button type="button" class="btn btn-info" data-title="detail"  data-toggle="modal" data-target="#detail" onclick="detail_adherent(<?= $adherent['id'] ?>);"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modifier"  onclick="update_adherent(<?= $adherent['id'] ?>);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        <b class="editer" id="editer"><a href="#" class="btn btn-primary edite" target="_blank"><i class="fa fa-address-card"></i></a></b>
                                         <a href="<?= $adherent['chemin_certificat'] ?>" class="btn btn-default" target="_blank"><i class="fa fa-file"></i></a>
                                     </td>
                                 </tr>
@@ -175,6 +176,7 @@ $adherents = $adherent->Alladherent();
             }
         })
     });
+
     $('#example1').on("click", ".confirm", function(e){
         e.preventDefault();
         $link = $(this);
@@ -200,4 +202,5 @@ $adherents = $adherent->Alladherent();
             }
         });
     });
+
 </script>

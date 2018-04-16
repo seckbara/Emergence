@@ -268,4 +268,19 @@ class Versement extends DBManager
             sprintf("Impossible de modifier l'abonnement id: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
         }
     }
+
+
+    public function AjoutVersementByAbonId()
+    {
+        try {
+            return DBManager::connect()->insert($this->getTable(), array(
+                'date_versement' => $this->getDateVersement(),
+                'commentaire' => $this->getCommentaire(),
+                'montant' => $this->getMontant(),
+                'abonnement_id' => $this->getAbonnementId()
+            ));
+        } catch (DBALException $e) {
+            sprintf("Insert Versements has a PDO Error: %s, with stack trace: %s", $e->getMessage(), $e->getTraceAsString());
+        }
+    }
 }
