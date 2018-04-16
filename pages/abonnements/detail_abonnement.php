@@ -20,6 +20,7 @@ $typeactivite= (new Abonnement())->TypeActivite($abonnement->id_activite);
 $typeabonn = (new Abonnement())->TypeAbonn($abonnement->type_abonnement);
 
 $difference = $listings[0]->difference;
+/* scripts/fiche_adherent.php?adherent=<?= $adherent->id ?>&abonnement=<?= $abonnement->id ?> */
 ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -211,7 +212,7 @@ $difference = $listings[0]->difference;
             <div class="text-center">
                 <div class="">
                     <a href="rechercher_abon.php" class="btn btn-success btn-sm">Retour à la liste des abonnés</a>&nbsp;
-                    <b><a href="scripts/fiche_adherent.php?adherent=<?= $adherent->id ?>&abonnement=<?= $abonnement->id ?>" id="editer" target="_blank" class="btn btn-primary btn-sm">Editer la fiche</a>&nbsp;</b>
+                    <b><a href="#" id="editer" class="btn btn-primary btn-sm">Editer la fiche</a>&nbsp;</b>
                     <a href="#" class="btn btn-info btn-sm">Generer le devis</a>&nbsp;
                 </div>
             </div>

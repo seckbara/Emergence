@@ -17,7 +17,7 @@ $current_abonnement = $abonnement->AbonnementById($_GET['abonnement']);
 $mpdf = new Mpdf(['mode' => 'utf-8', 'format' => 'A4']);
 
 $stylesheet = file_get_contents('devis.css');
-$mpdf->WriteHTML($stylesheet,1);
+//$mpdf->WriteHTML($stylesheet,1);
 $mpdf->WriteHTML('
     <p align="left">
         <br>
@@ -26,6 +26,8 @@ $mpdf->WriteHTML('
         76600, Le Havre<br>
         02.87.15.10.16<br>
     </p><br><br><br><br>
+    
+    <img src="smiley.gif" alt="Smiley face" width="42" height="42" align="right"> This is some text.</p>
     
     <h2 align="center" style="border:1px solid #ff1c1a">Bulletin d\'adhésion pour l\'activité Boxe</h2>
     

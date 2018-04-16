@@ -131,7 +131,7 @@ $allabonnement = (new Abonnement())->AllabonnementByAdherent();
 <!--                                        <button type="button" class="btn btn-danger confirm"><i class="fa fa-trash-o" aria-hidden="true"></i></button>https://github.com/rstaib/jquery-steps-->
                                         <a href="detail_abonnement.php?abonnement=<?=  $abonnement->id;?>&amp;adherent=<?= $abonnement->id_adherent ?>" class="btn btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                         <?php if (strtotime((new DateTime())->format('d-m-Y')) > strtotime(((new Functions())->Date_Format_Fr($date_fin)))): ?>
-                                            <a href="ajouter_abonn.php?id=<?=  $adh->id;?>" class="btn btn-default"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                            <a href="ajouter_abonn.php?id=<?=  $adh->id;?>&action=renouvellement"  class="btn btn-default"><i class="fa fa-files-o" aria-hidden="true"></i></a>
                                             <a href="traiter_abonnement.php?abonnement=<?=  $abonnement->id;?>&amp;adherent=<?= $abonnement->id_adherent ?>" class="btn btn-default"><i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i></a>
                                         <?php endif; ?>
                                     </td>

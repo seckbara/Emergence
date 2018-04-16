@@ -27,7 +27,11 @@ $today = Carbon::now()->format('d-m-Y');
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1><b>Abonnement de <?= ($this_adherents->sexe == "F")?"Mme.":"Mr." ?> <?= $this_adherents->nom_adherent ." ". $this_adherents->prenom_adherent ?></b></h1>
+        <?php if ($_GET['action'] == "renouvellement"): ?>
+            <h1><b>Rénouvellement de l'abonnement de <?= ($this_adherents->sexe == "F")?"Mme.":"Mr." ?> <?= $this_adherents->nom_adherent ." ". $this_adherents->prenom_adherent ?></b></h1>
+        <?php else: ?>
+            <h1><b>Abonnement de <?= ($this_adherents->sexe == "F")?"Mme.":"Mr." ?> <?= $this_adherents->nom_adherent ." ". $this_adherents->prenom_adherent ?></b></h1>
+        <?php endif; ?>
         <ol class="breadcrumb">
             <li><a href="../../index.html"><i class="fa fa-dashboard"></i><b>Accueil</b></a></li>
             <li><a href="ajouter_abonn.php"><b>Abonnement</b></a></li>
